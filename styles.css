@@ -1,7 +1,15 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: #f3f0e7; color: #24392d; font-family: Arial, sans-serif; line-height: 1.55; }
 .page { width: min(960px, calc(100% - 40px)); margin: 0 auto; padding: 48px 0 28px; }
-.eyebrow { color: #52765e; font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
+.eyebrow { margin: 0; color: #52765e; font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
+.hero { max-width: 850px; padding: 22px 0 40px; }
+.hero h1 { margin: 14px 0 16px; }
+.dek { max-width: 760px; margin: 0; color: #24392d; font: 1.35rem/1.4 Georgia, serif; }
+.intro { max-width: 760px; margin: 14px 0 0; color: #56655a; font-size: 1rem; }
+.hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.hero-stat { min-height: 94px; padding: 13px 16px; border-left: 3px solid #d1ab5f; border-radius: 0 8px 8px 0; background: #e8ebdf; }
+.hero-stat strong { display: block; color: #24392d; font: 1.65rem Georgia, serif; }
+.hero-stat span { display: block; margin-top: 4px; color: #647166; font-size: .82rem; }
 h1, h2 { font-family: Georgia, serif; font-weight: 500; }
 h1 { margin: 10px 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; }
 .intro { margin: 0 0 30px; color: #56655a; font-size: 1.12rem; }
@@ -11,4 +19,27 @@ h2 { margin: 0 0 6px; font-size: 1.6rem; }
 .chart { min-height: 390px; margin-top: 15px; }
 footer { margin-top: 22px; color: #647166; font-size: .85rem; }
 .error { color: #a33d32; }
-@media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .chart-card { padding: 16px; } }
+.chart {
+  width: 100%;
+  min-height: 420px;
+}
+
+.chart .vega-embed {
+  width: 100%;
+}
+
+.chart svg {
+  display: block;
+  max-width: 100%;
+}
+
+.source-note {
+  margin: 12px 0 0;
+  color: #647166;
+  font-size: 0.82rem;
+}
+
+.source-note a {
+  color: #3d7752;
+}
+@media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .hero { padding-bottom: 28px; } .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; } .hero-stat { min-height: 0; } .chart-card { padding: 16px; } }
