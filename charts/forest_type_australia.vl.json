@@ -1,9 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#fffefa",
+  "title": {
+  "text": "Australian native forest area by type (2023)",
+  "anchor": "start"
+},
   "data": {
     "url": "../data/forest_type_australia.csv"
   },
-  "mark": "bar",
+  "mark": {
+  "type": "bar",
+  "color": "#52765e",
+  "cornerRadiusEnd": 3
+},
   "encoding": {
     "x": {
       "field": "Area_kha",

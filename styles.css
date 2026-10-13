@@ -1,0 +1,14 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f0e7; color: #24392d; font-family: Arial, sans-serif; line-height: 1.55; }
+.page { width: min(960px, calc(100% - 40px)); margin: 0 auto; padding: 48px 0 28px; }
+.eyebrow { color: #52765e; font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
+h1, h2 { font-family: Georgia, serif; font-weight: 500; }
+h1 { margin: 10px 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; }
+.intro { margin: 0 0 30px; color: #56655a; font-size: 1.12rem; }
+.chart-card { padding: 24px; border: 1px solid #e0e3d8; border-radius: 14px; background: #fffefa; box-shadow: 0 5px 20px #24392d12; }
+h2 { margin: 0 0 6px; font-size: 1.6rem; }
+.chart-note { margin: 0; color: #647166; }
+.chart { min-height: 390px; margin-top: 15px; }
+footer { margin-top: 22px; color: #647166; font-size: .85rem; }
+.error { color: #a33d32; }
+@media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .chart-card { padding: 16px; } }

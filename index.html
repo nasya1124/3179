@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Australian native forest area by forest type, 2023.">
+  <title>Australian Forest Types</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow">FIT3179 · DATA VISUALISATION 2</p>
+    <h1>Australia’s native forests</h1>
+    <p class="intro">How does the reported area differ across native forest types?</p>
+    <section class="chart-card" aria-labelledby="chart-heading">
+      <h2 id="chart-heading">Forest area by type</h2>
+      <p class="chart-note">Area is reported in thousand hectares. Eucalypt forest has the largest reported area.</p>
+      <div id="forest-type-chart" class="chart" aria-label="Bar chart of Australian native forest area by type"></div>
+    </section>
+    <footer>Source: ABARES, Indicator 1.1a.i, Forest area by forest type (2023). CC BY 4.0.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
