@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Australian native forest area by forest type, 2023.">
-  <title>Australian Forest Types</title>
+  <meta name="description" content="Explore Australia's native forests and forest area by state and territory.">
+  <title>Australia’s Native Forests</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -16,22 +16,87 @@
       <p class="eyebrow">FIT3179 · DATA VISUALISATION 2 · AUSTRALIA</p>
       <h1>Australia’s native forests</h1>
       <p class="dek">A closer look at the forests that shape Australia’s landscapes.</p>
-      <p class="intro">Explore the area of Australia’s native forest types, where forests remain connected, and how conservation coverage varies.</p>
+      <p class="intro">
+        Explore the area of Australia’s native forest types, where forests remain
+        connected, and how conservation coverage varies.
+      </p>
+
       <div class="hero-stats" aria-label="Key forest statistics">
-        <div class="hero-stat"><strong>131.5 Mha</strong><span>native forest area · 2023</span></div>
-        <div class="hero-stat"><strong>77%</strong><span>of native forest is eucalypt · 2023</span></div>
-        <div class="hero-stat"><strong>73%</strong><span>forest-interior share · 2021 snapshot</span></div>
+        <div class="hero-stat">
+          <strong>131.5 Mha</strong>
+          <span>native forest area · 2023</span>
+        </div>
+        <div class="hero-stat">
+          <strong>77%</strong>
+          <span>of native forest is eucalypt · 2023</span>
+        </div>
+        <div class="hero-stat">
+          <strong>73%</strong>
+          <span>forest-interior share · 2021 snapshot</span>
+        </div>
       </div>
+
       <p class="source-note">
         Sources: ABARES,
-        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">Indicator 1.1a.i (2023)</a>
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">
+          Indicator 1.1a.i (2023)
+        </a>
         and
-        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1d">Indicator 1.1d (fragmentation, coverage as at 2021)</a>.
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1d">
+          Indicator 1.1d (fragmentation, coverage as at 2021)
+        </a>.
         The 77% figure is calculated from the forest-type totals. CC BY 4.0.
       </p>
-      </header>
     </header>
+<section class="chart-card where-forests-section" aria-labelledby="where-forests-grow">
+  <div class="section-heading">
+    <p class="eyebrow">STATE AND TERRITORY PATTERNS</p>
+    <h2 id="where-forests-grow">Where the forests grow</h2>
+  </div>
+
+  <div class="map-story">
+    <div class="map-copy">
+      <h3>Forest area varies across Australia</h3>
+      <p>
+  <span class="copy-line">Queensland has the largest reported native forest area.</span>
+  <span class="copy-line">Its 2023 total is 51,750 thousand hectares.</span>
+  <span class="copy-line">The Northern Territory, Western Australia, and New South Wales follow.</span>
+  <span class="copy-line">The remaining jurisdictions report smaller areas.</span>
+  <span class="copy-line">These figures show total area, not forest share.</span>
+  <span class="copy-line">The map locates totals; bars support closer comparisons.</span>
+</p>
+    </div>
+
+    <div
+      id="forest-area-map"
+      class="chart"
+      role="img"
+      aria-label="Map showing native forest area by state and territory">
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div
+    id="forest-area-by-state"
+    class="chart bar-chart"
+    role="img"
+    aria-label="Bar chart comparing native forest area by state and territory">
+  </div>
+
+  <p class="source-note">
+    Forest area: ABARES,
+    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">
+      Indicator 1.1a.i (2023)
+    </a>.
+    Map boundaries: ABS,
+    <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-4-july-2026-june-2031/access-and-downloads/digital-boundary-files">
+      ASGS Edition 4 digital boundary files (2026)
+    </a>.
+  </p>
+</section>
   </main>
+
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Native forest area by state and territory (2023)",
+    "anchor": "start"
+  },
+  "width": 800,
+  "height": 350,
+  "data": {
+    "url": "../data/forest_area_by_state.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#4f7a62",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Forest_area_kha",
+      "type": "quantitative",
+      "title": "Forest area (thousand hectares)",
+      "axis": {
+  "format": ",.0f",
+  "grid": true,
+  "labelFontSize": 16,
+  "titleFontSize": 18
+}
+},
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": {
+  "labelFontSize": 16
+}
+    },
+    "tooltip": [
+      {
+        "field": "State",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "Forest_area_kha",
+        "type": "quantitative",
+        "title": "Forest area (thousand hectares)",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "config": {
+  "view": {"stroke": null},
+  "axis": {
+    "labelFont": "Arial",
+    "titleFont": "Arial",
+    "labelColor": "#24392d",
+    "titleColor": "#24392d",
+    "labelFontSize": 16,
+    "titleFontSize": 18,
+    "gridColor": "#dfe5e8"
+  },
+  "title": {
+    "font": "Arial",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#24392d"
+  }
+}
+}

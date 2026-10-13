@@ -1,9 +1,14 @@
 // Connect the page's chart container to its Vega-Lite JSON specification.
 var forestTypeSpec = "charts/forest_type_australia.vl.json";
 
-vegaEmbed("#forest-type-chart", forestTypeSpec, { actions: false })
-  .catch(function (error) {
-    document.getElementById("forest-type-chart").innerHTML =
-      '<p class="error">The chart could not load. Check the CSV path and open the page through Live Server or GitHub Pages.</p>';
-    console.error("Could not load the forest type chart:", error);
-  });
+vegaEmbed("#forest-area-map", "charts/forest_area_choropleth.vl.json", {
+  actions: false
+}).catch(function (error) {
+  console.error("Could not load the forest area map:", error);
+});
+
+vegaEmbed("#forest-area-by-state", "charts/forest_area_by_state.vl.json", {
+  actions: false
+}).catch(function (error) {
+  console.error("Could not load the forest area bar chart:", error);
+});

@@ -42,4 +42,93 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
 .source-note a {
   color: #3d7752;
 }
+.where-forests-section {
+  background: #fffefa;
+}
+
+.section-intro {
+  margin-bottom: 24px;
+}
+
+.section-intro .intro {
+  max-width: 760px;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.chart-panel {
+  min-width: 0;
+}
+
+.chart-panel h3 {
+  color: #24392d;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 12px;
+}
+
+@media (max-width: 850px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.where-forests-section {
+  padding: 32px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.map-story {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.6fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.map-copy h3 {
+  margin-top: 0;
+  color: #24392d;
+}
+
+.map-copy p {
+  color: #56655a;
+  line-height: 1.6;
+}
+
+.section-divider {
+  border: 0;
+  border-top: 1px dashed #d8d3c8;
+  margin: 24px 0;
+}
+
+.chart {
+  min-width: 0;
+}
+
+.bar-chart {
+  margin-top: 8px;
+}
+
+@media (max-width: 850px) {
+  .where-forests-section {
+    padding: 22px;
+  }
+
+  .map-story {
+    grid-template-columns: 1fr;
+  }
+}
+
+.copy-line {
+  display: block;
+  margin-bottom: 6px;
+}
 @media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .hero { padding-bottom: 28px; } .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; } .hero-stat { min-height: 0; } .chart-card { padding: 16px; } }
