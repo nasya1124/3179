@@ -60,3 +60,11 @@ vegaEmbed("#forest-fire-heatmap", "charts/forest_fire_by_state_heatmap.vl.json",
 }).catch(function (error) {
   console.error("Could not load the forest fire heatmap:", error);
 });
+
+vegaEmbed(
+  "#plantation_establishment",
+  "charts/plantation_establishment_by_jurisdiction.vl.json",
+  { actions: false }
+).catch(function (error) {
+  console.error("Could not load the plantation establishment chart:", error);
+});

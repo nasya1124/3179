@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Native forest area by state and territory (2023)",
+    "text": "Native forest cover by state and territory (2023)",
     "anchor": "start"
   },
   "width": 400,
@@ -13,66 +13,75 @@
       "feature": "STE_2026_AUST_GDA2020"
     }
   },
-  
   "mark": {
-  "type": "geoshape",
-  "stroke": "#f4f0e7",
-  "strokeWidth": 1.5
-},
-"encoding": {
-  "color": {
-    "field": "Forest_area_kha",
-    "type": "quantitative",
-    "title": "Forest area (thousand hectares)",
-    "scale": {"scheme": "greens"},
-    "legend": {"orient": "bottom"}
+    "type": "geoshape",
+    "stroke": "#f4f0e7",
+    "strokeWidth": 1.5
   },
-  "tooltip": [
-    {
-      "field": "properties.STE_NAME26",
-      "type": "nominal",
-      "title": "State or territory"
-    },
-    {
-      "field": "Forest_area_kha",
+  "encoding": {
+    "color": {
+      "field": "Forest_cover_pct",
       "type": "quantitative",
-      "title": "Forest area (thousand hectares)",
-      "format": ",.0f"
-    }
-  ]
-},
-"transform": [
-  {
-    "calculate": "datum.properties.STE_NAME26 === 'New South Wales' ? 'NSW' : datum.properties.STE_NAME26 === 'Victoria' ? 'Vic.' : datum.properties.STE_NAME26 === 'Queensland' ? 'Qld' : datum.properties.STE_NAME26 === 'South Australia' ? 'SA' : datum.properties.STE_NAME26 === 'Western Australia' ? 'WA' : datum.properties.STE_NAME26 === 'Tasmania' ? 'Tas.' : datum.properties.STE_NAME26 === 'Northern Territory' ? 'NT' : datum.properties.STE_NAME26 === 'Australian Capital Territory' ? 'ACT' : null",
-    "as": "State"
-  },
-  {
-    "lookup": "State",
-    "from": {
-      "data": {
-        "url": "../data/forest_area_by_state.csv",
-        "format": {"type": "csv"}
-      },
-      "key": "State",
-      "fields": ["Forest_area_kha"]
+      "title": "Native forest cover (%)",
+      "format": ".1f",
+      "scale": { "scheme": "greens" },
+      "legend": { "orient": "bottom" }
     },
-    "as": ["Forest_area_kha"]
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME26",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "Forest_cover_pct",
+        "type": "quantitative",
+        "title": "Native forest cover (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "Forest_area_kha",
+        "type": "quantitative",
+        "title": "Native forest area (thousand hectares)",
+        "format": ",.0f"
+      }
+    ]
   },
-  {
-    "filter": "isValid(datum.Forest_area_kha)"
-  }
-],
+  "transform": [
+    {
+      "calculate": "datum.properties.STE_NAME26 === 'New South Wales' ? 'NSW' : datum.properties.STE_NAME26 === 'Victoria' ? 'Vic.' : datum.properties.STE_NAME26 === 'Queensland' ? 'Qld' : datum.properties.STE_NAME26 === 'South Australia' ? 'SA' : datum.properties.STE_NAME26 === 'Western Australia' ? 'WA' : datum.properties.STE_NAME26 === 'Tasmania' ? 'Tas.' : datum.properties.STE_NAME26 === 'Northern Territory' ? 'NT' : datum.properties.STE_NAME26 === 'Australian Capital Territory' ? 'ACT' : null",
+      "as": "State"
+    },
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "../data/forest_area_by_state.csv",
+          "format": { "type": "csv" }
+        },
+        "key": "State",
+        "fields": ["Forest_area_kha"]
+      },
+      "as": ["Forest_area_kha"]
+    },
+    {
+      "filter": "isValid(datum.Forest_area_kha)"
+    },
+    {
+      "calculate": "datum.Forest_area_kha * 10 / datum.properties.AREASQKM26 * 100",
+      "as": "Forest_cover_pct"
+    }
+  ],
   "projection": {
     "type": "mercator"
   },
-  
   "config": {
-    "view": {"stroke": null},
+    "view": { "stroke": null },
     "title": {
-  "font": "Arial",
-  "fontSize": 18,
-  "fontWeight": "bold",
-  "color": "#24392d"
-}
+      "font": "Arial",
+      "fontSize": 18,
+      "fontWeight": "bold",
+      "color": "#24392d"
+    }
   }
 }

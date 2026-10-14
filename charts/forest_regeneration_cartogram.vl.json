@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Registered forest regeneration projects by state",
+    "subtitle": "State area represents active registered projects · October 2026 register",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 20,
+    "fontWeight": 700,
+    "color": "#263d2e",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#647166",
+    "offset": 12
+  },
+  "width": 760,
+  "height": 470,
+  "data": {
+    "url": "../data/forest_regeneration_cartogram.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+  "projection": {
+    "type": "identity"
+  },
+  "mark": {
+    "type": "geoshape",
+    "fill": "#4f7a62",
+    "stroke": "#f4f0e7",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME26",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "properties.activeProjectCount",
+        "type": "quantitative",
+        "title": "Active registered projects",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "Arial",
+      "color": "#263d2e"
+    }
+  }
+}

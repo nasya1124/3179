@@ -1,0 +1,113 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Commercial plantation establishment and re-establishment",
+    "subtitle": "Average area per year, 2016–17 to 2020–21 · thousand hectares",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 20,
+    "fontWeight": 700,
+    "color": "#263d2e",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#647166",
+    "offset": 12
+  },
+  "width": 700,
+  "height": 370,
+  "data": {
+    "url": "../data/plantation_establishment_by_jurisdiction.csv",
+    "format": { "type": "csv" }
+  },
+  "params": [
+    {
+      "name": "plantation_type_highlight",
+      "select": { "type": "point", "fields": ["Plantation_type"] },
+      "bind": "legend"
+    }
+  ],
+  "mark": { "type": "bar", "tooltip": true },
+  "encoding": {
+    "y": {
+      "field": "Jurisdiction",
+      "type": "nominal",
+      "sort": [
+        "Australia",
+        "Victoria",
+        "Tasmania",
+        "New South Wales and ACT",
+        "Western Australia and NT",
+        "South Australia",
+        "Queensland"
+      ],
+      "axis": {
+        "title": null,
+        "labelFont": "Arial",
+        "labelFontSize": 13,
+        "labelColor": "#56655a",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "x": {
+      "field": "Annual_average_kha",
+      "type": "quantitative",
+      "stack": "zero",
+      "title": "Area established or re-established (thousand hectares)",
+      "axis": {
+        "titleFont": "Arial",
+        "titleFontSize": 13,
+        "titleColor": "#263d2e",
+        "labelFont": "Arial",
+        "labelFontSize": 12,
+        "labelColor": "#56655a",
+        "grid": true,
+        "gridColor": "#f4f0e7",
+        "gridOpacity": 1,
+        "tickColor": "#c8c2b6",
+        "domainColor": "#c8c2b6"
+      }
+    },
+    "color": {
+      "field": "Plantation_type",
+      "type": "nominal",
+      "title": "Plantation type",
+      "sort": ["Hardwood", "Softwood"],
+      "scale": {
+        "domain": ["Hardwood", "Softwood"],
+        "range": ["#d8b165", "#4f7a62"]
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "titleFont": "Arial",
+        "titleColor": "#263d2e",
+        "labelFont": "Arial",
+        "labelFontSize": 12,
+        "labelColor": "#56655a",
+        "symbolType": "square"
+      }
+    },
+    "opacity": {
+      "condition": { "param": "plantation_type_highlight", "value": 1 },
+      "value": 0.3
+    },
+    "tooltip": [
+      { "field": "Jurisdiction", "type": "nominal", "title": "Jurisdiction" },
+      { "field": "Plantation_type", "type": "nominal", "title": "Plantation type" },
+      {
+        "field": "Annual_average_kha",
+        "type": "quantitative",
+        "title": "Annual average (thousand hectares)",
+        "format": ",.3f"
+      },
+      { "field": "Period", "type": "nominal", "title": "Period" }
+    ]
+  },
+  "config": {
+    "view": { "stroke": null },
+    "bar": { "binSpacing": 3 },
+    "axis": { "labelLimit": 220 },
+    "legend": { "padding": 8 }
+  }
+}
