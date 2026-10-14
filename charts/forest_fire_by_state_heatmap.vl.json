@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Forest area burnt by state and year",
+    "subtitle": "Choose a fire type to compare annual area · 2016–17 to 2020–21",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 21,
+    "fontWeight": 700,
+    "color": "#24392d",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#647166",
+    "offset": 12
+  },
+  "width": 390,
+  "height": 340,
+  "data": {
+    "url": "../data/forest_fire_by_state_year.csv",
+    "format": { "type": "csv" }
+  },
+  "params": [
+    {
+      "name": "fire_type",
+      "value": "All fire",
+      "bind": {
+        "input": "select",
+        "options": ["All fire", "Planned fire", "Unplanned fire"],
+        "name": "Fire type: "
+      }
+    }
+  ],
+  "transform": [
+    { "filter": "datum.Fire_type == fire_type" }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "#fffefa",
+    "strokeWidth": 2,
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "Financial_year",
+      "type": "ordinal",
+      "sort": ["2016-17", "2017-18", "2018-19", "2019-20", "2020-21"],
+      "axis": { "title": "Financial year", "labelAngle": 0, "grid": false }
+    },
+    "y": {
+      "field": "State",
+      "type": "ordinal",
+      "sort": ["Qld", "NT", "NSW", "WA", "Vic.", "Tas.", "SA", "ACT"],
+      "axis": { "title": null, "grid": false }
+    },
+    "color": {
+      "field": "Area_thousand_ha",
+      "type": "quantitative",
+      "title": "Forest area burnt (thousand hectares)",
+      "scale": {
+        "type": "sqrt",
+        "domain": [0, 9000],
+        "range": ["#f4e9d6", "#e8c184", "#d9855a", "#b65c4a"]
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 300,
+        "format": ",d"
+      }
+    },
+    "tooltip": [
+      { "field": "State", "type": "ordinal", "title": "State or territory" },
+      { "field": "Financial_year", "type": "ordinal", "title": "Financial year" },
+      { "field": "Fire_type", "type": "nominal", "title": "Fire type" },
+      { "field": "Area_thousand_ha", "type": "quantitative", "title": "Area burnt (thousand hectares)", "format": ",.1f" }
+    ]
+  },
+  "config": {
+    "background": "#fffefa",
+    "view": { "stroke": null },
+    "font": "Arial",
+    "title": { "font": "Arial", "color": "#24392d" },
+    "axis": {
+      "labelFont": "Arial",
+      "labelFontSize": 13,
+      "labelColor": "#56655a",
+      "titleFont": "Arial",
+      "titleFontSize": 14,
+      "titleColor": "#24392d",
+      "domainColor": "#b9b8ad",
+      "tickColor": "#b9b8ad",
+      "grid": false
+    },
+    "legend": {
+      "labelFont": "Arial",
+      "labelFontSize": 12,
+      "labelColor": "#56655a",
+      "titleFont": "Arial",
+      "titleFontSize": 12,
+      "titleColor": "#24392d"
+    }
+  }
+}

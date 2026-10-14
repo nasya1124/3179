@@ -48,3 +48,15 @@ vegaEmbed(
 ).catch(function (error) {
   console.error("Could not load the forest protection dot plot:", error);
 });
+
+vegaEmbed("#forest-fire-area", "charts/forest_fire_area_over_time.vl.json", {
+  actions: false
+}).catch(function (error) {
+  console.error("Could not load the forest fire line chart:", error);
+});
+
+vegaEmbed("#forest-fire-heatmap", "charts/forest_fire_by_state_heatmap.vl.json", {
+  actions: false
+}).catch(function (error) {
+  console.error("Could not load the forest fire heatmap:", error);
+});

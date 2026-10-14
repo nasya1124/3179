@@ -345,6 +345,10 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   font-size: 0.88rem;
 }
 
+.fire-section .fire-summary {
+  max-width: 58ch;
+}
+
 @media (max-width: 600px) {
   .protection-annotation-card {
     grid-template-columns: 1fr;

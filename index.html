@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 </head>
 <body>
   <main class="page">
@@ -240,6 +241,42 @@
   </p>
 </section>
 
+<section class="chart-card fire-section" aria-labelledby="fire-in-forests">
+  <p class="eyebrow">FIRE AND FORESTS</p>
+  <h2 id="fire-in-forests">Fire in the forests</h2>
+
+  <p class="section-summary fire-summary">
+    Fire shapes Australian forests differently across regions. Planned burns
+    support land management. Unplanned fires vary more between years. The
+    2019–20 fire year reached a national peak. These charts compare annual
+    forest area burnt. The heatmap breaks that area down by state.
+  </p>
+
+  <div class="chart-grid">
+    <div
+      id="forest-fire-area"
+      class="chart"
+      role="img"
+      aria-label="Line chart showing annual forest area burnt by planned and unplanned fire">
+    </div>
+
+    <div
+      id="forest-fire-heatmap"
+      class="chart"
+      role="img"
+      aria-label="Heatmap showing forest area burnt by state, year, and selected fire type">
+    </div>
+  </div>
+
+  <p class="source-note">
+    Data: ABARES,
+    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-3/indicator-3.1b">
+      Indicator 3.1b (2024), Figure 3.1b-2 and Table 3.1b-5
+    </a>.
+    Areas are reported in thousand hectares by Australian financial year.
+    Each year covers July to June. CC BY 4.0.
+  </p>
+</section>
   </main>
 
   <script src="script.js"></script>
