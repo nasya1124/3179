@@ -1,0 +1,150 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 600,
+  "height": 360,
+  "padding": 8,
+  "autosize": "pad",
+  "title": {
+    "text": "Share of native forest by type (2023)",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#24392d",
+    "offset": 14
+  },
+  "data": [
+    {
+      "name": "table",
+      "url": "../data/forest_type_treemap.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "Area_kha": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.parent === '' ? null : datum.parent",
+          "as": "parent"
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "source": "table",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "Area_kha",
+          "method": "squarify",
+          "size": [
+            { "signal": "width" },
+            { "signal": "height" }
+          ],
+          "paddingInner": 3
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "typeColor",
+      "type": "ordinal",
+      "domain": [
+        "Eucalypt",
+        "Acacia",
+        "Melaleuca",
+        "Other native forest",
+        "Rainforest",
+        "Callitris",
+        "Mangrove",
+        "Casuarina"
+      ],
+      "range": [
+        "#4f7a62",
+        "#d5ae68",
+        "#90a874",
+        "#bcc7a3",
+        "#244e3d",
+        "#7695a5",
+        "#548d7d",
+        "#a7845e"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "tree",
+        "transform": [
+          
+            {
+            "type": "filter",
+            "expr": "datum.depth === 1"
+            }
+          
+        ]
+      },
+      "encode": {
+        "enter": {
+          "x": { "field": "x0" },
+          "y": { "field": "y0" },
+          "x2": { "field": "x1" },
+          "y2": { "field": "y1" },
+          "fill": {
+            "scale": "typeColor",
+            "field": "Forest_type"
+          },
+          "stroke": { "value": "#f4f0e7" },
+          "strokeWidth": { "value": 2 },
+          "cornerRadius": { "value": 3 },
+          "tooltip": {
+            "signal": "{'Forest type': datum.Forest_type, 'Area (thousand hectares)': format(datum.Area_kha, ',.0f'), 'Share of native forest': format(datum.Area_kha / 131501, '.1%')}"
+          }
+        }
+      }
+    },
+    {
+  "type": "text",
+  "from": {
+    "data": "tree",
+    "transform": [
+      {
+        "type": "filter",
+        "expr": "datum.id !== 'Australia' && datum.x1 - datum.x0 > length(datum.Forest_type) * 9 + 24 && datum.y1 - datum.y0 > 40"}
+    ]
+  },
+  "encode": {
+    "enter": {
+      "x": { "signal": "(datum.x0 + datum.x1) / 2" },
+      "y": { "signal": "(datum.y0 + datum.y1) / 2" },
+      "text": {
+  "signal": "datum.Forest_type === 'Australia' ? '' : datum.Forest_type"
+},
+      "align": { "value": "center" },
+      "baseline": { "value": "middle" },
+      "font": { "value": "Arial" },
+      "fontSize": { "value": 12 },
+      "fontWeight": { "value": "bold" },
+      "fill": { "value": "#ffffff" },
+      "limit": {
+        "signal": "datum.x1 - datum.x0 - 12"
+      }
+    }
+  }
+}
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

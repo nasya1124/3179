@@ -1,0 +1,130 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Selected native tree species",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 20,
+    "color": "#24392d"
+  },
+  "width": 600,
+"height": 500,
+"projection": {
+  "type": "mercator"
+},
+  "layer": [
+    {
+      "data": {
+  "url": "../maps/australian-states.topojson",
+  "format": {
+    "type": "topojson",
+    "feature": "STE_2026_AUST_GDA2020"
+  }
+},
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e4e8dc",
+        "stroke": "#f4f0e7",
+        "strokeWidth": 1.5
+      }
+    },
+    {
+      "data": {
+        "url": "../data/tree_species_by_grid.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Longitude": "number",
+            "Latitude": "number",
+            "Record_count": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "stroke": "#f4f0e7",
+        "strokeWidth": 0.7
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "Record_count",
+          "type": "quantitative",
+          "scale": {
+  "domain": [1, 110],
+  "range": [25, 700],
+  "zero": false
+},
+"legend": {
+  "orient": "bottom",
+  "direction": "horizontal",
+  "values": [20, 40, 60, 80, 100],
+  "title": "Herbarium records per cell"
+}
+        },
+        "color": {
+          "field": "Species",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Eucalyptus regnans",
+              "Araucaria bidwillii",
+              "Adansonia gregorii"
+            ],
+            "range": [
+              "#4f7a62",
+              "#d5ae68",
+              "#7895a1"
+            ]
+          },
+          "legend": {
+  "orient": "bottom",
+  "direction": "horizontal",
+  "columns": 3,
+  "labelLimit": 160,
+  "title": "Tree species"
+}
+        },
+        "tooltip": [
+          {
+            "field": "Species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "Record_count",
+            "type": "quantitative",
+            "title": "Herbarium records in cell",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "Arial",
+      "titleFont": "Arial",
+      "labelColor": "#56655a",
+      "titleColor": "#24392d",
+      "layout": {
+  "bottom": {
+    "direction": "vertical",
+    "anchor": "start",
+    "margin": 8
+  }
+}
+    }
+  }
+}

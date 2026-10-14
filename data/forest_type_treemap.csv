@@ -1,0 +1,10 @@
+id,parent,Forest_type,Area_kha
+Australia,,Australia,0
+Acacia,Australia,Acacia,10895
+Callitris,Australia,Callitris,1993
+Casuarina,Australia,Casuarina,1086
+Eucalypt,Australia,Eucalypt,101081
+Mangrove,Australia,Mangrove,1110
+Melaleuca,Australia,Melaleuca,7193
+Other native forest,Australia,Other native forest,4701
+Rainforest,Australia,Rainforest,3442

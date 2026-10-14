@@ -145,4 +145,76 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
     grid-template-columns: 1fr;
   }
 }
+/* Forest-composition section */
+.composition-intro {
+  max-width: 50ch !important;
+}
+
+.composition-section .card h3 {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.composition-grid .chart {
+  min-height: 350px;
+}
+
+.where-forests-section {
+  margin-bottom: 32px;
+}
+
+.composition-chart-grid {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.composition-stories {
+  display: grid;
+  gap: 30px;
+}
+
+.composition-story {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 0.8fr);
+  align-items: center;
+  gap: 28px;
+}
+
+.composition-visual {
+  min-width: 0;
+}
+
+.composition-visual .chart {
+  width: 100%;
+  min-height: 420px;
+}
+
+.composition-insight {
+  padding: 22px;
+  background: #f3f0e7;
+  border-left: 3px solid #d1ab5f;
+  border-radius: 10px;
+}
+
+.composition-insight p {
+  color: #667469;
+}
+
+.composition-insight .eyebrow {
+  color: #3d7752;
+}
+
+.insight-stat {
+  display: block;
+  color: #24392d;
+  font-size: 2.7rem;
+  line-height: 1.1;
+}
+
+@media (max-width: 760px) {
+  .composition-story {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .hero { padding-bottom: 28px; } .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; } .hero-stat { min-height: 0; } .chart-card { padding: 16px; } }
