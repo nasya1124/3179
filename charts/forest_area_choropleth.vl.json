@@ -4,7 +4,7 @@
     "text": "Native forest area by state and territory (2023)",
     "anchor": "start"
   },
-  "width": 480,
+  "width": 400,
   "height": 420,
   "data": {
     "url": "../maps/australian-states.topojson",
@@ -69,10 +69,10 @@
   "config": {
     "view": {"stroke": null},
     "title": {
-      "font": "Georgia",
-      "fontSize": 20,
-      "fontWeight": "normal",
-      "color": "#24392d"
-    }
+  "font": "Arial",
+  "fontSize": 18,
+  "fontWeight": "bold",
+  "color": "#24392d"
+}
   }
 }

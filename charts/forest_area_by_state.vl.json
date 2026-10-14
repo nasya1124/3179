@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Native forest area by state and territory (2023)",
+    "text": "Forest area by state (2023)",
     "anchor": "start"
   },
-  "width": 800,
+  "width": 370,
   "height": 350,
   "data": {
     "url": "../data/forest_area_by_state.csv",
@@ -59,7 +59,7 @@
     "titleColor": "#24392d",
     "labelFontSize": 16,
     "titleFontSize": 18,
-    "gridColor": "#dfe5e8"
+    "gridColor": "#e8e1d4"
   },
   "title": {
     "font": "Arial",

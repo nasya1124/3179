@@ -61,6 +61,12 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   align-items: start;
 }
 
+.chart-grid .chart {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+
 .chart-panel {
   min-width: 0;
 }
@@ -127,8 +133,16 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   }
 }
 
-.copy-line {
-  display: block;
-  margin-bottom: 6px;
+.section-summary {
+  max-width: 720px;
+  margin: 18px 0 28px;
+  color: #56655a;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .hero { padding-bottom: 28px; } .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; } .hero-stat { min-height: 0; } .chart-card { padding: 16px; } }
