@@ -1,0 +1,448 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Native forest area by tenure and inclusion in the National Reserve System, based on ABARES Indicator 1.1c-2 (2020-21).",
+  "width": 850,
+  "height": 470,
+  "padding": {
+    "left": 12,
+    "right": 12,
+    "top": 10,
+    "bottom": 10
+  },
+  "background": "#fffefa",
+  "title": {
+    "text": "Native forest area by tenure and reserve status",
+    "subtitle": "Flow width shows area in thousand hectares \u00b7 2020\u201321",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 21,
+    "fontWeight": "bold",
+    "color": "#24392d",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#647166",
+    "offset": 14
+  },
+  "data": [
+    {
+      "name": "forest",
+      "url": "../data/forest_protection_alluvial.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "Forest_area_kha": "number"
+        }
+      }
+    },
+    {
+      "name": "leftNodes",
+      "source": "forest",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "Tenure"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "Forest_area_kha"
+          ],
+          "as": [
+            "area"
+          ]
+        },
+        {
+          "type": "stack",
+          "field": "area",
+          "sort": {
+            "field": "Tenure",
+            "order": "ascending"
+          },
+          "as": [
+            "y0",
+            "y1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rightNodes",
+      "source": "forest",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "Status"
+          ],
+          "ops": [
+            "sum"
+          ],
+          "fields": [
+            "Forest_area_kha"
+          ],
+          "as": [
+            "area"
+          ]
+        },
+        {
+          "type": "stack",
+          "field": "area",
+          "sort": {
+            "field": "Status",
+            "order": "ascending"
+          },
+          "as": [
+            "y0",
+            "y1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "targetFlowPositions",
+      "source": "forest",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.Tenure + '|' + datum.Status",
+          "as": "flowKey"
+        },
+        {
+          "type": "stack",
+          "groupby": [
+            "Status"
+          ],
+          "field": "Forest_area_kha",
+          "sort": {
+            "field": "Tenure",
+            "order": "ascending"
+          },
+          "as": [
+            "target0",
+            "target1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "flowPaths",
+      "source": "forest",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.Tenure + '|' + datum.Status",
+          "as": "flowKey"
+        },
+        {
+          "type": "stack",
+          "groupby": [
+            "Tenure"
+          ],
+          "field": "Forest_area_kha",
+          "sort": {
+            "field": "Status",
+            "order": "ascending"
+          },
+          "as": [
+            "source0",
+            "source1"
+          ]
+        },
+        {
+          "type": "lookup",
+          "from": "leftNodes",
+          "key": "Tenure",
+          "fields": [
+            "Tenure"
+          ],
+          "values": [
+            "y0"
+          ],
+          "as": [
+            "sourceNode0"
+          ]
+        },
+        {
+          "type": "lookup",
+          "from": "targetFlowPositions",
+          "key": "flowKey",
+          "fields": [
+            "flowKey"
+          ],
+          "values": [
+            "target0",
+            "target1"
+          ],
+          "as": [
+            "target0",
+            "target1"
+          ]
+        },
+        {
+          "type": "lookup",
+          "from": "rightNodes",
+          "key": "Status",
+          "fields": [
+            "Status"
+          ],
+          "values": [
+            "y0"
+          ],
+          "as": [
+            "targetNode0"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "'M 182,' + scale('yscale', datum.sourceNode0 + datum.source0) + ' C 315,' + scale('yscale', datum.sourceNode0 + datum.source0) + ' 446,' + scale('yscale', datum.targetNode0 + datum.target0) + ' 578,' + scale('yscale', datum.targetNode0 + datum.target0) + ' L 578,' + scale('yscale', datum.targetNode0 + datum.target1) + ' C 446,' + scale('yscale', datum.targetNode0 + datum.target1) + ' 315,' + scale('yscale', datum.sourceNode0 + datum.source1) + ' 182,' + scale('yscale', datum.sourceNode0 + datum.source1) + ' Z'",
+          "as": "path"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "yscale",
+      "type": "linear",
+      "domain": [
+        0,
+        131502
+      ],
+      "range": [
+        {
+          "signal": "height"
+        },
+        0
+      ],
+      "nice": false,
+      "zero": true
+    },
+    {
+      "name": "statusColor",
+      "type": "ordinal",
+      "domain": [
+        "Within the National Reserve System",
+        "Outside the National Reserve System"
+      ],
+      "range": [
+        "#3d7752",
+        "#d5b16b"
+      ]
+    },
+    {
+      "name": "tenureColor",
+      "type": "ordinal",
+      "domain": [
+        "Leasehold",
+        "Multiple-use public forest",
+        "Nature conservation reserve",
+        "Other Crown land",
+        "Private",
+        "Unresolved tenure"
+      ],
+      "range": [
+        "#527c67",
+        "#75978a",
+        "#315e49",
+        "#a6b493",
+        "#d5b16b",
+        "#9b8870"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "name": "alluvialFlows",
+      "from": {
+        "data": "flowPaths"
+      },
+      "encode": {
+        "update": {
+          "path": {
+            "field": "path"
+          },
+          "fill": {
+            "scale": "statusColor",
+            "field": "Status"
+          },
+          "fillOpacity": {
+            "value": 0.56
+          },
+          "stroke": {
+            "value": "#fffefa"
+          },
+          "strokeWidth": {
+            "value": 0.7
+          },
+          "tooltip": {
+            "signal": "datum.Tenure + ' \u2192 ' + datum.Status + ': ' + format(datum.Forest_area_kha, ',.0f') + ' thousand hectares'"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "tenureNodes",
+      "from": {
+        "data": "leftNodes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 165
+          },
+          "x2": {
+            "value": 182
+          },
+          "y": {
+            "scale": "yscale",
+            "field": "y1"
+          },
+          "y2": {
+            "scale": "yscale",
+            "field": "y0"
+          },
+          "fill": {
+            "scale": "tenureColor",
+            "field": "Tenure"
+          },
+          "stroke": {
+            "value": "#fffefa"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "tooltip": {
+            "signal": "datum.Tenure + ': ' + format(datum.area, ',.0f') + ' thousand hectares'"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "statusNodes",
+      "from": {
+        "data": "rightNodes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 578
+          },
+          "x2": {
+            "value": 595
+          },
+          "y": {
+            "scale": "yscale",
+            "field": "y1"
+          },
+          "y2": {
+            "scale": "yscale",
+            "field": "y0"
+          },
+          "fill": {
+            "scale": "statusColor",
+            "field": "Status"
+          },
+          "stroke": {
+            "value": "#fffefa"
+          },
+          "strokeWidth": {
+            "value": 1
+          },
+          "tooltip": {
+            "signal": "datum.Status + ': ' + format(datum.area, ',.0f') + ' thousand hectares'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "tenureLabels",
+      "from": {
+        "data": "leftNodes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 156
+          },
+          "y": {
+            "signal": "scale('yscale', (datum.y0 + datum.y1) / 2)"
+          },
+          "text": {
+            "field": "Tenure"
+          },
+          "align": {
+            "value": "right"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fill": {
+            "value": "#24392d"
+          },
+          "opacity": {
+            "signal": "datum.area > 1800 ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "statusLabels",
+      "from": {
+        "data": "rightNodes"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "value": 607
+          },
+          "y": {
+            "signal": "scale('yscale', (datum.y0 + datum.y1) / 2)"
+          },
+          "text": {
+            "field": "Status"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 15
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#24392d"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "Arial",
+      "color": "#24392d"
+    }
+  }
+}

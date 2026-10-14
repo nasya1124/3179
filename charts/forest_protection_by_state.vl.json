@@ -1,0 +1,233 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Protection coverage by state",
+    "subtitle": "Compare reserve coverage with combined reported mechanisms \u00b7 2020\u201321",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 21,
+    "fontWeight": "bold",
+    "color": "#24392d",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#647166",
+    "offset": 14
+  },
+  "data": {
+    "url": "../data/forest_protection_by_state.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "National_Reserve_System_pct": "number",
+        "Combined_protection_pct": "number"
+      }
+    }
+  },
+  "width": 410,
+  "height": 340,
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#b8b9ad",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "National_Reserve_System_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": {
+            "title": "Share of native forest area (%)",
+            "values": [
+              0,
+              20,
+              40,
+              60,
+              80,
+              100
+            ],
+            "grid": true,
+            "gridColor": "#e9e5d9",
+            "labelColor": "#56655a",
+            "titleColor": "#24392d",
+            "labelFont": "Arial",
+            "titleFont": "Arial",
+            "labelFontSize": 13,
+            "titleFontSize": 14
+          }
+        },
+        "x2": {
+          "field": "Combined_protection_pct"
+        },
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": {
+            "field": "Combined_protection_pct",
+            "order": "descending"
+          },
+          "axis": {
+            "title": null,
+            "labelColor": "#24392d",
+            "labelFont": "Arial",
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "National_Reserve_System_pct",
+            "type": "quantitative",
+            "title": "National Reserve System (%)",
+            "format": ".0f"
+          },
+          {
+            "field": "Combined_protection_pct",
+            "type": "quantitative",
+            "title": "All reported measures (%)",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "National_Reserve_System_pct",
+            "Combined_protection_pct"
+          ],
+          "as": [
+            "Measure_field",
+            "Share_pct"
+          ]
+        },
+        {
+          "calculate": "datum.Measure_field === 'National_Reserve_System_pct' ? 'National Reserve System' : 'All reported biodiversity protection measures'",
+          "as": "Measure"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 170,
+        "stroke": "#fffefa",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "Share_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": {
+            "title": "Share of native forest area (%)",
+            "values": [
+              0,
+              20,
+              40,
+              60,
+              80,
+              100
+            ],
+            "grid": true,
+            "gridColor": "#e9e5d9",
+            "labelColor": "#56655a",
+            "titleColor": "#24392d",
+            "labelFont": "Arial",
+            "titleFont": "Arial",
+            "labelFontSize": 13,
+            "titleFontSize": 14
+          }
+        },
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": {
+            "field": "Combined_protection_pct",
+            "order": "descending"
+          },
+          "axis": {
+            "title": null,
+            "labelColor": "#24392d",
+            "labelFont": "Arial",
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "Measure",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "National Reserve System",
+              "All reported biodiversity protection measures"
+            ],
+            "range": [
+              "#d5b16b",
+              "#4f7a62"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelFont": "Arial",
+            "labelFontSize": 12,
+            "labelColor": "#56655a",
+            "labelLimit": 320,
+            "symbolSize": 120,
+            "symbolStrokeColor": "#fffefa",
+            "symbolStrokeWidth": 1
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "Measure",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "Share_pct",
+            "type": "quantitative",
+            "title": "Share of native forest area",
+            "format": ".0f",
+            "formatType": "number"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffefa",
+    "view": {
+      "stroke": null
+    },
+    "title": {
+      "font": "Arial",
+      "color": "#24392d"
+    }
+  }
+}

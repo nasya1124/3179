@@ -24,3 +24,27 @@ vegaEmbed("#chart-13", "charts/tree_species_distribution.vl.json", {
 }).catch(function (error) {
   console.error("Could not load the native tree species map:", error);
 });
+
+vegaEmbed(
+  "#forest-protection-alluvial",
+  "charts/forest_protection_alluvial.vg.json",
+  { actions: false }
+).catch(function (error) {
+  console.error("Could not load the forest protection alluvial:", error);
+});
+
+vegaEmbed(
+  "#forest-protection-waffle",
+  "charts/forest_protection_waffle.vl.json",
+  { actions: false }
+).catch(function (error) {
+  console.error("Could not load the forest protection waffle chart:", error);
+});
+
+vegaEmbed(
+  "#forest-protection-by-state",
+  "charts/forest_protection_by_state.vl.json",
+  { actions: false }
+).catch(function (error) {
+  console.error("Could not load the forest protection dot plot:", error);
+});

@@ -217,4 +217,137 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
     grid-template-columns: 1fr;
   }
 }
+
+.protection-idiom {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #d9ded2;
+}
+
+.protection-chart-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.8fr);
+  align-items: center;
+  gap: 24px;
+}
+
+.protection-insight {
+  padding: 18px 20px;
+  border-left: 3px solid #d1ab5f;
+  border-radius: 0 10px 10px 0;
+  background: #e9ebdf;
+  color: #56655a;
+}
+
+.protection-insight strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #24392d;
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+}
+
+.protection-insight p {
+  margin: 8px 0 0;
+}
+
+.chart-note {
+  color: #647166;
+  font-size: 0.85rem;
+}
+
+.protection-section .source-note {
+  margin-top: 24px;
+}
+
+.protection-section .chart {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.protection-section .vega-embed {
+  max-width: 100%;
+}
+
+@media (max-width: 760px) {
+  .protection-chart-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.protection-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.protection-panel {
+  min-width: 0;
+}
+
+.protection-panel .chart,
+.protection-panel .vega-embed {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.protection-panel svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.protection-annotation {
+  margin: 12px 0 0;
+  color: #647166;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 850px) {
+  .protection-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.protection-annotation-card {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.65fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 20px;
+  border-left: 4px solid #d1ab5f;
+  border-radius: 10px;
+  background: #e9ebdf;
+  color: #56655a;
+}
+
+.protection-annotation-card strong {
+  display: block;
+  color: #24392d;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.protection-annotation-card strong span {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.protection-annotation-card p {
+  margin: 4px 0;
+}
+
+.protection-annotation-card .annotation-detail {
+  font-size: 0.88rem;
+}
+
+@media (max-width: 600px) {
+  .protection-annotation-card {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .hero { padding-bottom: 28px; } .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; } .hero-stat { min-height: 0; } .chart-card { padding: 16px; } }
