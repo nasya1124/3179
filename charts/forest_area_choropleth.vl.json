@@ -49,10 +49,6 @@
   },
   "transform": [
     {
-      "calculate": "datum.properties.STE_NAME26 === 'New South Wales' ? 'NSW' : datum.properties.STE_NAME26 === 'Victoria' ? 'Vic.' : datum.properties.STE_NAME26 === 'Queensland' ? 'Qld' : datum.properties.STE_NAME26 === 'South Australia' ? 'SA' : datum.properties.STE_NAME26 === 'Western Australia' ? 'WA' : datum.properties.STE_NAME26 === 'Tasmania' ? 'Tas.' : datum.properties.STE_NAME26 === 'Northern Territory' ? 'NT' : datum.properties.STE_NAME26 === 'Australian Capital Territory' ? 'ACT' : null",
-      "as": "State"
-    },
-    {
       "lookup": "State",
       "from": {
         "data": {
@@ -60,9 +56,9 @@
           "format": { "type": "csv" }
         },
         "key": "State",
-        "fields": ["Forest_area_kha"]
+       "fields": ["Forest_area_kha", "Forest_cover_pct"]
       },
-      "as": ["Forest_area_kha"]
+      "as": ["Forest_area_kha", "Forest_cover_pct"]
     },
     {
       "filter": "isValid(datum.Forest_area_kha)"
