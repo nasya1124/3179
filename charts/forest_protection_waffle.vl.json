@@ -16,7 +16,7 @@
   "width": 400,
   "height": 360,
   "data": {
-    "url": "../data/forest_protection_waffle.csv",
+    "url": "data/forest_protection_waffle.csv",
     "format": {
       "type": "csv",
       "parse": {

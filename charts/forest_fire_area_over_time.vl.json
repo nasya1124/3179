@@ -16,7 +16,7 @@
   "width": 365,
   "height": 360,
   "data": {
-    "url": "../data/forest_fire_by_year.csv",
+    "url": "data/forest_fire_by_year.csv",
     "format": { "type": "csv" }
   },
   "params": [

@@ -16,7 +16,7 @@
   "data": [
     {
       "name": "table",
-      "url": "../data/forest_type_treemap.csv",
+      "url": "data/forest_type_treemap.csv",
       "format": {
         "type": "csv",
         "parse": {

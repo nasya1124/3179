@@ -26,7 +26,7 @@
   "data": [
     {
       "name": "forest",
-      "url": "../data/forest_protection_alluvial.csv",
+      "url": "data/forest_protection_alluvial.csv",
       "format": {
         "type": "csv",
         "parse": {

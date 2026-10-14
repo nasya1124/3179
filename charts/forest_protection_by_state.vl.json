@@ -14,7 +14,7 @@
     "offset": 14
   },
   "data": {
-    "url": "../data/forest_protection_by_state.csv",
+    "url": "data/forest_protection_by_state.csv",
     "format": {
       "type": "csv",
       "parse": {

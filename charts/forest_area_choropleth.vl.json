@@ -7,7 +7,7 @@
   "width": 400,
   "height": 420,
   "data": {
-    "url": "../maps/australian-states.topojson",
+    "url": "maps/australian-states.topojson",
     "format": {
       "type": "topojson",
       "feature": "STE_2026_AUST_GDA2020"
@@ -56,7 +56,7 @@
       "lookup": "State",
       "from": {
         "data": {
-          "url": "../data/forest_area_by_state.csv",
+          "url": "data/forest_area_by_state.csv",
           "format": { "type": "csv" }
         },
         "key": "State",

@@ -16,7 +16,7 @@
   "width": 760,
   "height": 470,
   "data": {
-    "url": "../data/forest_regeneration_cartogram.geojson",
+    "url": "data/forest_regeneration_cartogram.geojson",
     "format": {
       "type": "json",
       "property": "features"

@@ -16,7 +16,7 @@
   "width": 700,
   "height": 370,
   "data": {
-    "url": "../data/plantation_establishment_by_jurisdiction.csv",
+    "url": "data/plantation_establishment_by_jurisdiction.csv",
     "format": { "type": "csv" }
   },
   "params": [

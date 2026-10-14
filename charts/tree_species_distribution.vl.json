@@ -15,7 +15,7 @@
   "layer": [
     {
       "data": {
-  "url": "../maps/australian-states.topojson",
+  "url": "maps/australian-states.topojson",
   "format": {
     "type": "topojson",
     "feature": "STE_2026_AUST_GDA2020"
@@ -30,7 +30,7 @@
     },
     {
       "data": {
-        "url": "../data/tree_species_by_grid.csv",
+        "url": "data/tree_species_by_grid.csv",
         "format": {
           "type": "csv",
           "parse": {
