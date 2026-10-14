@@ -7,7 +7,7 @@
   "width": 370,
   "height": 350,
   "data": {
-    "url": "/Users/nazara/3179/data/forest_area_by_state.csv",
+    "url": "../data/forest_area_by_state.csv",
     "format": {"type": "csv"}
   },
   "mark": {
