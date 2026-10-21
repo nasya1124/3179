@@ -1,138 +1,83 @@
+/* =========================================================
+   CONTENTS
+   0. Base (whole page)
+   1. Shared components (section cards, text, chart containers)
+   2. Hero
+   3. Section 1 - Where the forests grow
+   4. Section 2 - What they are made of
+   5. Section 3 - Who manages the forests (protection)
+   6. Section 4 - Fire in the forests
+   7. Section 5 - Plantation establishment
+   8. Section 6 - Conclusion
+   ========================================================= */
+
+
+/* =========================================================
+   0. BASE
+   ========================================================= */
 * { box-sizing: border-box; }
-body { margin: 0; background: #f3f0e7; color: #24392d; font-family: Arial, sans-serif; line-height: 1.55; }
-.page { width: min(960px, calc(100% - 40px)); margin: 0 auto; padding: 48px 0 28px; }
-.eyebrow { margin: 0; color: #52765e; font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
-.hero { max-width: 850px; padding: 22px 0 40px; }
-.hero h1 { margin: 14px 0 16px; }
-.dek { max-width: 760px; margin: 0; color: #24392d; font: 1.35rem/1.4 Georgia, serif; }
-.intro { max-width: 760px; margin: 14px 0 0; color: #56655a; font-size: 1rem; }
-.hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.hero-stat { min-height: 94px; padding: 13px 16px; border-left: 3px solid #d1ab5f; border-radius: 0 8px 8px 0; background: #e8ebdf; }
-.hero-stat strong { display: block; color: #24392d; font: 1.65rem Georgia, serif; }
-.hero-stat span { display: block; margin-top: 4px; color: #647166; font-size: .82rem; }
-h1, h2 { font-family: Georgia, serif; font-weight: 500; }
-h1 { margin: 10px 0; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; }
-.intro { margin: 0 0 30px; color: #56655a; font-size: 1.12rem; }
-.chart-card { padding: 24px; border: 1px solid #e0e3d8; border-radius: 14px; background: #fffefa; box-shadow: 0 5px 20px #24392d12; }
-h2 { margin: 0 0 6px; font-size: 1.6rem; }
-.chart-note { margin: 0; color: #647166; }
-.chart { min-height: 390px; margin-top: 15px; }
-footer { margin-top: 22px; color: #647166; font-size: .85rem; }
-.error { color: #a33d32; }
-.chart {
-  width: 100%;
-  min-height: 420px;
-}
 
-.chart .vega-embed {
-  width: 100%;
-}
-
-.chart svg {
-  display: block;
-  max-width: 100%;
-}
-
-.source-note {
-  margin: 12px 0 0;
-  color: #647166;
-  font-size: 0.82rem;
-}
-
-.source-note a {
-  color: #3d7752;
-}
-.where-forests-section {
-  background: #fffefa;
-}
-
-.section-intro {
-  margin-bottom: 24px;
-}
-
-.section-intro .intro {
-  max-width: 760px;
-}
-
-.chart-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  align-items: start;
-}
-
-.chart-grid .chart {
-  min-width: 0;
-  overflow-x: auto;
-}
-
-
-.chart-panel {
-  min-width: 0;
-}
-
-.chart-panel h3 {
+body {
+  margin: 0;
+  background: #f3f0e7;
   color: #24392d;
   font-family: Arial, sans-serif;
-  font-size: 1.2rem;
-  margin: 0 0 12px;
+  line-height: 1.55;
 }
+
+/* Centred page column, max 960px wide */
+.page {
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 48px 0 28px;
+}
+
+h1, h2 { font-family: Georgia, serif; font-weight: 500; }
+h2 { margin: 0 0 6px; font-size: 1.6rem; }
+
+/* Small uppercase label above headings */
+.eyebrow {
+  margin: 0;
+  color: #52765e;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+@media (max-width: 600px) {
+  .page { width: min(100% - 24px, 960px); padding-top: 28px; }
+}
+
+
+/* =========================================================
+   1. SHARED COMPONENTS
+   ========================================================= */
+
+/* --- Section cards (white boxes around each section) --- */
+.chart-card {
+  padding: 24px;
+  border: 1px solid #e0e3d8;
+  border-radius: 14px;
+  background: #fffefa;
+  box-shadow: 0 5px 20px #24392d12;
+}
+
+/* Sections 1-3 get extra padding */
+.where-forests-section { padding: 32px; }
+
+/* Gap between one section card and the next */
+.chart-card + .chart-card { margin-top: 36px; }
 
 @media (max-width: 850px) {
-  .chart-grid {
-    grid-template-columns: 1fr;
-  }
+  .where-forests-section { padding: 22px; }
 }
 
-.where-forests-section {
-  padding: 32px;
+@media (max-width: 600px) {
+  .chart-card { padding: 16px; }
+  .chart-card + .chart-card { margin-top: 24px; }
 }
 
-.section-heading {
-  margin-bottom: 20px;
-}
-
-.map-story {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.6fr);
-  gap: 24px;
-  align-items: center;
-}
-
-.map-copy h3 {
-  margin-top: 0;
-  color: #24392d;
-}
-
-.map-copy p {
-  color: #56655a;
-  line-height: 1.6;
-}
-
-.section-divider {
-  border: 0;
-  border-top: 1px dashed #d8d3c8;
-  margin: 24px 0;
-}
-
-.chart {
-  min-width: 0;
-}
-
-.bar-chart {
-  margin-top: 8px;
-}
-
-@media (max-width: 850px) {
-  .where-forests-section {
-    padding: 22px;
-  }
-
-  .map-story {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* --- Text used in every section --- */
 .section-summary {
   max-width: 720px;
   margin: 18px 0 28px;
@@ -140,40 +85,95 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
-  .chart-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Forest-composition section */
-.composition-intro {
-  max-width: 50ch !important;
+.chart-note { margin: 0; color: #647166; font-size: 0.85rem; }
+
+.source-note { margin: 12px 0 0; color: #647166; font-size: 0.82rem; }
+.source-note a { color: #3d7752; }
+
+/* --- Chart containers (filled by vegaEmbed) --- */
+.chart {
+  width: 100%;
+  min-width: 0;
+  min-height: 420px;
+  margin-top: 15px;
 }
 
-.composition-section .card h3 {
-  font-family: 'DM Sans', Arial, sans-serif;
-  font-size: 1.12rem;
-  font-weight: 700;
-}
+.chart .vega-embed { width: 100%; }
+.chart svg { display: block; max-width: 100%; }
 
-.composition-grid .chart {
-  min-height: 350px;
-}
-
-.where-forests-section {
-  margin-bottom: 32px;
-}
-
-.composition-chart-grid {
-  grid-template-columns: 1fr;
-  gap: 28px;
-}
-
-.composition-stories {
+/* --- Two charts side by side (used in sections 1 and 4) --- */
+.chart-grid {
   display: grid;
-  gap: 30px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
 }
 
+.chart-grid .chart { overflow-x: auto; }
+
+@media (max-width: 900px) {
+  .chart-grid { grid-template-columns: 1fr; }  /* stack the charts */
+}
+
+
+/* =========================================================
+   2. HERO
+   ========================================================= */
+.hero { max-width: 850px; padding: 22px 0 40px; }
+
+.hero h1 {
+  margin: 14px 0 16px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+.dek { max-width: 760px; margin: 0; font: 1.35rem/1.4 Georgia, serif; }
+
+.intro {
+  max-width: 760px;
+  margin: 0 0 30px;
+  color: #56655a;
+  font-size: 1.12rem;
+}
+
+/* Three key-number boxes */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hero-stat {
+  min-height: 94px;
+  padding: 13px 16px;
+  border-left: 3px solid #d1ab5f;
+  border-radius: 0 8px 8px 0;
+  background: #e8ebdf;
+}
+
+.hero-stat strong { display: block; font: 1.65rem Georgia, serif; }
+.hero-stat span { display: block; margin-top: 4px; color: #647166; font-size: .82rem; }
+
+@media (max-width: 600px) {
+  .hero { padding-bottom: 28px; }
+  .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; }
+  .hero-stat { min-height: 0; }
+}
+
+
+/* =========================================================
+   3. SECTION 1 - WHERE THE FORESTS GROW
+   Uses only shared styles: .where-forests-section, .chart-grid
+   ========================================================= */
+
+
+/* =========================================================
+   4. SECTION 2 - WHAT THEY ARE MADE OF
+   ========================================================= */
+.composition-stories { display: grid; gap: 30px; }
+
+/* Chart on the left, insight box on the right */
 .composition-story {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(230px, 0.8fr);
@@ -181,14 +181,7 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   gap: 28px;
 }
 
-.composition-visual {
-  min-width: 0;
-}
-
-.composition-visual .chart {
-  width: 100%;
-  min-height: 420px;
-}
+.composition-visual { min-width: 0; }
 
 .composition-insight {
   padding: 22px;
@@ -197,14 +190,10 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   border-radius: 10px;
 }
 
-.composition-insight p {
-  color: #667469;
-}
+.composition-insight p { color: #667469; }
+.composition-insight .eyebrow { color: #3d7752; }
 
-.composition-insight .eyebrow {
-  color: #3d7752;
-}
-
+/* The big "77%" */
 .insight-stat {
   display: block;
   color: #24392d;
@@ -213,68 +202,22 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
 }
 
 @media (max-width: 760px) {
-  .composition-story {
-    grid-template-columns: 1fr;
-  }
+  .composition-story { grid-template-columns: 1fr; }
 }
 
+
+/* =========================================================
+   5. SECTION 3 - WHO MANAGES THE FORESTS (PROTECTION)
+   ========================================================= */
+
+/* Alluvial diagram block */
 .protection-idiom {
   margin-top: 28px;
   padding-top: 22px;
   border-top: 1px solid #d9ded2;
 }
 
-.protection-chart-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.8fr);
-  align-items: center;
-  gap: 24px;
-}
-
-.protection-insight {
-  padding: 18px 20px;
-  border-left: 3px solid #d1ab5f;
-  border-radius: 0 10px 10px 0;
-  background: #e9ebdf;
-  color: #56655a;
-}
-
-.protection-insight strong {
-  display: block;
-  margin-bottom: 4px;
-  color: #24392d;
-  font-family: Georgia, serif;
-  font-size: 2.5rem;
-}
-
-.protection-insight p {
-  margin: 8px 0 0;
-}
-
-.chart-note {
-  color: #647166;
-  font-size: 0.85rem;
-}
-
-.protection-section .source-note {
-  margin-top: 24px;
-}
-
-.protection-section .chart {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.protection-section .vega-embed {
-  max-width: 100%;
-}
-
-@media (max-width: 760px) {
-  .protection-chart-row {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* Waffle + dot plot side by side */
 .protection-comparison-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -282,33 +225,12 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   margin-top: 28px;
 }
 
-.protection-panel {
-  min-width: 0;
-}
+.protection-panel { min-width: 0; }
+.protection-panel svg { height: auto; }
 
-.protection-panel .chart,
-.protection-panel .vega-embed {
-  max-width: 100%;
-  min-width: 0;
-}
+.protection-annotation { margin: 12px 0 0; color: #647166; font-size: 0.9rem; }
 
-.protection-panel svg {
-  max-width: 100%;
-  height: auto;
-}
-
-.protection-annotation {
-  margin: 12px 0 0;
-  color: #647166;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 850px) {
-  .protection-comparison-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* "37%" and "43 percentage points" callout cards */
 .protection-annotation-card {
   display: grid;
   grid-template-columns: minmax(100px, 0.65fr) minmax(0, 1.5fr);
@@ -337,33 +259,36 @@ footer { margin-top: 22px; color: #647166; font-size: .85rem; }
   font-weight: 600;
 }
 
-.protection-annotation-card p {
-  margin: 4px 0;
-}
+.protection-annotation-card p { margin: 4px 0; }
+.protection-annotation-card .annotation-detail { font-size: 0.88rem; }
 
-.protection-annotation-card .annotation-detail {
-  font-size: 0.88rem;
-}
+.protection-section .source-note { margin-top: 24px; }
 
-.fire-section .fire-summary {
-  max-width: 58ch;
+@media (max-width: 850px) {
+  .protection-comparison-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
-  .protection-annotation-card {
-    grid-template-columns: 1fr;
-  }
-}
-main.page > section.chart-card + section.chart-card {
-  margin-top: 36px;
+  .protection-annotation-card { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 600px) {
-  main.page > section.chart-card + section.chart-card {
-    margin-top: 24px;
-  }
-}
 
+/* =========================================================
+   6. SECTION 4 - FIRE IN THE FORESTS
+   Also uses the shared .chart-grid
+   ========================================================= */
+.fire-section .fire-summary { max-width: 58ch; }
+
+
+/* =========================================================
+   7. SECTION 5 - PLANTATION ESTABLISHMENT
+   Uses only shared styles
+   ========================================================= */
+
+
+/* =========================================================
+   8. SECTION 6 - CONCLUSION
+   ========================================================= */
 .takeaway-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -378,33 +303,17 @@ main.page > section.chart-card + section.chart-card {
   background: #e8ebdf;
 }
 
-.takeaway strong {
-  color: #24392d;
-  font: 1.8rem Georgia, serif;
-}
+.takeaway strong { color: #24392d; font: 1.8rem Georgia, serif; }
 
 .takeaway p,
-.conclusion-note {
-  margin: 8px 0 0;
-  color: #56655a;
-}
+.conclusion-note { margin: 8px 0 0; color: #56655a; }
 
-.author-name {
-  margin: 24px 0 0;
-  color: #52765e;
-  font-weight: 700;
-}
+.author-name { margin: 24px 0 0; color: #52765e; font-weight: 700; }
 
 @media (max-width: 760px) {
-  .takeaway-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .takeaway-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 480px) {
-  .takeaway-grid {
-    grid-template-columns: 1fr;
-  }
+  .takeaway-grid { grid-template-columns: 1fr; }
 }
-
-@media (max-width: 600px) { .page { width: min(100% - 24px, 960px); padding-top: 28px; } .hero { padding-bottom: 28px; } .hero-stats { grid-template-columns: 1fr; gap: 9px; margin-top: 20px; } .hero-stat { min-height: 0; } .chart-card { padding: 16px; } }

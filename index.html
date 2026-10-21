@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore Australia's native forests and forest area by state and territory.">
-  <title>Australia’s Native Forests</title>
+  <title>Australia's Native Forests</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -14,10 +14,10 @@
   <main class="page">
     <header class="hero">
       <p class="eyebrow">FIT3179 · DATA VISUALISATION 2 · AUSTRALIA</p>
-      <h1>Australia’s native forests</h1>
-      <p class="dek">A closer look at the forests that shape Australia’s landscapes.</p>
+      <h1>Australia's native forests</h1>
+      <p class="dek">A closer look at the forests that shape Australia's landscapes.</p>
       <p class="intro">
-        Explore the area of Australia’s native forest types, where forests remain
+        Explore the area of Australia's native forest types, where forests remain
         connected, and how conservation coverage varies.
       </p>
 
@@ -48,294 +48,296 @@
         The 77% figure is calculated from the forest-type totals. CC BY 4.0.
       </p>
     </header>
-<section class="chart-card where-forests-section" aria-labelledby="where-forests-grow">
-  <p class="eyebrow">STATE AND TERRITORY PATTERNS</p>
-  <h2 id="where-forests-grow">Where the forests grow</h2>
 
-  <p class="section-summary">
-  Australia’s native forest area varies across its states.<br>
-  Queensland has the largest reported area, at 51,750<br>
-  thousand hectares. The Northern Territory and Western<br>
-  Australia follow. New South Wales reports a similar<br>
-  total. The map locates these totals; bars support<br>
-  direct comparison. These figures show total area, not<br>
-  each state’s forest share.
-</p>
+    <section class="chart-card where-forests-section" aria-labelledby="where-forests-grow">
+      <p class="eyebrow">STATE AND TERRITORY PATTERNS</p>
+      <h2 id="where-forests-grow">Where the forests grow</h2>
 
-  <div class="chart-grid">
-    <div
-      id="forest-area-map"
-      class="chart"
-      role="img"
-      aria-label="Map showing native forest area by state and territory">
-    </div>
+      <p class="section-summary">
+        Australia's native forest area varies across its states. Queensland has
+        the largest reported area, at 51,750 thousand hectares. The Northern
+        Territory and Western Australia follow. New South Wales reports a similar
+        total. The map locates these totals; bars support direct comparison.
+        These figures show total area, not each state's forest share.
+      </p>
 
-    <div
-      id="forest-area-by-state"
-      class="chart"
-      role="img"
-      aria-label="Bar chart comparing native forest area by state and territory">
-    </div>
-  </div>
+      <div class="chart-grid">
+        <div
+          id="forest-area-map"
+          class="chart"
+          role="img"
+          aria-label="Map showing native forest area by state and territory">
+        </div>
 
-  <p class="source-note">
-    Forest area: ABARES,
-    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">
-      Indicator 1.1a.i (2023)
-    </a>.
-    Map boundaries: ABS,
-    <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-4-july-2026-june-2031/access-and-downloads/digital-boundary-files">
-      ASGS Edition 4 digital boundary files (2026)
-    </a>.
-  </p>
-</section>
-<section class="chart-card where-forests-section composition-section"
-         aria-labelledby="forest-composition">
-  <p class="eyebrow">FOREST COMPOSITION</p>
-  <h2 id="forest-composition">What they are made of</h2>
-
-  <p class="section-summary">
-    Australia’s native forests include many tree types and species.
-    Eucalypt forest dominates reported area, while smaller forest types
-    occupy distinct environments. Herbarium records show where three
-    selected native tree species were collected. These records describe
-    documented specimens, not tree abundance.
-  </p>
-
-  <div class="composition-stories">
-    <article class="composition-story">
-      <div class="composition-visual">
-        <div id="chart-04" class="chart"
-             role="img"
-             aria-label="Treemap showing the share of native forest by type">
+        <div
+          id="forest-area-by-state"
+          class="chart"
+          role="img"
+          aria-label="Bar chart comparing native forest area by state and territory">
         </div>
       </div>
 
-      <aside class="composition-insight">
-        <p class="eyebrow">THE LARGEST SHARE</p>
-        <strong class="insight-stat">77%</strong>
-        <p>of Australia’s native forest area is eucalypt forest.</p>
-        <p>Acacia is next largest, covering 10.9 million hectares.</p>
-      </aside>
-    </article>
+      <p class="source-note">
+        Forest area: ABARES,
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">
+          Indicator 1.1a.i (2023)
+        </a>.
+        Map boundaries: ABS,
+        <a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-4-july-2026-june-2031/access-and-downloads/digital-boundary-files">
+          ASGS Edition 4 digital boundary files (2026)
+        </a>.
+      </p>
+    </section>
 
-    <article class="composition-story">
-      <div class="composition-visual">
-        <div id="chart-13" class="chart"
-             role="img"
-             aria-label="Map showing herbarium records for three native tree species">
-        </div>
+    <section class="chart-card where-forests-section composition-section"
+             aria-labelledby="forest-composition">
+      <p class="eyebrow">FOREST COMPOSITION</p>
+      <h2 id="forest-composition">What they are made of</h2>
+
+      <p class="section-summary">
+        Australia's native forests include many tree types and species.
+        Eucalypt forest dominates reported area, while smaller forest types
+        occupy distinct environments. Herbarium records show where three
+        selected native tree species were collected. These records describe
+        documented specimens, not tree abundance.
+      </p>
+
+      <div class="composition-stories">
+        <article class="composition-story">
+          <div class="composition-visual">
+            <div id="chart-04" class="chart"
+                 role="img"
+                 aria-label="Treemap showing the share of native forest by type">
+            </div>
+          </div>
+
+          <aside class="composition-insight">
+            <p class="eyebrow">THE LARGEST SHARE</p>
+            <strong class="insight-stat">77%</strong>
+            <p>of Australia's native forest area is eucalypt forest.</p>
+            <p>Acacia is next largest, covering 10.9 million hectares.</p>
+          </aside>
+        </article>
+
+        <article class="composition-story">
+          <div class="composition-visual">
+            <div id="chart-13" class="chart"
+                 role="img"
+                 aria-label="Map showing herbarium records for three native tree species">
+            </div>
+          </div>
+
+          <aside class="composition-insight">
+            <p class="eyebrow">THREE SPECIES · RECORDED LOCATIONS</p>
+            <p><strong>Eucalyptus regnans</strong> records cluster in the southeast.</p>
+            <p><strong>Araucaria bidwillii</strong> records appear mainly in Queensland.</p>
+            <p><strong>Adansonia gregorii</strong> records cluster in the northwest.</p>
+            <p class="note">
+              These are herbarium records, not estimates of tree populations.
+            </p>
+          </aside>
+        </article>
       </div>
 
-      <aside class="composition-insight">
-        <p class="eyebrow">THREE SPECIES · RECORDED LOCATIONS</p>
-        <p><strong>Eucalyptus regnans</strong> records cluster in the southeast.</p>
-        <p><strong>Araucaria bidwillii</strong> records appear mainly in Queensland.</p>
-        <p><strong>Adansonia gregorii</strong> records cluster in the northwest.</p>
-        <p class="note">
-          These are herbarium records, not estimates of tree populations.
+      <p class="source-note">
+        Forest area: ABARES,
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">
+          Indicator 1.1a.i (2023)
+        </a>.
+        Tree records: Atlas of Living Australia. Record counts show collected
+        specimens, not tree abundance.
+      </p>
+    </section>
+
+    <section class="chart-card where-forests-section protection-section"
+             aria-labelledby="forest-protection">
+      <p class="eyebrow">FOREST TENURE AND PROTECTION</p>
+      <h2 id="forest-protection">Who manages the forests, and where is protection recorded?</h2>
+
+      <p class="section-summary">
+        Forest management and conservation involve different tenures and measures.
+        These charts compare land tenure, reserve inclusion, and reported biodiversity
+        protection across Australia. They describe management records, not forest
+        condition or ecological safety.
+      </p>
+
+      <div class="protection-idiom">
+        <p class="eyebrow">ALLUVIAL DIAGRAM</p>
+        <div
+          id="forest-protection-alluvial"
+          class="chart"
+          role="img"
+          aria-label="Alluvial diagram showing forest area by tenure and National Reserve System status">
+        </div>
+        <p class="chart-note">
+          Flow width represents forest area. The data are from 2020-21.
         </p>
+      </div>
+
+      <div class="protection-comparison-grid">
+        <article class="protection-panel">
+          <p class="eyebrow">WAFFLE CHART</p>
+          <div
+            id="forest-protection-waffle"
+            class="chart"
+            role="img"
+            aria-label="Waffle chart showing forest included in reported biodiversity protection">
+          </div>
+          <p class="protection-annotation">
+            About 37% was included in the reported protection total.
+            The remaining 63% was not included in that total;
+            this does not mean it was all unprotected.
+          </p>
+        </article>
+
+        <article class="protection-panel">
+          <p class="eyebrow">CONNECTED DOT PLOT</p>
+          <div
+            id="forest-protection-by-state"
+            class="chart"
+            role="img"
+            aria-label="Connected dot plot comparing reported protection across states and territories">
+          </div>
+          <p class="protection-annotation">
+            Victoria shows the largest gap between the two measures:
+            43 percentage points. The measures overlap, so don't add them together.
+          </p>
+        </article>
+      </div>
+
+      <aside class="protection-annotation-card">
+        <div>
+          <p class="eyebrow">NATIONAL SUMMARY</p>
+          <strong>37%</strong>
+        </div>
+        <div>
+          <p>of native forest was included in the reported biodiversity protection total.</p>
+          <p class="annotation-detail">
+            The remaining 63% was not included in that total.
+            That does not mean it was all unprotected.
+          </p>
+        </div>
       </aside>
-    </article>
-  </div>
 
-  <p class="source-note">
-    Forest area: ABARES,
-    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">
-      Indicator 1.1a.i (2023)
-    </a>.
-    Tree records: Atlas of Living Australia. Record counts show collected
-    specimens, not tree abundance.
-  </p>
-</section>
-<section class="chart-card where-forests-section protection-section"
-         aria-labelledby="forest-protection">
-  <p class="eyebrow">FOREST TENURE AND PROTECTION</p>
-  <h2 id="forest-protection">Who manages the forests, and where is protection recorded?</h2>
+      <aside class="protection-annotation-card">
+        <div>
+          <p class="eyebrow">LARGEST STATE DIFFERENCE</p>
+          <strong>43 <span>percentage points</span></strong>
+        </div>
+        <div>
+          <p>Victoria's combined reported coverage was 86%, compared with 43% in the National Reserve System.</p>
+          <p class="annotation-detail">
+            These measures overlap, so their percentages should not be added together.
+          </p>
+        </div>
+      </aside>
 
-  <p class="section-summary">
-    Forest management and conservation involve different tenures and measures.
-    These charts compare land tenure, reserve inclusion, and reported biodiversity
-    protection across Australia. They describe management records, not forest
-    condition or ecological safety.
-  </p>
+      <p class="source-note">
+        Source: ABARES,
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1c">
+          Indicator 1.1c: Forest in protected area categories (2024)
+        </a>.
+        Tables report 2020-21. CC BY 4.0.
+      </p>
+    </section>
 
-  <div class="protection-idiom">
-    <p class="eyebrow">ALLUVIAL DIAGRAM</p>
-    <div
-      id="forest-protection-alluvial"
-      class="chart"
-      role="img"
-      aria-label="Alluvial diagram showing forest area by tenure and National Reserve System status">
-    </div>
-    <p class="chart-note">
-      Flow width represents forest area. The data are from 2020–21.
-    </p>
-  </div>
+    <section class="chart-card fire-section" aria-labelledby="fire-in-forests">
+      <p class="eyebrow">FIRE AND FORESTS</p>
+      <h2 id="fire-in-forests">Fire in the forests</h2>
 
-  <div class="protection-comparison-grid">
-  <article class="protection-panel">
-    <p class="eyebrow">WAFFLE CHART</p>
-    <div
-      id="forest-protection-waffle"
-      class="chart"
-      role="img"
-      aria-label="Waffle chart showing forest included in reported biodiversity protection">
-    </div>
-    <p class="protection-annotation">
-      About 37% was included in the reported protection total.
-      The remaining 63% was not included in that total;
-      this does not mean it was all unprotected.
-    </p>
-  </article>
+      <p class="section-summary fire-summary">
+        Fire shapes Australian forests differently across regions. Planned burns
+        support land management. Unplanned fires vary more between years. The
+        2019-20 fire year reached a national peak. These charts compare annual
+        forest area burnt. The heatmap breaks that area down by state.
+      </p>
 
-  <article class="protection-panel">
-    <p class="eyebrow">CONNECTED DOT PLOT</p>
-    <div
-      id="forest-protection-by-state"
-      class="chart"
-      role="img"
-      aria-label="Connected dot plot comparing reported protection across states and territories">
-    </div>
-    <p class="protection-annotation">
-      Victoria shows the largest gap between the two measures:
-      43 percentage points. The measures overlap, so don’t add them together.
-    </p>
-  </article>
-</div>
+      <div class="chart-grid">
+        <div
+          id="forest-fire-area"
+          class="chart"
+          role="img"
+          aria-label="Line chart showing annual forest area burnt by planned and unplanned fire">
+        </div>
 
-<aside class="protection-annotation-card">
-  <div>
-    <p class="eyebrow">NATIONAL SUMMARY</p>
-    <strong>37%</strong>
-  </div>
-  <div>
-    <p>of native forest was included in the reported biodiversity protection total.</p>
-    <p class="annotation-detail">
-      The remaining 63% was not included in that total.
-      That does not mean it was all unprotected.
-    </p>
-  </div>
-</aside>
+        <div
+          id="forest-fire-heatmap"
+          class="chart"
+          role="img"
+          aria-label="Heatmap showing forest area burnt by state, year, and selected fire type">
+        </div>
+      </div>
 
-<aside class="protection-annotation-card">
-  <div>
-    <p class="eyebrow">LARGEST STATE DIFFERENCE</p>
-    <strong>43 <span>percentage points</span></strong>
-  </div>
-  <div>
-    <p>Victoria’s combined reported coverage was 86%, compared with 43% in the National Reserve System.</p>
-    <p class="annotation-detail">
-      These measures overlap, so their percentages should not be added together.
-    </p>
-  </div>
-</aside>
+      <p class="source-note">
+        Data: ABARES,
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-3/indicator-3.1b">
+          Indicator 3.1b (2024), Figure 3.1b-2 and Table 3.1b-5
+        </a>.
+        Areas are reported in thousand hectares by Australian financial year.
+        Each year covers July to June. CC BY 4.0.
+      </p>
+    </section>
 
-  <p class="source-note">
-    Source: ABARES,
-    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1c">
-      Indicator 1.1c: Forest in protected area categories (2024)
-    </a>.
-    Tables report 2020–21. CC BY 4.0.
-  </p>
-</section>
+    <section class="chart-card regeneration-section"
+             aria-labelledby="regeneration-conservation">
+      <p class="eyebrow">05 · REGENERATION AND CONSERVATION</p>
+      <h2 id="regeneration-conservation">Plantation establishment across Australia</h2>
 
-<section class="chart-card fire-section" aria-labelledby="fire-in-forests">
-  <p class="eyebrow">FIRE AND FORESTS</p>
-  <h2 id="fire-in-forests">Fire in the forests</h2>
+      <p class="section-summary">
+        This chart compares average annual commercial plantation area
+        established or re-established between 2016-17 and 2020-21.
+        The stacked bars separate hardwood and softwood plantations.
+        These figures describe commercial plantation activity, not
+        native forest regeneration.
+      </p>
 
-  <p class="section-summary fire-summary">
-    Fire shapes Australian forests differently across regions. Planned burns
-    support land management. Unplanned fires vary more between years. The
-    2019–20 fire year reached a national peak. These charts compare annual
-    forest area burnt. The heatmap breaks that area down by state.
-  </p>
+      <div
+        id="plantation_establishment"
+        class="chart"
+        role="img"
+        aria-label="Stacked bar chart of commercial plantation establishment and re-establishment by jurisdiction and plantation type">
+      </div>
 
-  <div class="chart-grid">
-    <div
-      id="forest-fire-area"
-      class="chart"
-      role="img"
-      aria-label="Line chart showing annual forest area burnt by planned and unplanned fire">
-    </div>
+      <p class="source-note">
+        Source: ABARES,
+        <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">
+          Indicator 2.1e: Commercial plantation establishment and re-establishment
+        </a>.
+        Annual averages for 2016-17 to 2020-21. CC BY 4.0.
+      </p>
+    </section>
 
-    <div
-      id="forest-fire-heatmap"
-      class="chart"
-      role="img"
-      aria-label="Heatmap showing forest area burnt by state, year, and selected fire type">
-    </div>
-  </div>
+    <section class="chart-card conclusion-section"
+             aria-labelledby="story-conclusion">
+      <p class="eyebrow">06 · CONCLUSION</p>
+      <h2 id="story-conclusion">A varied forest story</h2>
 
-  <p class="source-note">
-    Data: ABARES,
-    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-3/indicator-3.1b">
-      Indicator 3.1b (2024), Figure 3.1b-2 and Table 3.1b-5
-    </a>.
-    Areas are reported in thousand hectares by Australian financial year.
-    Each year covers July to June. CC BY 4.0.
-  </p>
-</section>
-<section class="chart-card regeneration-section"
-         aria-labelledby="regeneration-conservation">
-  <p class="eyebrow">05 · REGENERATION AND CONSERVATION</p>
-  <h2 id="regeneration-conservation">Plantation establishment across Australia</h2>
+      <p class="section-summary">
+        Australia's native forests differ in type, connectivity, protection
+        and exposure to fire. Together, these figures show important patterns,
+        while reminding us that no single measure tells the whole story.
+      </p>
 
-  <p class="section-summary">
-    This chart compares average annual commercial plantation area
-    established or re-established between 2016–17 and 2020–21.
-    The stacked bars separate hardwood and softwood plantations.
-    These figures describe commercial plantation activity, not
-    native forest regeneration.
-  </p>
+      <div class="takeaway-grid">
 
-  <div
-    id="plantation_establishment"
-    class="chart"
-    role="img"
-    aria-label="Stacked bar chart of commercial plantation establishment and re-establishment by jurisdiction and plantation type">
-  </div>
+        <article class="takeaway">
+          <strong>37%</strong>
+          <p>was included in the reported biodiversity protection total for 2020-21.</p>
+        </article>
 
-  <p class="source-note">
-    Source: ABARES,
-    <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">
-      Indicator 2.1e: Commercial plantation establishment and re-establishment
-    </a>.
-    Annual averages for 2016–17 to 2020–21. CC BY 4.0.
-  </p>
-</section>
+        <article class="takeaway">
+          <strong>2019-20</strong>
+          <p>stood out as a major year for forest area burnt.</p>
+        </article>
+      </div>
 
-<section class="chart-card conclusion-section"
-         aria-labelledby="story-conclusion">
-  <p class="eyebrow">06 · CONCLUSION</p>
-  <h2 id="story-conclusion">A varied forest story</h2>
+      <p class="conclusion-note">
+        These indicators cover different years and measure different things.
+        Plantation activity should not be confused with native forest recovery.
+      </p>
 
-  <p class="section-summary">
-    Australia’s native forests differ in type, connectivity, protection
-    and exposure to fire. Together, these figures show important patterns,
-    while reminding us that no single measure tells the whole story.
-  </p>
-
-  <div class="takeaway-grid">
-
-    <article class="takeaway">
-      <strong>37%</strong>
-      <p>was included in the reported biodiversity protection total for 2020–21.</p>
-    </article>
-
-    <article class="takeaway">
-      <strong>2019–20</strong>
-      <p>stood out as a major year for forest area burnt.</p>
-    </article>
-  </div>
-
-  <p class="conclusion-note">
-    These indicators cover different years and measure different things.
-    Plantation activity should not be confused with native forest recovery.
-  </p>
-
-  <p class="author-name">Prepared by Nazara</p>
-</section>
+      <p class="author-name">Prepared by Nazara</p>
+    </section>
   </main>
 
   <script src="script.js"></script>
