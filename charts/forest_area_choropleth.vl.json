@@ -6,77 +6,252 @@
   },
   "width": 400,
   "height": 420,
-  "data": {
-    "url": "maps/australian-states.topojson",
-    "format": {
-      "type": "topojson",
-      "feature": "STE_2026_AUST_GDA2020"
-    }
-  },
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#f4f0e7",
-    "strokeWidth": 1.5
-  },
-  "encoding": {
-    "color": {
-      "field": "Forest_cover_pct",
-      "type": "quantitative",
-      "title": "Native forest cover (%)",
-      "format": ".1f",
-      "scale": { "scheme": "greens" },
-      "legend": { "orient": "bottom" }
-    },
-    "tooltip": [
-      {
-        "field": "properties.STE_NAME26",
-        "type": "nominal",
-        "title": "State or territory"
-      },
-      {
-        "field": "Forest_cover_pct",
-        "type": "quantitative",
-        "title": "Native forest cover (%)",
-        "format": ".1f"
-      },
-      {
-        "field": "Forest_area_kha",
-        "type": "quantitative",
-        "title": "Native forest area (thousand hectares)",
-        "format": ",.0f"
-      }
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0,
+      0
     ]
   },
-  "transform": [
+  "layer": [
     {
-    "calculate": "datum.properties.STE_NAME26 === 'New South Wales' ? 'NSW' : datum.properties.STE_NAME26 === 'Victoria' ? 'Vic.' : datum.properties.STE_NAME26 === 'Queensland' ? 'Qld' : datum.properties.STE_NAME26 === 'South Australia' ? 'SA' : datum.properties.STE_NAME26 === 'Western Australia' ? 'WA' : datum.properties.STE_NAME26 === 'Tasmania' ? 'Tas.' : datum.properties.STE_NAME26 === 'Northern Territory' ? 'NT' : datum.properties.STE_NAME26 === 'Australian Capital Territory' ? 'ACT' : null",
-    "as": "State"
-  },
-    {
-      "lookup": "State",
-      "from": {
-        "data": {
-          "url": "data/forest_area_by_state.csv",
-          "format": { "type": "csv" }
-        },
-        "key": "State",
-       "fields": ["Forest_area_kha", "Forest_cover_pct"]
+      "data": {
+        "url": "maps/australian-states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2026_AUST_GDA2020"
+        }
       },
-      "as": ["Forest_area_kha", "Forest_cover_pct"]
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#f4f0e7",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "Forest_cover_pct",
+          "type": "quantitative",
+          "title": "Native forest cover (%)",
+          "format": ".1f",
+          "scale": {
+            "scheme": "greens"
+          },
+          "legend": {
+            "orient": "bottom",
+            "titleLimit": 300
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.STE_NAME26",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "Forest_cover_pct",
+            "type": "quantitative",
+            "title": "Native forest cover (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "Forest_area_kha",
+            "type": "quantitative",
+            "title": "Native forest area (thousand hectares)",
+            "format": ",.0f"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "properties.STE_NAME26",
+          "from": {
+            "data": {
+              "url": "data/forest_area_by_state.csv",
+              "format": {
+                "type": "csv"
+              }
+            },
+            "key": "State",
+            "fields": [
+              "Forest_area_kha"
+            ]
+          }
+        },
+        {
+          "filter": "isValid(datum.Forest_area_kha)"
+        },
+        {
+          "calculate": "datum.Forest_area_kha * 10 / datum.properties.AREASQKM26 * 100",
+          "as": "Forest_cover_pct"
+        }
+      ]
     },
     {
-      "filter": "isValid(datum.Forest_area_kha)"
+      "data": {
+        "values": [
+          {
+            "Name": "Western Australia",
+            "lon": 122.3,
+            "lat": -25.5
+          },
+          {
+            "Name": "Northern Territory",
+            "lon": 133.4,
+            "lat": -19.5
+          },
+          {
+            "Name": "South Australia",
+            "lon": 135.2,
+            "lat": -30.0
+          },
+          {
+            "Name": "Queensland",
+            "lon": 144.5,
+            "lat": -22.5
+          },
+          {
+            "Name": "New South Wales",
+            "lon": 146.3,
+            "lat": -32.3
+          },
+          {
+            "Name": "Victoria",
+            "lon": 144.0,
+            "lat": -36.9
+          },
+          {
+            "Name": "Tasmania",
+            "lon": 146.6,
+            "lat": -44.4,
+            "outside": true
+          }
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "Name",
+          "from": {
+            "data": {
+              "url": "data/forest_area_by_state.csv",
+              "format": {
+                "type": "csv"
+              }
+            },
+            "key": "State",
+            "fields": [
+              "Forest_cover_pct"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "lineBreak": "\n",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Name",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "!datum.outside && +datum.Forest_cover_pct > 30",
+            "value": "#ffffff"
+          },
+          "value": "#24392d"
+        }
+      }
     },
     {
-      "calculate": "datum.Forest_area_kha * 10 / datum.properties.AREASQKM26 * 100",
-      "as": "Forest_cover_pct"
+      "data": {
+        "values": [
+          {
+            "lon": 149.13,
+            "lat": -35.45,
+            "lon2": 154.8,
+            "lat2": -37.3
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#24392d",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Name": "Australian Capital\nTerritory",
+            "lon": 158.6,
+            "lat": -37.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "lineBreak": "\n",
+        "align": "right",
+        "baseline": "top",
+        "color": "#24392d"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Name",
+          "type": "nominal"
+        }
+      }
     }
   ],
-  "projection": {
-    "type": "mercator"
-  },
   "config": {
-    "view": { "stroke": null },
+    "view": {
+      "stroke": null
+    },
     "title": {
       "font": "Arial",
       "fontSize": 18,

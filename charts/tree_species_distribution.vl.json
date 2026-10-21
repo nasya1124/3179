@@ -8,24 +8,169 @@
     "color": "#24392d"
   },
   "width": 600,
-"height": 500,
-"projection": {
-  "type": "mercator"
-},
+  "height": 500,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0,
+      0
+    ]
+  },
   "layer": [
     {
       "data": {
-  "url": "maps/australian-states.topojson",
-  "format": {
-    "type": "topojson",
-    "feature": "STE_2026_AUST_GDA2020"
-  }
-},
+        "url": "maps/australian-states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2026_AUST_GDA2020"
+        }
+      },
       "mark": {
         "type": "geoshape",
         "fill": "#e4e8dc",
         "stroke": "#f4f0e7",
         "strokeWidth": 1.5
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Name": "Western Australia",
+            "lon": 122.3,
+            "lat": -25.5
+          },
+          {
+            "Name": "Northern Territory",
+            "lon": 133.4,
+            "lat": -19.5
+          },
+          {
+            "Name": "South Australia",
+            "lon": 135.2,
+            "lat": -30.0
+          },
+          {
+            "Name": "Queensland",
+            "lon": 144.5,
+            "lat": -22.5
+          },
+          {
+            "Name": "New South Wales",
+            "lon": 146.3,
+            "lat": -32.3
+          },
+          {
+            "Name": "Victoria",
+            "lon": 142.0,
+            "lat": -35.9
+          },
+          {
+            "Name": "Tasmania",
+            "lon": 146.6,
+            "lat": -44.4
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "align": "center"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Name",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "#7d8a80"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 149.13,
+            "lat": -35.45,
+            "lon2": 154.8,
+            "lat2": -37.3
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#7d8a80",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "lon2"
+        },
+        "latitude2": {
+          "field": "lat2"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Name": "Australian Capital\nTerritory",
+            "lon": 158.6,
+            "lat": -37.5
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "align": "right",
+        "baseline": "top"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Name",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "#7d8a80"
+        }
       }
     },
     {
@@ -59,16 +204,29 @@
           "field": "Record_count",
           "type": "quantitative",
           "scale": {
-  "domain": [1, 110],
-  "range": [25, 700],
-  "zero": false
-},
-"legend": {
-  "orient": "bottom",
-  "direction": "horizontal",
-  "values": [20, 40, 60, 80, 100],
-  "title": "Herbarium records per cell"
-}
+            "domain": [
+              1,
+              110
+            ],
+            "range": [
+              25,
+              700
+            ],
+            "zero": false
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "values": [
+              20,
+              40,
+              60,
+              80,
+              100
+            ],
+            "title": "Herbarium records per cell",
+            "titleLimit": 300
+          }
         },
         "color": {
           "field": "Species",
@@ -86,12 +244,13 @@
             ]
           },
           "legend": {
-  "orient": "bottom",
-  "direction": "horizontal",
-  "columns": 3,
-  "labelLimit": 160,
-  "title": "Tree species"
-}
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 3,
+            "labelLimit": 160,
+            "title": "Tree species",
+            "titleLimit": 300
+          }
         },
         "tooltip": [
           {
@@ -119,12 +278,12 @@
       "labelColor": "#56655a",
       "titleColor": "#24392d",
       "layout": {
-  "bottom": {
-    "direction": "vertical",
-    "anchor": "start",
-    "margin": 8
-  }
-}
+        "bottom": {
+          "direction": "vertical",
+          "anchor": "start",
+          "margin": 8
+        }
+      }
     }
   }
 }
