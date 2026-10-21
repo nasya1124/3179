@@ -24,9 +24,9 @@
       "name": "fire_type_highlight",
       "select": {
         "type": "point",
-        "fields": ["Fire_type"],
-        "bind": "legend"
-      }
+        "fields": ["Fire_type"]
+      },
+      "bind": "legend"
     }
   ],
   "mark": {
