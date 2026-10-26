@@ -63,7 +63,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 400 17px/1.6 var(--sans);
+  font: 400 18px/1.6 var(--sans);
 }
 
 .wrap {
@@ -113,7 +113,7 @@ strong { font-weight: 700; }
   max-width: 30em;          /* about 10 words per line */
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .hero-tree { width: 100%; max-width: 240px; height: auto; justify-self: end; }
@@ -131,7 +131,7 @@ strong { font-weight: 700; }
 .stat + .stat { border-left: 1px solid var(--rule); }
 .stat:first-child { padding-left: 0; }
 
-.stat dt { font: 600 2rem/1.1 var(--serif); }
+.stat dt { font: 600 2.3rem/1.1 var(--serif); }
 .stat dt::before {               /* dot in the chapter colour it links to */
   content: "";
   display: inline-block;
@@ -143,7 +143,7 @@ strong { font-weight: 700; }
   vertical-align: 0.25em;
 }
 .stat dt span { font: 600 0.95rem var(--sans); color: var(--muted); }
-.stat dd { margin: 6px 0 0; color: var(--muted); font-size: 0.9rem; line-height: 1.35; }
+.stat dd { margin: 6px 0 0; color: var(--muted); font-size: 0.98rem; line-height: 1.35; }
 
 
 /* =========================================================
@@ -201,7 +201,7 @@ strong { font-weight: 700; }
   padding: 2px 8px;
   border-radius: 4px;
   background: var(--paper);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   white-space: nowrap;
   opacity: 0;
@@ -279,7 +279,7 @@ strong { font-weight: 700; }
 }
 
 .row + .row,
-.row-wide + .row { margin-top: 72px; }
+.row-wide + .row { margin-top: 80px; }
 
 .flip .row { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
 .flip .row .insight { order: -1; }
@@ -291,9 +291,8 @@ strong { font-weight: 700; }
 .chart .vega-embed { width: 100%; display: block; }
 .chart .vega-embed summary { display: none; }
 
-/* Waffle is square and fixed-size: centre it in its column */
-.row-compact .fig { display: flex; justify-content: center; }
-.row-compact .chart { width: auto; }
+/* Waffle is square and fixed-size: keep it on the chart edge */
+.row-waffle .chart { width: auto; }
 
 /* Full-width chart: headline left, text right, chart below */
 .insight-wide {
@@ -307,35 +306,23 @@ strong { font-weight: 700; }
 .insight-wide > div { max-width: 25em; }
 
 
-/* Pair: two charts side by side, each with its own headline
-   and text above, so no column is left empty. */
-.pair {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: var(--gutter);
-  margin-top: 72px;
-}
-
-.pair-item { display: flex; flex-direction: column; min-width: 0; }
-.pair-item .insight { min-height: 13.5em; margin-bottom: 20px; }
-
 /* =========================================================
    6. INSIGHT TEXT AND COLOUR KEYS
    Headline states the finding; text is capped near
    10 words per line.
    ========================================================= */
 .insight {
-  max-width: 21em;
-  font-size: 1.02rem;
-  line-height: 1.55;
+  max-width: 20em;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .insight h3 {
   position: relative;
   margin-bottom: 14px;
   padding-top: 16px;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  font-size: 1.8rem;
+  line-height: 1.18;
 }
 
 /* short rule in the chapter colour above each headline */
@@ -353,7 +340,7 @@ strong { font-weight: 700; }
 .insight p { margin: 0 0 12px; }
 .insight p:last-child { margin-bottom: 0; }
 
-.insight-note { color: var(--muted); font-size: 0.9rem; }
+.insight-note { color: var(--muted); font-size: 0.92rem; }
 
 /* Colour key: a swatch in the chart's hue, text stays dark.
    Only used where the word names a colour in that chart. */
@@ -381,7 +368,7 @@ strong { font-weight: 700; }
   margin: 44px 0 0;
   padding-bottom: 8px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
 }
 
 
@@ -403,7 +390,7 @@ strong { font-weight: 700; }
 
 .conclusion .tree { width: 130px; margin-bottom: 18px; }
 .conclusion h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.08; }
-.conclusion-text { max-width: 25em; font-size: 1.1rem; align-self: end; }
+.conclusion-text { max-width: 24em; font-size: 1.2rem; align-self: end; }
 .conclusion-text p { margin: 0 0 14px; }
 
 .sources {
@@ -421,15 +408,15 @@ strong { font-weight: 700; }
   gap: 22px 32px;
 }
 
-.source-grid h3 { font: 700 0.95rem var(--sans); margin-bottom: 4px; }
-.source-grid p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+.source-grid h3 { font: 700 1.02rem var(--sans); margin-bottom: 4px; }
+.source-grid p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
 
 .site-footer {
   margin-top: 48px;
   padding: 24px 0 40px;
   border-top: 1px solid var(--rule);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .site-footer p { margin: 0 0 4px; }
@@ -444,14 +431,12 @@ strong { font-weight: 700; }
 
 @media (max-width: 880px) {
   .row,
-  .pair,
   .flip .row,
   .insight-wide,
   .conclusion,
   .sources { grid-template-columns: minmax(0, 1fr); }
   .flip .row .insight { order: 0; justify-self: start; }
   .row { gap: 20px; }
-  .pair-item .insight { min-height: 0; }
   .insight { max-width: 34em; }
   .hero { grid-template-columns: minmax(0, 1fr); }
   .hero-tree { width: 140px; grid-row: 1; justify-self: start; }

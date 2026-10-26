@@ -5,11 +5,11 @@
     "subtitle": "Share of land area covered by native forest",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "offset": 10
   },
@@ -165,7 +165,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": "bold",
         "lineBreak": "\n",
         "align": "center"
@@ -238,7 +238,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": "bold",
         "lineBreak": "\n",
         "align": "right",
@@ -273,14 +273,14 @@
     },
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42",
       "titleColor": "#1f3326"
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42"
     }
   },

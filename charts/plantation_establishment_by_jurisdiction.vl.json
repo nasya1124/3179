@@ -5,11 +5,11 @@
     "subtitle": "Annual average, thousand hectares · 2016–17 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "offset": 10
   },
@@ -30,14 +30,14 @@
     },
     "axis": {
       "labelLimit": 220,
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42"
     },
     "legend": {
       "padding": 8,
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42",
       "titleColor": "#1f3326"
     },
@@ -68,7 +68,7 @@
       "axis": {
         "title": null,
         "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "labelFontSize": 13,
+        "labelFontSize": 14,
         "labelColor": "#56655a",
         "domain": false,
         "ticks": false,
@@ -105,10 +105,10 @@
           "title": null,
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
+            "titleFontSize": 14,
             "titleColor": "#263d2e",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "labelFontSize": 12,
+            "labelFontSize": 14,
             "labelColor": "#56655a",
             "grid": true,
             "gridColor": "#e6e1d5",
@@ -148,7 +148,7 @@
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "titleColor": "#263d2e",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "labelFontSize": 12,
+            "labelFontSize": 14,
             "labelColor": "#56655a",
             "symbolType": "square",
             "title": null
@@ -204,7 +204,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "color": "#5b6a5f",
         "align": "left",
         "baseline": "middle",

@@ -5,11 +5,11 @@
     "subtitle": "Thousand hectares · 2011–12 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "offset": 10
   },
@@ -28,7 +28,7 @@
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "axis": {
       "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "labelFontSize": 13,
+      "labelFontSize": 14,
       "labelColor": "#3d4d42",
       "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "titleFontSize": 14,
@@ -40,11 +40,11 @@
     },
     "legend": {
       "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "labelFontSize": 13,
+      "labelFontSize": 14,
       "labelColor": "#3d4d42",
       "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "titleColor": "#1f3326",
-      "titleFontSize": 13
+      "titleFontSize": 14
     }
   },
   "autosize": {
@@ -75,7 +75,7 @@
         "labelOverlap": false,
         "grid": false,
         "labelExpr": "replace(datum.label, '-', '–')",
-        "labelFontSize": 12
+        "labelFontSize": 14
       }
     },
     "y": {
@@ -184,7 +184,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "color": "#b5523b",
         "align": "center",
         "baseline": "middle",

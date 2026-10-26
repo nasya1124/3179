@@ -5,11 +5,11 @@
     "subtitle": "Thousand hectares",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "offset": 10
   },
@@ -35,7 +35,7 @@
       "axis": {
         "format": ",.0f",
         "grid": true,
-        "labelFontSize": 13,
+        "labelFontSize": 14,
         "titleFontSize": 14,
         "tickCount": 3
       }
@@ -55,7 +55,7 @@
         "Australian Capital Territory"
       ],
       "axis": {
-        "labelFontSize": 13,
+        "labelFontSize": 14,
         "labelLimit": 220
       }
     }
@@ -90,7 +90,7 @@
         "baseline": "middle",
         "dx": 4,
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 12,
+        "fontSize": 13,
         "color": "#56655a"
       },
       "encoding": {
@@ -109,7 +109,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "color": "#ffffff",
         "align": "right",
         "baseline": "middle",
@@ -132,7 +132,7 @@
       "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "labelColor": "#3d4d42",
       "titleColor": "#24392d",
-      "labelFontSize": 13,
+      "labelFontSize": 14,
       "titleFontSize": 14,
       "gridColor": "#e8e1d4"
     },
@@ -144,8 +144,8 @@
     },
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42",
       "titleColor": "#1f3326"
     }

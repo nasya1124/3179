@@ -10,12 +10,12 @@
     "text": "Native forest by type, 2023",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "offset": 10,
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "subtitle": "Rectangle area is proportional to forest area"
   },
@@ -174,7 +174,7 @@
             "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
           },
           "fontSize": {
-            "signal": "datum.y1 - datum.y0 > 40 ? 13 : 11"
+            "signal": "datum.y1 - datum.y0 > 40 ? 14 : 12"
           },
           "fontWeight": {
             "value": "bold"

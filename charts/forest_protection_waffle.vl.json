@@ -5,19 +5,19 @@
     "subtitle": "Each square is 1% of native forest · 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "offset": 10
   },
   "width": {
-    "step": 34
+    "step": 44
   },
   "height": {
-    "step": 34
+    "step": 44
   },
   "data": {
     "url": "data/forest_protection_waffle.csv",
@@ -95,10 +95,10 @@
         "orient": "bottom",
         "title": null,
         "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "titleFontSize": 13,
+        "titleFontSize": 14,
         "titleColor": "#24392d",
         "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "labelFontSize": 12,
+        "labelFontSize": 14,
         "labelColor": "#56655a",
         "labelLimit": 280,
         "symbolType": "square",
@@ -134,14 +134,14 @@
     },
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "legend": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42",
       "titleColor": "#1f3326"
     },
     "axis": {
-      "labelFontSize": 13,
-      "titleFontSize": 13,
+      "labelFontSize": 14,
+      "titleFontSize": 14,
       "labelColor": "#3d4d42"
     }
   },

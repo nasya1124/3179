@@ -5,11 +5,11 @@
     "subtitle": "Area burnt ÷ state's native forest area · 2016–17 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 17,
+    "fontSize": 19,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "subtitleFontSize": 13,
+    "subtitleFontSize": 14,
     "subtitleColor": "#5b6a5f",
     "offset": 10
   },
@@ -71,7 +71,7 @@
     },
     "axis": {
       "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "labelFontSize": 13,
+      "labelFontSize": 14,
       "labelColor": "#3d4d42",
       "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "titleFontSize": 14,
@@ -82,10 +82,10 @@
     },
     "legend": {
       "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "labelFontSize": 12,
+      "labelFontSize": 14,
       "labelColor": "#3d4d42",
       "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "titleFontSize": 12,
+      "titleFontSize": 14,
       "titleColor": "#1f3326"
     }
   },
@@ -108,7 +108,8 @@
       "axis": {
         "title": null,
         "labelAngle": 0,
-        "grid": false
+        "grid": false,
+        "labelExpr": "replace(datum.label, '-', '–')"
       }
     },
     "y": {
@@ -211,13 +212,15 @@
       "transform": [
         {
           "filter": "datum.Financial_year == '2019-20' && (datum.State == 'Australian Capital Territory' || datum.State == 'New South Wales')"
+        },
+        {
+          "filter": "datum.Share_burnt >= 0.01"
         }
       ],
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
-        "color": "#ffffff",
+        "fontSize": 14,
         "align": "center",
         "baseline": "middle",
         "fontWeight": "bold"
@@ -227,6 +230,13 @@
           "field": "Share_burnt",
           "type": "quantitative",
           "format": ".0%"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Share_burnt > 0.3",
+            "value": "#ffffff"
+          },
+          "value": "#1f3326"
         }
       }
     }
