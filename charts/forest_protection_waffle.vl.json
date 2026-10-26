@@ -1,20 +1,24 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Forest included in protection reports",
-    "subtitle": "Each square represents 1% of Australia\u2019s native forest area \u00b7 2020\u201321",
+    "text": "Share of forest managed for biodiversity",
+    "subtitle": "Each square is 1% of native forest · 2020–21",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 21,
-    "fontWeight": "bold",
-    "color": "#24392d",
-    "subtitleFont": "Arial",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "subtitleFontSize": 13,
-    "subtitleColor": "#647166",
-    "offset": 14
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
-  "width": 400,
-  "height": 360,
+  "width": {
+    "step": 34
+  },
+  "height": {
+    "step": 34
+  },
   "data": {
     "url": "data/forest_protection_waffle.csv",
     "format": {
@@ -27,7 +31,7 @@
   },
   "mark": {
     "type": "rect",
-    "stroke": "#fffefa",
+    "stroke": "#f6f3ec",
     "strokeWidth": 2,
     "cornerRadius": 3
   },
@@ -83,27 +87,28 @@
           "Not included in reported managed total"
         ],
         "range": [
-          "#4f7a62",
-          "#e5e4d8"
+          "#8cc5c3",
+          "#e3dfd3"
         ]
       },
       "legend": {
         "orient": "bottom",
-        "title": "Native forest area",
-        "titleFont": "Arial",
+        "title": null,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "titleFontSize": 13,
         "titleColor": "#24392d",
-        "labelFont": "Arial",
+        "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "labelFontSize": 12,
         "labelColor": "#56655a",
         "labelLimit": 280,
         "symbolType": "square",
         "symbolSize": 120,
-        "symbolStrokeColor": "#c9c8ba",
+        "symbolStrokeColor": null,
         "symbolStrokeWidth": 1,
         "offset": 10,
         "direction": "vertical",
-        "columns": 1
+        "columns": 1,
+        "labelExpr": "datum.label == 'Included in reported managed total' ? 'Managed for protection (37%)' : 'Not in that total (63%)'"
       }
     },
     "tooltip": [
@@ -120,13 +125,25 @@
     ]
   },
   "config": {
-    "background": "#fffefa",
     "view": {
       "stroke": null
     },
     "title": {
-      "font": "Arial",
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "color": "#24392d"
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326"
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42"
     }
-  }
+  },
+  "background": null
 }

@@ -1,27 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Native forest area by tenure and inclusion in the National Reserve System, based on ABARES Indicator 1.1c-2 (2020-21).",
-  "width": 850,
-  "height": 470,
+  "height": 420,
   "padding": {
-    "left": 12,
-    "right": 12,
-    "top": 10,
-    "bottom": 10
+    "left": 0,
+    "right": 0,
+    "top": 6,
+    "bottom": 6
   },
-  "background": "#fffefa",
   "title": {
-    "text": "Native forest area by tenure and reserve status",
-    "subtitle": "Flow width shows area in thousand hectares \u00b7 2020\u201321",
+    "text": "Native forest by land tenure and reserve status",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 21,
-    "fontWeight": "bold",
-    "color": "#24392d",
-    "subtitleFont": "Arial",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "offset": 10,
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "subtitleFontSize": 13,
-    "subtitleColor": "#647166",
-    "offset": 14
+    "subtitleColor": "#5b6a5f",
+    "subtitle": "Band width shows forest area · 2020–21"
   },
   "data": [
     {
@@ -196,7 +194,7 @@
         },
         {
           "type": "formula",
-          "expr": "'M 182,' + scale('yscale', datum.sourceNode0 + datum.source0) + ' C 315,' + scale('yscale', datum.sourceNode0 + datum.source0) + ' 446,' + scale('yscale', datum.targetNode0 + datum.target0) + ' 578,' + scale('yscale', datum.targetNode0 + datum.target0) + ' L 578,' + scale('yscale', datum.targetNode0 + datum.target1) + ' C 446,' + scale('yscale', datum.targetNode0 + datum.target1) + ' 315,' + scale('yscale', datum.sourceNode0 + datum.source1) + ' 182,' + scale('yscale', datum.sourceNode0 + datum.source1) + ' Z'",
+          "expr": "'M ' + (lx+nw) + ',' + scale('yscale', datum.sourceNode0 + datum.source0) + ' C ' + ((lx+nw+rx)/2) + ',' + scale('yscale', datum.sourceNode0 + datum.source0) + ' ' + ((lx+nw+rx)/2) + ',' + scale('yscale', datum.targetNode0 + datum.target0) + ' ' + rx + ',' + scale('yscale', datum.targetNode0 + datum.target0) + ' L ' + rx + ',' + scale('yscale', datum.targetNode0 + datum.target1) + ' C ' + ((lx+nw+rx)/2) + ',' + scale('yscale', datum.targetNode0 + datum.target1) + ' ' + ((lx+nw+rx)/2) + ',' + scale('yscale', datum.sourceNode0 + datum.source1) + ' ' + (lx+nw) + ',' + scale('yscale', datum.sourceNode0 + datum.source1) + ' Z'",
           "as": "path"
         }
       ]
@@ -227,8 +225,8 @@
         "Outside the National Reserve System"
       ],
       "range": [
-        "#3d7752",
-        "#d5b16b"
+        "#1f6f78",
+        "#dcd6c7"
       ]
     },
     {
@@ -243,12 +241,12 @@
         "Unresolved tenure"
       ],
       "range": [
-        "#527c67",
-        "#75978a",
-        "#315e49",
-        "#a6b493",
-        "#d5b16b",
-        "#9b8870"
+        "#7b867d",
+        "#7b867d",
+        "#7b867d",
+        "#7b867d",
+        "#7b867d",
+        "#7b867d"
       ]
     }
   ],
@@ -269,16 +267,16 @@
             "field": "Status"
           },
           "fillOpacity": {
-            "value": 0.56
+            "value": 0.75
           },
           "stroke": {
-            "value": "#fffefa"
+            "value": "#f6f3ec"
           },
           "strokeWidth": {
             "value": 0.7
           },
           "tooltip": {
-            "signal": "datum.Tenure + ' \u2192 ' + datum.Status + ': ' + format(datum.Forest_area_kha, ',.0f') + ' thousand hectares'"
+            "signal": "datum.Tenure + ' → ' + datum.Status + ': ' + format(datum.Forest_area_kha, ',.0f') + ' thousand hectares'"
           }
         }
       }
@@ -292,10 +290,10 @@
       "encode": {
         "update": {
           "x": {
-            "value": 165
+            "signal": "lx"
           },
           "x2": {
-            "value": 182
+            "signal": "lx + nw"
           },
           "y": {
             "scale": "yscale",
@@ -310,7 +308,7 @@
             "field": "Tenure"
           },
           "stroke": {
-            "value": "#fffefa"
+            "value": "#f6f3ec"
           },
           "strokeWidth": {
             "value": 1
@@ -330,10 +328,10 @@
       "encode": {
         "update": {
           "x": {
-            "value": 578
+            "signal": "rx"
           },
           "x2": {
-            "value": 595
+            "signal": "rx + nw"
           },
           "y": {
             "scale": "yscale",
@@ -348,7 +346,7 @@
             "field": "Status"
           },
           "stroke": {
-            "value": "#fffefa"
+            "value": "#f6f3ec"
           },
           "strokeWidth": {
             "value": 1
@@ -368,13 +366,13 @@
       "encode": {
         "update": {
           "x": {
-            "value": 156
+            "signal": "lx - 10"
           },
           "y": {
             "signal": "scale('yscale', (datum.y0 + datum.y1) / 2)"
           },
           "text": {
-            "field": "Tenure"
+            "signal": "datum.Tenure + '  ' + format(datum.area/131502, '.0%')"
           },
           "align": {
             "value": "right"
@@ -383,10 +381,10 @@
             "value": "middle"
           },
           "font": {
-            "value": "Arial"
+            "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
           },
           "fontSize": {
-            "value": 13
+            "value": 14
           },
           "fill": {
             "value": "#24392d"
@@ -406,13 +404,13 @@
       "encode": {
         "update": {
           "x": {
-            "value": 607
+            "signal": "rx + nw + 12"
           },
           "y": {
             "signal": "scale('yscale', (datum.y0 + datum.y1) / 2)"
           },
           "text": {
-            "field": "Status"
+            "signal": "[datum.Status == 'Within the National Reserve System' ? 'In the National' : 'Outside the', 'Reserve System', format(datum.area/131502, '.0%')]"
           },
           "align": {
             "value": "left"
@@ -421,7 +419,7 @@
             "value": "middle"
           },
           "font": {
-            "value": "Arial"
+            "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
           },
           "fontSize": {
             "value": 15
@@ -431,6 +429,9 @@
           },
           "fill": {
             "value": "#24392d"
+          },
+          "lineHeight": {
+            "value": 19
           }
         }
       }
@@ -441,8 +442,36 @@
       "stroke": null
     },
     "title": {
-      "font": "Arial",
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "color": "#24392d"
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "signals": [
+    {
+      "name": "width",
+      "init": "containerSize()[0] > 0 ? containerSize()[0] : 850",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "containerSize()[0] > 0 ? containerSize()[0] : 850"
+        }
+      ]
+    },
+    {
+      "name": "lx",
+      "update": "175"
+    },
+    {
+      "name": "rx",
+      "update": "max(lx + 200, width - 190)"
+    },
+    {
+      "name": "nw",
+      "value": 14
+    }
+  ]
 }

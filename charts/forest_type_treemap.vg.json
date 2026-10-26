@@ -1,17 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 600,
-  "height": 360,
-  "padding": 8,
-  "autosize": "pad",
+  "height": 340,
+  "padding": 0,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "title": {
-    "text": "Share of native forest by type (2023)",
+    "text": "Native forest by type, 2023",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 20,
-    "fontWeight": "bold",
-    "color": "#24392d",
-    "offset": 14
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "offset": 10,
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#5b6a5f",
+    "subtitle": "Rectangle area is proportional to forest area"
   },
   "data": [
     {
@@ -45,10 +51,34 @@
           "field": "Area_kha",
           "method": "squarify",
           "size": [
-            { "signal": "width" },
-            { "signal": "height" }
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
           ],
           "paddingInner": 3
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth === 1"
+        }
+      ]
+    },
+    {
+      "name": "labels",
+      "source": "leaves",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.x1 - datum.x0 > 60 && datum.y1 - datum.y0 > 16"
         }
       ]
     }
@@ -68,14 +98,14 @@
         "Casuarina"
       ],
       "range": [
-        "#4f7a62",
-        "#d5ae68",
-        "#90a874",
-        "#bcc7a3",
-        "#244e3d",
-        "#7695a5",
-        "#548d7d",
-        "#a7845e"
+        "#3f6f55",
+        "#62917a",
+        "#86ad96",
+        "#a3c2ae",
+        "#b9d0c0",
+        "#c9dacd",
+        "#c9dacd",
+        "#c9dacd"
       ]
     }
   ],
@@ -83,29 +113,35 @@
     {
       "type": "rect",
       "from": {
-        "data": "tree",
-        "transform": [
-          
-            {
-            "type": "filter",
-            "expr": "datum.depth === 1"
-            }
-          
-        ]
+        "data": "leaves"
       },
       "encode": {
-        "enter": {
-          "x": { "field": "x0" },
-          "y": { "field": "y0" },
-          "x2": { "field": "x1" },
-          "y2": { "field": "y1" },
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          },
           "fill": {
             "scale": "typeColor",
             "field": "Forest_type"
           },
-          "stroke": { "value": "#f4f0e7" },
-          "strokeWidth": { "value": 2 },
-          "cornerRadius": { "value": 3 },
+          "stroke": {
+            "value": "#f4f0e7"
+          },
+          "strokeWidth": {
+            "value": 2
+          },
+          "cornerRadius": {
+            "value": 3
+          },
           "tooltip": {
             "signal": "{'Forest type': datum.Forest_type, 'Area (thousand hectares)': format(datum.Area_kha, ',.0f'), 'Share of native forest': format(datum.Area_kha / 131501, '.1%')}"
           }
@@ -113,38 +149,61 @@
       }
     },
     {
-  "type": "text",
-  "from": {
-    "data": "tree",
-    "transform": [
-      {
-        "type": "filter",
-        "expr": "datum.id !== 'Australia' && datum.x1 - datum.x0 > length(datum.Forest_type) * 9 + 24 && datum.y1 - datum.y0 > 40"}
-    ]
-  },
-  "encode": {
-    "enter": {
-      "x": { "signal": "(datum.x0 + datum.x1) / 2" },
-      "y": { "signal": "(datum.y0 + datum.y1) / 2" },
-      "text": {
-  "signal": "datum.Forest_type === 'Australia' ? '' : datum.Forest_type"
-},
-      "align": { "value": "center" },
-      "baseline": { "value": "middle" },
-      "font": { "value": "Arial" },
-      "fontSize": { "value": 12 },
-      "fontWeight": { "value": "bold" },
-      "fill": { "value": "#ffffff" },
-      "limit": {
-        "signal": "datum.x1 - datum.x0 - 12"
+      "type": "text",
+      "from": {
+        "data": "labels"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(datum.x0 + datum.x1) / 2"
+          },
+          "y": {
+            "signal": "datum.y1 - datum.y0 > 40 ? (datum.y0 + datum.y1)/2 - (datum.Forest_type == 'Other native forest' ? 16 : 8) : (datum.y0 + datum.y1)/2"
+          },
+          "text": {
+            "signal": "datum.y1 - datum.y0 > 40 ? (datum.Forest_type == 'Other native forest' ? ['Other', 'native', format(datum.Area_kha/131501,'.0%')] : [datum.Forest_type, format(datum.Area_kha/131501,'.0%')]) : datum.Forest_type + ' ' + format(datum.Area_kha/131501,'.0%')"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
+          },
+          "fontSize": {
+            "signal": "datum.y1 - datum.y0 > 40 ? 13 : 11"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "signal": "indexof(['Eucalypt','Acacia'], datum.Forest_type) >= 0 ? '#ffffff' : '#1f3326'"
+          },
+          "lineHeight": {
+            "value": 16
+          }
+        }
       }
     }
-  }
-}
   ],
   "config": {
     "view": {
       "stroke": null
     }
-  }
+  },
+  "signals": [
+    {
+      "name": "width",
+      "init": "containerSize()[0] > 0 ? containerSize()[0] : 600",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "containerSize()[0] > 0 ? containerSize()[0] : 600"
+        }
+      ]
+    }
+  ]
 }

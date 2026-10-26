@@ -1,13 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Selected native tree species",
+    "text": "Where three native trees have been recorded",
+    "subtitle": "Herbarium records per 1° grid cell",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 20,
-    "color": "#24392d"
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
-  "width": 600,
+  "width": "container",
   "height": 500,
   "projection": {
     "type": "conicEqualArea",
@@ -79,8 +85,8 @@
       },
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 11,
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 12,
         "fontWeight": "normal",
         "lineBreak": "\n",
         "align": "center"
@@ -148,8 +154,8 @@
       },
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 11,
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 12,
         "fontWeight": "normal",
         "lineBreak": "\n",
         "align": "right",
@@ -238,9 +244,9 @@
               "Adansonia gregorii"
             ],
             "range": [
-              "#4f7a62",
-              "#d5ae68",
-              "#7895a1"
+              "#7b5ea7",
+              "#c4578f",
+              "#3b78b0"
             ]
           },
           "legend": {
@@ -248,8 +254,9 @@
             "direction": "horizontal",
             "columns": 3,
             "labelLimit": 160,
-            "title": "Tree species",
-            "titleLimit": 300
+            "title": "Species",
+            "titleLimit": 300,
+            "labelExpr": "datum.label == 'Eucalyptus regnans' ? 'Mountain ash' : datum.label == 'Araucaria bidwillii' ? 'Bunya pine' : 'Boab'"
           }
         },
         "tooltip": [
@@ -273,17 +280,30 @@
       "stroke": null
     },
     "legend": {
-      "labelFont": "Arial",
-      "titleFont": "Arial",
-      "labelColor": "#56655a",
-      "titleColor": "#24392d",
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326",
       "layout": {
         "bottom": {
           "direction": "vertical",
           "anchor": "start",
           "margin": 8
         }
-      }
+      },
+      "labelFontSize": 13,
+      "titleFontSize": 13
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42"
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": null
 }

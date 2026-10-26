@@ -1,11 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Native forest cover by state and territory (2023)",
-    "anchor": "start"
+    "text": "Native forest cover by state, 2023",
+    "subtitle": "Share of land area covered by native forest",
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
-  "width": 400,
-  "height": 420,
+  "width": "container",
+  "height": 400,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -121,8 +130,8 @@
           },
           {
             "Name": "Victoria",
-            "lon": 144.0,
-            "lat": -36.9
+            "lon": 144.6,
+            "lat": -36.5
           },
           {
             "Name": "Tasmania",
@@ -147,12 +156,16 @@
               "Forest_cover_pct"
             ]
           }
+        },
+        {
+          "calculate": "datum.Name + '\\n' + format(datum.Forest_cover_pct, '.0f') + '%'",
+          "as": "Label"
         }
       ],
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 10,
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 12,
         "fontWeight": "bold",
         "lineBreak": "\n",
         "align": "center"
@@ -167,7 +180,7 @@
           "type": "quantitative"
         },
         "text": {
-          "field": "Name",
+          "field": "Label",
           "type": "nominal"
         },
         "color": {
@@ -216,7 +229,7 @@
       "data": {
         "values": [
           {
-            "Name": "Australian Capital\nTerritory",
+            "Name": "Australian Capital\nTerritory 55%",
             "lon": 158.6,
             "lat": -37.5
           }
@@ -224,8 +237,8 @@
       },
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 10,
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 12,
         "fontWeight": "bold",
         "lineBreak": "\n",
         "align": "right",
@@ -253,10 +266,27 @@
       "stroke": null
     },
     "title": {
-      "font": "Arial",
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "fontSize": 18,
       "fontWeight": "bold",
       "color": "#24392d"
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326"
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42"
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": null
 }

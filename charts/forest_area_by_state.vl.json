@@ -1,11 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Forest area by state (2023)",
-    "anchor": "start"
+    "text": "Native forest area by state, 2023",
+    "subtitle": "Thousand hectares",
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
-  "width": 250,
-  "height": 350,
+  "width": "container",
+  "height": 340,
   "data": {
     "url": "data/forest_area_by_state.csv",
     "format": {
@@ -14,7 +23,7 @@
   },
   "transform": [
     {
-      "calculate": "datum.State === 'Australian Capital Territory' ? format(datum.Forest_area_kha, ',') + ' (too small to see at this scale)' : ''",
+      "calculate": "datum.State === 'Australian Capital Territory' ? '130 thousand hectares (too small to show)' : ''",
       "as": "Label"
     }
   ],
@@ -35,7 +44,16 @@
       "field": "State",
       "type": "nominal",
       "title": null,
-      "sort": "-x",
+      "sort": [
+        "Queensland",
+        "Northern Territory",
+        "Western Australia",
+        "New South Wales",
+        "Victoria",
+        "South Australia",
+        "Tasmania",
+        "Australian Capital Territory"
+      ],
       "axis": {
         "labelFontSize": 13,
         "labelLimit": 220
@@ -46,7 +64,7 @@
     {
       "mark": {
         "type": "bar",
-        "color": "#4f7a62",
+        "color": "#3f6f55",
         "cornerRadiusEnd": 3
       },
       "encoding": {
@@ -71,7 +89,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": 4,
-        "font": "Arial",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "fontSize": 12,
         "color": "#56655a"
       },
@@ -81,6 +99,28 @@
           "type": "nominal"
         }
       }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.State === 'Queensland'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "color": "#ffffff",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -8,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "value": "39% of all native forest"
+        }
+      }
     }
   ],
   "config": {
@@ -88,19 +128,31 @@
       "stroke": null
     },
     "axis": {
-      "labelFont": "Arial",
-      "titleFont": "Arial",
-      "labelColor": "#24392d",
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42",
       "titleColor": "#24392d",
       "labelFontSize": 13,
       "titleFontSize": 14,
       "gridColor": "#e8e1d4"
     },
     "title": {
-      "font": "Arial",
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "fontSize": 20,
       "fontWeight": "bold",
       "color": "#24392d"
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326"
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": null
 }

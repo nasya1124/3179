@@ -1,99 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Area of forest burnt by fire type",
-    "subtitle": "Australian financial years · thousand hectares · 2011–12 to 2020–21",
+    "text": "Forest area burnt each year",
+    "subtitle": "Thousand hectares · 2011–12 to 2020–21",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 21,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
     "fontWeight": 700,
-    "color": "#24392d",
-    "subtitleFont": "Arial",
-    "subtitleFontSize": 14,
-    "subtitleColor": "#647166",
-    "offset": 12
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
-  "width": 365,
-  "height": 360,
+  "width": "container",
+  "height": 340,
   "data": {
     "url": "data/forest_fire_by_year.csv",
-    "format": { "type": "csv" }
-  },
-  "params": [
-    {
-      "name": "fire_type_highlight",
-      "select": {
-        "type": "point",
-        "fields": ["Fire_type"]
-      },
-      "bind": "legend"
+    "format": {
+      "type": "csv"
     }
-  ],
-  "mark": {
-    "type": "line",
-    "point": { "filled": true, "size": 75 },
-    "strokeWidth": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "Financial_year",
-      "type": "ordinal",
-      "sort": [
-        "2011-12", "2012-13", "2013-14", "2014-15", "2015-16",
-        "2016-17", "2017-18", "2018-19", "2019-20", "2020-21"
-      ],
-      "axis": {
-        "title": "Financial year",
-        "labelAngle": -35,
-        "labelLimit": 90,
-        "labelOverlap": false,
-        "grid": false
-      }
-    },
-    "y": {
-      "field": "Area_thousand_ha",
-      "type": "quantitative",
-      "scale": { "zero": true },
-      "axis": {
-        "title": "Forest area burnt (thousand hectares)",
-        "format": ",d",
-        "tickCount": 6,
-        "grid": true
-      }
-    },
-    "color": {
-      "field": "Fire_type",
-      "type": "nominal",
-      "scale": {
-        "domain": ["Planned fire", "Unplanned fire"],
-        "range": ["#d8ae62", "#b65c4a"]
-      },
-      "legend": {
-        "title": null,
-        "orient": "bottom",
-        "direction": "horizontal",
-        "labelLimit": 180
-      }
-    },
-    "opacity": {
-      "condition": { "param": "fire_type_highlight", "value": 1 },
-      "value": 0.22
-    },
-    "tooltip": [
-      { "field": "Financial_year", "type": "ordinal", "title": "Financial year" },
-      { "field": "Fire_type", "type": "nominal", "title": "Fire type" },
-      { "field": "Area_thousand_ha", "type": "quantitative", "title": "Area (thousand hectares)", "format": ",.0f" }
-    ]
   },
   "config": {
-    "background": "#fffefa",
-    "view": { "stroke": null },
-    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "axis": {
-      "labelFont": "Arial",
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "labelFontSize": 13,
-      "labelColor": "#56655a",
-      "titleFont": "Arial",
+      "labelColor": "#3d4d42",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "titleFontSize": 14,
       "titleColor": "#24392d",
       "domainColor": "#b9b8ad",
@@ -102,11 +39,163 @@
       "gridWidth": 1
     },
     "legend": {
-      "labelFont": "Arial",
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "labelFontSize": 13,
-      "labelColor": "#56655a",
-      "titleFont": "Arial",
-      "titleColor": "#24392d"
+      "labelColor": "#3d4d42",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "titleColor": "#1f3326",
+      "titleFontSize": 13
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": null,
+  "encoding": {
+    "x": {
+      "field": "Financial_year",
+      "type": "ordinal",
+      "sort": [
+        "2011-12",
+        "2012-13",
+        "2013-14",
+        "2014-15",
+        "2015-16",
+        "2016-17",
+        "2017-18",
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "labelLimit": 0,
+        "labelOverlap": false,
+        "grid": false,
+        "labelExpr": "replace(datum.label, '-', '–')",
+        "labelFontSize": 12
+      }
+    },
+    "y": {
+      "field": "Area_thousand_ha",
+      "type": "quantitative",
+      "scale": {
+        "zero": true,
+        "domain": [
+          0,
+          24000
+        ]
+      },
+      "axis": {
+        "title": null,
+        "format": ",d",
+        "tickCount": 6,
+        "grid": true
+      }
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "fire_type_highlight",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Fire_type"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "point": {
+          "filled": true,
+          "size": 75
+        },
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "Fire_type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Planned fire",
+              "Unplanned fire"
+            ],
+            "range": [
+              "#d4a24c",
+              "#b5523b"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelLimit": 180
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "fire_type_highlight",
+            "value": 1
+          },
+          "value": 0.22
+        },
+        "tooltip": [
+          {
+            "field": "Financial_year",
+            "type": "ordinal",
+            "title": "Financial year"
+          },
+          {
+            "field": "Fire_type",
+            "type": "nominal",
+            "title": "Fire type"
+          },
+          {
+            "field": "Area_thousand_ha",
+            "type": "quantitative",
+            "title": "Area (thousand hectares)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Financial_year": "2012-13",
+            "Area_thousand_ha": 21154,
+            "t": "Largest year: 21.2 million hectares"
+          },
+          {
+            "Financial_year": "2019-20",
+            "Area_thousand_ha": 16743,
+            "t": "Black Summer, 2019–20"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "color": "#b5523b",
+        "align": "center",
+        "baseline": "middle",
+        "dy": -16,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ]
 }

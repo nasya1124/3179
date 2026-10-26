@@ -1,23 +1,25 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Forest area burnt by state and year",
-    "subtitle": "Choose a fire type to compare annual area · 2016–17 to 2020–21",
+    "text": "Share of each state's forest burnt",
+    "subtitle": "Area burnt ÷ state's native forest area · 2016–17 to 2020–21",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 21,
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
     "fontWeight": 700,
-    "color": "#24392d",
-    "subtitleFont": "Arial",
-    "subtitleFontSize": 14,
-    "subtitleColor": "#647166",
-    "offset": 12
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 13,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
-  "width": 390,
+  "width": "container",
   "height": 340,
   "data": {
     "url": "data/forest_fire_by_state_year.csv",
-    "format": { "type": "csv" }
+    "format": {
+      "type": "csv"
+    }
   },
   "params": [
     {
@@ -25,66 +27,53 @@
       "value": "All fire",
       "bind": {
         "input": "select",
-        "options": ["All fire", "Planned fire", "Unplanned fire"],
+        "options": [
+          "All fire",
+          "Planned fire",
+          "Unplanned fire"
+        ],
         "name": "Fire type: "
       }
     }
   ],
   "transform": [
-    { "filter": "datum.Fire_type == fire_type" }
-  ],
-  "mark": {
-    "type": "rect",
-    "stroke": "#fffefa",
-    "strokeWidth": 2,
-    "cornerRadius": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "Financial_year",
-      "type": "ordinal",
-      "sort": ["2016-17", "2017-18", "2018-19", "2019-20", "2020-21"],
-      "axis": { "title": "Financial year", "labelAngle": 0, "grid": false }
+    {
+      "filter": "datum.Fire_type == fire_type"
     },
-    "y": {
-      "field": "State",
-      "type": "ordinal",
-      "sort": ["Qld", "NT", "NSW", "WA", "Vic.", "Tas.", "SA", "ACT"],
-      "axis": { "title": null, "grid": false }
-    },
-    "color": {
-      "field": "Area_thousand_ha",
-      "type": "quantitative",
-      "title": "Forest area burnt (thousand hectares)",
-      "scale": {
-        "type": "sqrt",
-        "domain": [0, 9000],
-        "range": ["#f4e9d6", "#e8c184", "#d9855a", "#b65c4a"]
-      },
-      "legend": {
-        "orient": "bottom",
-        "direction": "horizontal",
-        "gradientLength": 300,
-        "format": ",d"
+    {
+      "lookup": "State",
+      "from": {
+        "data": {
+          "url": "data/forest_area_by_state.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "key": "State",
+        "fields": [
+          "Forest_area_kha"
+        ]
       }
     },
-    "tooltip": [
-      { "field": "State", "type": "ordinal", "title": "State or territory" },
-      { "field": "Financial_year", "type": "ordinal", "title": "Financial year" },
-      { "field": "Fire_type", "type": "nominal", "title": "Fire type" },
-      { "field": "Area_thousand_ha", "type": "quantitative", "title": "Area burnt (thousand hectares)", "format": ",.1f" }
-    ]
-  },
+    {
+      "calculate": "toNumber(datum.Area_thousand_ha) / toNumber(datum.Forest_area_kha)",
+      "as": "Share_burnt"
+    }
+  ],
   "config": {
-    "background": "#fffefa",
-    "view": { "stroke": null },
-    "font": "Arial",
-    "title": { "font": "Arial", "color": "#24392d" },
+    "view": {
+      "stroke": null
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "title": {
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "color": "#24392d"
+    },
     "axis": {
-      "labelFont": "Arial",
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "labelFontSize": 13,
-      "labelColor": "#56655a",
-      "titleFont": "Arial",
+      "labelColor": "#3d4d42",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "titleFontSize": 14,
       "titleColor": "#24392d",
       "domainColor": "#b9b8ad",
@@ -92,12 +81,154 @@
       "grid": false
     },
     "legend": {
-      "labelFont": "Arial",
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "labelFontSize": 12,
-      "labelColor": "#56655a",
-      "titleFont": "Arial",
+      "labelColor": "#3d4d42",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "titleFontSize": 12,
-      "titleColor": "#24392d"
+      "titleColor": "#1f3326"
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": null,
+  "encoding": {
+    "x": {
+      "field": "Financial_year",
+      "type": "ordinal",
+      "sort": [
+        "2016-17",
+        "2017-18",
+        "2018-19",
+        "2019-20",
+        "2020-21"
+      ],
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "sort": [
+        "Northern Territory",
+        "Australian Capital Territory",
+        "Queensland",
+        "New South Wales",
+        "Victoria",
+        "Western Australia",
+        "Tasmania",
+        "South Australia"
+      ],
+      "axis": {
+        "title": null,
+        "grid": false,
+        "labelLimit": 220
+      },
+      "title": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#fffefa",
+        "strokeWidth": 2,
+        "cornerRadius": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "Share_burnt",
+          "type": "quantitative",
+          "title": "Share of state's forest burnt (linear scale)",
+          "scale": {
+            "type": "linear",
+            "domain": [
+              0,
+              0.65
+            ],
+            "range": [
+              "#f4e9d6",
+              "#e8c184",
+              "#d9855a",
+              "#b5523b",
+              "#7a2e22"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 300,
+            "format": ".0%",
+            "values": [
+              0,
+              0.1,
+              0.2,
+              0.3,
+              0.4,
+              0.5,
+              0.6
+            ],
+            "titleLimit": 400
+          }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "Financial_year",
+            "type": "ordinal",
+            "title": "Financial year"
+          },
+          {
+            "field": "Fire_type",
+            "type": "nominal",
+            "title": "Fire type"
+          },
+          {
+            "field": "Share_burnt",
+            "type": "quantitative",
+            "title": "Share of state's forest burnt",
+            "format": ".1%"
+          },
+          {
+            "field": "Area_thousand_ha",
+            "type": "quantitative",
+            "title": "Area burnt (thousand hectares)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Financial_year == '2019-20' && (datum.State == 'Australian Capital Territory' || datum.State == 'New South Wales')"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "color": "#ffffff",
+        "align": "center",
+        "baseline": "middle",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "Share_burnt",
+          "type": "quantitative",
+          "format": ".0%"
+        }
+      }
+    }
+  ]
 }

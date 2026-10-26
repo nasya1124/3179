@@ -1,17 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Protection coverage by state",
-    "subtitle": "Compare reserve coverage with combined reported mechanisms \u00b7 2020\u201321",
+    "text": "Protected share of forest by state",
+    "subtitle": "Percent of native forest area · 2020–21",
     "anchor": "start",
-    "font": "Arial",
-    "fontSize": 21,
-    "fontWeight": "bold",
-    "color": "#24392d",
-    "subtitleFont": "Arial",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 17,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "subtitleFontSize": 13,
-    "subtitleColor": "#647166",
-    "offset": 14
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
   },
   "data": {
     "url": "data/forest_protection_by_state.csv",
@@ -23,8 +23,8 @@
       }
     }
   },
-  "width": 410,
-  "height": 340,
+  "width": "container",
+  "height": 360,
   "layer": [
     {
       "mark": {
@@ -43,7 +43,7 @@
             ]
           },
           "axis": {
-            "title": "Share of native forest area (%)",
+            "title": null,
             "values": [
               0,
               20,
@@ -56,10 +56,11 @@
             "gridColor": "#e9e5d9",
             "labelColor": "#56655a",
             "titleColor": "#24392d",
-            "labelFont": "Arial",
-            "titleFont": "Arial",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 13,
-            "titleFontSize": 14
+            "titleFontSize": 14,
+            "labelExpr": "datum.value + '%'"
           }
         },
         "x2": {
@@ -75,10 +76,11 @@
           "axis": {
             "title": null,
             "labelColor": "#24392d",
-            "labelFont": "Arial",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
             "ticks": false,
-            "domain": false
+            "domain": false,
+            "labelLimit": 220
           }
         },
         "tooltip": [
@@ -137,7 +139,7 @@
             ]
           },
           "axis": {
-            "title": "Share of native forest area (%)",
+            "title": null,
             "values": [
               0,
               20,
@@ -150,10 +152,11 @@
             "gridColor": "#e9e5d9",
             "labelColor": "#56655a",
             "titleColor": "#24392d",
-            "labelFont": "Arial",
-            "titleFont": "Arial",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 13,
-            "titleFontSize": 14
+            "titleFontSize": 14,
+            "labelExpr": "datum.value + '%'"
           }
         },
         "y": {
@@ -166,10 +169,11 @@
           "axis": {
             "title": null,
             "labelColor": "#24392d",
-            "labelFont": "Arial",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
             "ticks": false,
-            "domain": false
+            "domain": false,
+            "labelLimit": 220
           }
         },
         "color": {
@@ -181,21 +185,22 @@
               "All reported biodiversity protection measures"
             ],
             "range": [
-              "#d5b16b",
-              "#4f7a62"
+              "#1f6f78",
+              "#8cc5c3"
             ]
           },
           "legend": {
             "title": null,
             "orient": "bottom",
             "direction": "horizontal",
-            "labelFont": "Arial",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 12,
             "labelColor": "#56655a",
             "labelLimit": 320,
             "symbolSize": 120,
             "symbolStrokeColor": "#fffefa",
-            "symbolStrokeWidth": 1
+            "symbolStrokeWidth": 1,
+            "labelExpr": "datum.label == 'National Reserve System' ? 'National Reserve System' : 'All protection measures'"
           }
         },
         "tooltip": [
@@ -218,16 +223,79 @@
           }
         ]
       }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.State === 'Victoria'"
+        },
+        {
+          "calculate": "(datum.National_Reserve_System_pct + datum.Combined_protection_pct) / 2",
+          "as": "mid"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 12,
+        "color": "#1f3326",
+        "align": "center",
+        "baseline": "middle",
+        "dy": -14,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "mid",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "State",
+          "type": "nominal",
+          "sort": {
+            "field": "Combined_protection_pct",
+            "order": "descending"
+          },
+          "axis": {
+            "title": null,
+            "labelColor": "#24392d",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false,
+            "labelLimit": 220
+          }
+        },
+        "text": {
+          "value": "43-point gap"
+        }
+      }
     }
   ],
   "config": {
-    "background": "#fffefa",
     "view": {
       "stroke": null
     },
     "title": {
-      "font": "Arial",
+      "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
       "color": "#24392d"
+    },
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "legend": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326"
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "labelColor": "#3d4d42"
     }
-  }
+  },
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "background": null
 }
