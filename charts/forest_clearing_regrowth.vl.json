@@ -5,7 +5,7 @@
     "text": "Forest cleared and regrown each year",
     "subtitle": [
       "Thousand hectares, years ending June",
-      "Regrowth above zero, clearing below; the black line is the net change"
+      "Regrowth above zero, clearing below; the cream line is the net change"
     ],
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -14,7 +14,7 @@
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "subtitleFontSize": 14,
-    "subtitleColor": "#5b6a5f",
+    "subtitleColor": "#44524a",
     "offset": 10
   },
   "width": "container",
@@ -213,12 +213,71 @@
       },
       "mark": {
         "type": "line",
-        "color": "#1f3326",
-        "strokeWidth": 2,
+        "color": "#ffffff",
+        "strokeWidth": 5,
+        "opacity": 0
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year (financial years ending June)",
+          "axis": {
+            "labelAngle": 0,
+            "values": [
+              1990,
+              1995,
+              2000,
+              2005,
+              2010,
+              2015,
+              2020
+            ],
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false,
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          }
+        },
+        "y": {
+          "field": "Net_kha",
+          "type": "quantitative",
+          "title": "Change in forest area (thousand hectares)",
+          "axis": {
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/forest_net_change.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Net_kha": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "line",
+        "color": "#dcc592",
+        "strokeWidth": 2.5,
         "point": {
           "filled": true,
-          "size": 30,
-          "color": "#1f3326"
+          "size": 34,
+          "color": "#dcc592",
+          "stroke": "#ffffff",
+          "strokeWidth": 0
         }
       },
       "encoding": {

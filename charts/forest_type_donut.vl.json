@@ -10,7 +10,7 @@
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "subtitleFontSize": 14,
-    "subtitleColor": "#5b6a5f",
+    "subtitleColor": "#44524a",
     "offset": 10
   },
   "background": null,
@@ -215,7 +215,7 @@
         "text": "eucalypt",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "fontSize": 14,
-        "color": "#5b6a5f",
+        "color": "#44524a",
         "dy": 16,
         "x": {
           "expr": "CX"

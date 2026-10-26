@@ -10,14 +10,14 @@
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "subtitleFontSize": 14,
-    "subtitleColor": "#5b6a5f",
+    "subtitleColor": "#44524a",
     "offset": 10
   },
   "width": {
-    "step": 44
+    "step": 36
   },
   "height": {
-    "step": 44
+    "step": 36
   },
   "data": {
     "url": "data/forest_protection_waffle.csv",
@@ -92,23 +92,24 @@
         ]
       },
       "legend": {
-        "orient": "bottom",
+        "orient": "right",
         "title": null,
         "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "titleFontSize": 14,
         "titleColor": "#24392d",
         "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "labelFontSize": 14,
-        "labelColor": "#56655a",
-        "labelLimit": 280,
+        "labelFontSize": 15,
+        "labelColor": "#24392d",
+        "labelLimit": 260,
         "symbolType": "square",
-        "symbolSize": 120,
+        "symbolSize": 260,
         "symbolStrokeColor": null,
         "symbolStrokeWidth": 1,
-        "offset": 10,
+        "offset": 20,
         "direction": "vertical",
         "columns": 1,
-        "labelExpr": "datum.label == 'Included in reported managed total' ? 'Managed for protection (37%)' : 'Not in that total (63%)'"
+        "labelExpr": "datum.label == 'Included in reported managed total' ? ['Managed for protection'] : ['Not in that total']",
+        "rowPadding": 12
       }
     },
     "tooltip": [

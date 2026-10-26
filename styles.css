@@ -4,7 +4,7 @@
    1. Base
    2. Hero and key numbers
    3. Trunk navigation
-   4. Chapter headers (branches)
+   4. Chapter headers
    5. Chart rows (alternate sides per chapter)
    6. Insight text and colour keys
    7. Conclusion, sources, footer
@@ -22,7 +22,7 @@
   --paper: #f6f3ec;
   --card: #fcfbf7;
   --ink: #1f3326;
-  --muted: #5b6a5f;
+  --muted: #44524a;
   --rule: #ddd7c9;
 
   /* chart hues (same values as in the chart specs) */
@@ -48,11 +48,11 @@
   --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
 
   --wrap: 1180px;
-  --gutter: 56px;
+  --gutter: 48px;
 }
 
 /* Chapter colour: set once per chapter, used by chapter number,
-   headline rule, branch and trunk node */
+   headline rule and trunk node */
 .c-forest  { --ch: var(--c-forest); }
 .c-plant   { --ch: #56677a; }
 .c-fire    { --ch: var(--c-unplanned); }
@@ -81,6 +81,8 @@ body {
   padding: 0 32px;
 }
 
+p { text-wrap: pretty; }
+
 h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 600; }
 
 a { color: var(--ink); text-underline-offset: 2px; }
@@ -99,17 +101,17 @@ strong { font-weight: 700; }
 
 /* =========================================================
    2. HERO AND KEY NUMBERS
-   Left-aligned title with a branch, then a ruled row of
-   key numbers (no cards).
+   Centred title and intro, then a ruled row of key numbers
+   (no cards, no illustration).
    ========================================================= */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  align-items: end;
-  gap: 24px var(--gutter);
-  padding-top: 72px;
+  grid-template-columns: minmax(0, 1fr);
+  padding-top: 52px;
   padding-bottom: 8px;
 }
+.hero-text { text-align: center; }
+.hero-text .dek { margin-left: auto; margin-right: auto; text-align: left; }
 
 .hero h1 {
   font-size: clamp(2.8rem, 6vw, 4.8rem);
@@ -118,21 +120,34 @@ strong { font-weight: 700; }
 }
 
 .dek {
-  max-width: 30em;          /* about 10 words per line */
+  max-width: 29em;          /* close to the title's width, at most 10 words per line */
+  text-wrap: balance;       /* even line lengths */
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: 1.3rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  line-height: 1.4;
 }
 
-.hint { margin: 14px 0 0; color: var(--muted); font-size: 0.95rem; }
+/* Planned line breaks in the intro, used only where the lines fit */
+@media (max-width: 899px) {
+  .br-wide { display: none; }
+  .dek { max-width: 24em; }
+}
 
-.hero-tree { width: 100%; max-width: 240px; height: auto; justify-self: end; }
+/* Wide screens: intros break every 10 words (see the <br>s in the HTML),
+   so each block is exactly as wide as its longest line. */
+@media (min-width: 900px) {
+  .hero-text .dek, .chapter-head .chapter-intro { width: max-content; max-width: none; }
+}
+
+.hint { max-width: none; margin: 14px 0 0; text-align: left; color: var(--muted); font-size: 0.95rem; }
+
 
 .stats {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 36px 0 0;
+  margin: 28px 0 0;
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--rule);
 }
@@ -228,23 +243,16 @@ strong { font-weight: 700; }
 
 /* =========================================================
    4. CHAPTER HEADERS
-   Hand-drawn branch, chapter number in the chapter colour,
-   question heading, thin rule. The branches tell the story:
-   healthy, gum leaves, planting, burnt, resprouting.
+   Chapter number in the chapter colour, question heading,
+   a short lead-in, then a thin rule.
    ========================================================= */
-.chapter { padding-top: 88px; }
+.chapter { padding-top: 56px; }
 
 .chapter-head {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  align-items: end;
-  gap: 28px;
-  margin-bottom: 48px;
-  padding-bottom: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--rule);
 }
-
-.branch { display: block; width: 100%; height: auto; }
 
 .chapter-num {
   margin: 0 0 6px;
@@ -259,32 +267,13 @@ strong { font-weight: 700; }
 
 /* Short lead-in under each chapter question: links it to the last chapter */
 .chapter-intro {
-  max-width: 38em;
+  max-width: 21em;
   margin: 14px 0 0;
   font-size: 1.12rem;
   line-height: 1.55;
   color: var(--muted);
 }
 
-/* Branch drawing styles: wood and leaves use page colours only */
-.b-wood, .b-char, .b-shoot { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.b-wood  { stroke: #4b3d2f; stroke-width: 3; }
-.b-wood.thin { stroke-width: 2.2; }
-.b-char  { stroke: #2c2622; stroke-width: 5; }
-.b-char.thin { stroke-width: 3.5; }
-.b-shoot { stroke: var(--c-forest); stroke-width: 2; }
-.b-bark  { fill: #4b3d2f; }
-.b-leaf  { fill: var(--c-forest); }
-.b-leaf2 { fill: #62917a; }
-.b-plant { fill: #56677a; }
-.b-nut   { fill: #4b3d2f; }
-.b-nest  { fill: #9b8566; }
-.b-nest-line { fill: none; stroke: #6f5d45; stroke-width: 1.2; stroke-linecap: round; }
-.b-egg   { fill: var(--paper); stroke: #6f5d45; stroke-width: 1.2; }
-.b-nut-rim { stroke: #a8957c; stroke-width: 1.5; stroke-linecap: round; }
-.b-ember { fill: var(--c-planned); }
-.b-ember2 { fill: var(--c-unplanned); }
-.b-ember-line { stroke: var(--c-unplanned); stroke-width: 2.5; stroke-linecap: round; }
 
 
 /* =========================================================
@@ -301,7 +290,7 @@ strong { font-weight: 700; }
 }
 
 .row + .row,
-.row-wide + .row { margin-top: 80px; }
+.row-wide + .row { margin-top: 52px; }
 
 .flip .row { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
 .flip .row .insight { order: -1; }
@@ -326,7 +315,8 @@ strong { font-weight: 700; }
   margin-bottom: 28px;
 }
 
-.insight-wide > div { max-width: 25em; }
+.insight-wide > div { max-width: 22em; }
+.insight-wide > div:last-child { align-self: end; }   /* second paragraph sits beside the first */
 
 
 /* =========================================================
@@ -335,7 +325,7 @@ strong { font-weight: 700; }
    10 words per line.
    ========================================================= */
 .insight {
-  max-width: 20em;
+  max-width: 22em;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -363,11 +353,11 @@ strong { font-weight: 700; }
 .insight p { margin: 0 0 12px; }
 .insight p:last-child { margin-bottom: 0; }
 
-.insight-note { color: var(--muted); font-size: 0.92rem; }
+.insight-note { max-width: 21em; color: var(--muted); font-size: 0.92rem; }
 
 /* Colour key: a swatch in the chart's hue, text stays dark.
    Only used where the word names a colour in that chart. */
-.key { font-weight: 700; white-space: nowrap; }
+.key { font-weight: 700; }  /* may wrap: some keys are long */
 .key::before {
   content: "";
   display: inline-block;
@@ -389,6 +379,7 @@ strong { font-weight: 700; }
 .key-regrowth::before    { background: var(--c-regrowth); border-radius: 2px; }
 .key-clear::before       { background: var(--c-clear); border-radius: 2px; }
 .key-reclear::before     { background: var(--c-reclear); border-radius: 2px; }
+.key-net::before         { background: #dcc592}
 .key-regen::before       { background: var(--c-regen); border-radius: 2px; }
 .key-woodland::before    { background: #c8dcc0; border-radius: 2px; }
 .key-closed::before      { background: #2f5f45; border-radius: 2px; }
@@ -396,7 +387,7 @@ strong { font-weight: 700; }
 .key-plantings::before   { background: var(--c-plantings); border-radius: 2px; }
 
 .source {
-  margin: 44px 0 0;
+  margin: 32px 0 0;
   padding-bottom: 8px;
   color: var(--muted);
   font-size: 0.88rem;
@@ -414,14 +405,13 @@ strong { font-weight: 700; }
 }
 
 .conclusion {
-  margin-top: 96px;
-  padding-top: 32px;
+  margin-top: 64px;
+  padding-top: 28px;
   border-top: 1px solid var(--ink);
 }
 
-.conclusion .tree { width: 130px; margin-bottom: 18px; }
 .conclusion h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.08; }
-.conclusion-text { max-width: 30em; font-size: 1.22rem; line-height: 1.6; align-self: end; }
+.conclusion-text { max-width: 25em; font-size: 1.22rem; line-height: 1.6; align-self: end; }
 .conclusion-text p { margin: 0 0 16px; }
 .conclusion-text .takeaway {
   margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--rule);
@@ -431,13 +421,12 @@ strong { font-weight: 700; }
 .hl { color: var(--ch); font-weight: 700; }
 
 .sources {
-  margin-top: 72px;
-  padding-top: 28px;
+  margin-top: 48px;
+  padding-top: 24px;
   border-top: 1px solid var(--rule);
 }
 
 .sources h2 { font-size: 1.5rem; margin-bottom: 10px; }
-.sources .roots { width: 130px; margin-bottom: 16px; }
 
 .source-grid {
   display: grid;
@@ -446,7 +435,8 @@ strong { font-weight: 700; }
 }
 
 .source-grid h3 { font: 700 1.02rem var(--sans); margin-bottom: 4px; }
-.source-grid p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+.source-grid p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; overflow-wrap: anywhere; }
+.source-grid > * { min-width: 0; }
 
 .site-footer {
   margin-top: 48px;
@@ -474,12 +464,10 @@ strong { font-weight: 700; }
   .sources { grid-template-columns: minmax(0, 1fr); }
   .flip .row .insight { order: 0; justify-self: start; }
   .row { gap: 20px; }
-  .insight { max-width: 34em; }
+  .insight { max-width: 22em; }
   .hero { grid-template-columns: minmax(0, 1fr); }
-  .hero-tree { width: 140px; grid-row: 1; justify-self: start; }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat:nth-child(3) { border-left: 0; padding-left: 0; }
-  .chapter-head { grid-template-columns: 96px minmax(0, 1fr); gap: 16px; }
   .conclusion, .sources { gap: 20px; }
 }
 
@@ -559,6 +547,16 @@ strong { font-weight: 700; }
 .tt-ledger { margin-top: 8px; width: 100%; }
 .tt-ledger td { text-align: right; font-variant-numeric: tabular-nums; }
 .tt-ledger .tt-total th, .tt-ledger .tt-total td { border-top: 1px solid var(--rule); padding-top: 4px; color: var(--ink); font-weight: 700; }
+
+/* Controls built into the Vega charts (heatmap menu, cartogram slider)
+   match the bin map's controls below */
+.vega-bindings { margin-top: 10px; font: 15px var(--sans); color: var(--ink); }
+.vega-bind label { display: inline-flex; align-items: center; gap: 8px; }
+.vega-bind-name { font-weight: 600; }
+.vega-bind select {
+  font: inherit; color: var(--ink);
+  padding: 5px 10px; border: 1px solid var(--rule); border-radius: 6px; background: #fffdf8;
+}
 
 /* Bin map controls: season / month-by-month menu, then a timeline */
 .map-controls {

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261026h">
+  <link rel="stylesheet" href="styles.css?v=20261027h">
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5.33.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.23.0"></script>
@@ -24,30 +24,13 @@
   <header class="hero wrap">
     <div class="hero-text">
       <p class="eyebrow">FIT3179 Data Visualisation · Australian trees and forests</p>
-      <h1>Australia's<br>native forests</h1>
+      <h1>Australia's native forests</h1>
       <p class="dek">
-        Native forest covers about one-sixth of Australia.
-        Follow where it grows, what it is made of,
-        and how planting, fire and protection are shaping it.
-      </p>
-      <p class="hint">Tip: click a legend entry to highlight it.
-        Click empty space in the chart to reset.</p>
+          Native forest covers about one-sixth of Australia's land. Discover where<br class="br-wide">
+          it grows, which trees dominate it, and how clearing, plantations,<br class="br-wide">
+          fire, carbon credits and protection are shaping its future.
+        </p>
     </div>
-    <svg class="hero-tree" viewBox="0 0 200 220" role="img" aria-label="A eucalypt tree">
-      <path class="b-wood" d="M18 212 L182 212"/>
-      <path class="b-bark" d="M90 212 C93 182 95 152 96 128 L104 128 C105 152 107 182 112 212 Z"/>
-      <path class="b-wood" d="M98 134 C88 112 72 98 56 86"/>
-      <path class="b-wood" d="M100 130 C104 110 107 92 105 64"/>
-      <path class="b-wood" d="M102 136 C116 118 132 106 148 94"/>
-      <path class="b-wood thin" d="M78 104 C76 96 74 90 70 80"/>
-      <path class="b-wood thin" d="M126 112 C130 102 132 92 132 80"/>
-      <ellipse class="b-leaf2" cx="52" cy="78" rx="30" ry="17"/>
-      <ellipse class="b-leaf" cx="76" cy="58" rx="24" ry="16"/>
-      <ellipse class="b-leaf" cx="106" cy="44" rx="34" ry="22"/>
-      <ellipse class="b-leaf2" cx="136" cy="62" rx="24" ry="15"/>
-      <ellipse class="b-leaf2" cx="152" cy="86" rx="28" ry="16"/>
-      <ellipse class="b-leaf" cx="92" cy="74" rx="16" ry="10"/>
-    </svg>
 
     <dl class="stats" aria-label="Key forest statistics">
       <div class="stat c-forest"><dt>131.5 <span>million hectares</span></dt><dd>of native forest, about one-sixth of Australia</dd></div>
@@ -55,6 +38,8 @@
       <div class="stat c-fire"><dt>25<span>%</span></dt><dd>of New South Wales' forest burnt in 2019–20</dd></div>
       <div class="stat c-protect"><dt>37<span>%</span></dt><dd>is managed to protect biodiversity</dd></div>
     </dl>
+    <p class="hint">Tip: click a legend entry to highlight it.<br>
+        Click empty space in the chart to reset.</p>
   </header>
 
   <nav class="trunk" aria-label="Chapters">
@@ -74,18 +59,13 @@
          ===================================================== -->
     <section class="chapter c-forest" id="where" aria-labelledby="where-title">
       <header class="chapter-head">
-        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A leafy eucalypt branch">
-          <path class="b-wood" d="M10 78 C40 68 72 56 124 34"/>
-          <path class="b-wood thin" d="M58 63 C62 46 68 36 76 28"/>
-          <path class="b-leaf" d="M76 28 C84 15 98 12 104 7 C100 22 89 30 76 28Z"/>
-          <path class="b-leaf" d="M124 34 C136 22 152 19 158 15 C151 31 136 38 124 34Z"/>
-          <path class="b-leaf2" d="M95 49 C103 59 115 67 126 69 C120 57 108 49 95 49Z"/>
-          <path class="b-leaf2" d="M38 71 C40 83 48 92 57 96 C59 84 51 74 38 71Z"/>
-        </svg>
         <div>
           <p class="chapter-num">01</p>
           <h2 id="where-title">Where do Australia's forests grow?</h2>
-          <p class="chapter-intro">In Australia, the word &ldquo;forest&rdquo; covers more than tall, thick bush. Any area where trees grow over 2&nbsp;metres tall and shade at least a fifth of the ground counts, so open woodland is included too. Forest is measured in hectares. One hectare is a square 100&nbsp;metres on each side, about the size of one and a half football fields. This chapter looks at where Australia's forest is found.</p>
+          <p class="chapter-intro">
+          Here, &ldquo;forest&rdquo; means land where trees over two metres shade<br class="br-wide">
+          at least a fifth of the ground.
+        </p>
         </div>
       </header>
 
@@ -98,7 +78,7 @@
           <h3>Tasmania is the most densely forested state.</h3>
           <p>This map shades each state by how much of its land is covered by native forest, so darker states are more heavily forested. Tasmania stands out, with native forest covering <strong>half</strong> of the state. The small Australian Capital Territory is even higher, at <strong>55%</strong>.</p>
           <p>The inland states are much lighter. Forest covers less than <strong>10%</strong> of South Australia and Western Australia, where much of the land is too dry for forest to grow.</p>
-          <p class="insight-note">Shading shows forest as a share of land area, so large and small states can be compared fairly.</p>
+          <p class="insight-note">Shading shows forest as a share of land area, so large and small states can be compared fairly. One hectare is a square 100&nbsp;metres on each side.</p>
         </div>
       </div>
 
@@ -125,22 +105,13 @@
          ===================================================== -->
     <section class="chapter c-forest flip" id="what" aria-labelledby="what-title">
       <header class="chapter-head">
-        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A gum leaf branch with gumnuts">
-          <path class="b-wood" d="M14 86 C44 74 82 54 118 26"/>
-          <path class="b-leaf" d="M60 66 C54 46 60 26 76 12 C80 30 74 52 60 66Z"/>
-          <path class="b-leaf2" d="M92 46 C104 42 120 46 134 58 C118 64 102 58 92 46Z"/>
-          <path class="b-wood thin" d="M118 26 L128 20 M118 26 L134 30 M118 26 L120 38"/>
-          <path class="b-nut" d="M126 16 L138 16 L136 24 Q132 29 128 24 Z"/>
-          <path class="b-nut-rim" d="M128 16 L136 16"/>
-          <path class="b-nut" d="M134 28 L146 28 L144 36 Q140 41 136 36 Z"/>
-          <path class="b-nut-rim" d="M136 28 L144 28"/>
-          <path class="b-nut" d="M115 40 L127 40 L125 48 Q121 53 117 48 Z"/>
-          <path class="b-nut-rim" d="M117 40 L125 40"/>
-        </svg>
         <div>
           <p class="chapter-num">02</p>
           <h2 id="what-title">What are the forests made of?</h2>
-          <p class="chapter-intro">After seeing where the forest grows, the next question is what it is made of. This chapter looks at the most common types of forest, and at a few trees that only grow in certain parts of the country.</p>
+          <p class="chapter-intro">
+          Next, what is the forest made of, and why do<br class="br-wide">
+          some trees grow in only one region?
+        </p>
         </div>
       </header>
 
@@ -181,17 +152,13 @@
          ===================================================== -->
     <section class="chapter c-plant" id="change" aria-labelledby="change-title">
       <header class="chapter-head">
-        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A young sapling planted in soil">
-          <path class="b-wood" d="M18 90 L150 90"/>
-          <path class="b-wood thin" d="M58 90 Q84 76 110 90"/>
-          <path class="b-wood" d="M84 82 L84 30"/>
-          <path class="b-plant" d="M84 50 C70 42 62 28 60 18 C75 22 83 34 84 50Z"/>
-          <path class="b-plant" d="M84 40 C96 29 109 23 118 23 C114 36 99 42 84 40Z"/>
-        </svg>
         <div>
           <p class="chapter-num">03</p>
           <h2 id="change-title">How much forest is lost and regained?</h2>
-          <p class="chapter-intro">Australia's forest area changes every year. Some forest is cleared, some grows back on land that was cleared in the past, and some land is planted with trees to grow timber. This chapter looks at how these changes add up.</p>
+          <p class="chapter-intro">
+          Every year some forest is cleared, some grows back on<br class="br-wide">
+          cleared land, and some is planted for timber.
+        </p>
         </div>
       </header>
 
@@ -204,7 +171,7 @@
           <h3>Uncleared forest is rarely cleared now. Regrowth is cleared instead.</h3>
           <p><span class="key key-clear">Clearing of previously uncleared forest</span> has dropped by <strong>96%</strong>, from 605,000 hectares in 1989–90 to just <strong>22,000</strong> hectares in 2020–21. This means forest that had not been cleared before is now rarely cleared.</p>
           <p><span class="key key-regrowth">Regrowth</span> tells a different story. Regrowth is forest that has grown back on land that was cleared in the past, and much of it is cleared again. In 2020–21, <span class="key key-reclear">re-clearing</span> removed <strong>155,000 hectares</strong>, about seven times more than first-time clearing.</p>
-          <p>The black line shows the overall change each year. Forest area grew for only seven years in a row, from 2008–09 to 2014–15.</p>
+          <p>The <span class="key key-net">cream line</span> shows the overall change each year. Forest area grew for only seven years in a row, from 2008–09 to 2014–15.</p>
           <p class="insight-note">Click a legend entry to highlight one type.</p>
         </div>
       </div>
@@ -247,19 +214,13 @@
          ===================================================== -->
     <section class="chapter c-fire flip" id="fire" aria-labelledby="fire-title">
       <header class="chapter-head">
-        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A burnt branch with glowing embers">
-          <path class="b-char" d="M10 78 C40 68 72 56 124 34"/>
-          <path class="b-char thin" d="M58 63 C62 46 68 36 76 28"/>
-          <path class="b-ember-line" d="M100 46 L105 41 M74 58 L78 53 M30 72 L34 68"/>
-          <circle class="b-ember" cx="136" cy="20" r="3.5"/>
-          <circle class="b-ember2" cx="148" cy="8" r="2.5"/>
-          <circle class="b-ember" cx="88" cy="14" r="3"/>
-          <circle class="b-ember2" cx="114" cy="12" r="2"/>
-        </svg>
         <div>
           <p class="chapter-num">04</p>
           <h2 id="fire-title">How does fire shape the forests?</h2>
-          <p class="chapter-intro">Clearing is not the only thing that changes Australia's forests. Fire is a natural part of many forests, and some fires are lit on purpose to make bushfires less dangerous. This chapter compares the two, then looks closely at the 2019–20 bushfire season, known as the Black Summer.</p>
+          <p class="chapter-intro">
+          Fire is natural in many forests, and some fires are<br class="br-wide">
+          lit on purpose to reduce bushfire risk.
+        </p>
         </div>
       </header>
 
@@ -333,18 +294,13 @@
          ===================================================== -->
     <section class="chapter c-carbon" id="regrowth" aria-labelledby="regrowth-title">
       <header class="chapter-head">
-        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A charred branch with fresh green shoots">
-          <path class="b-char" d="M10 78 C40 68 72 56 124 34"/>
-          <path class="b-shoot" d="M42 69 C40 55 44 46 50 41"/>
-          <path class="b-leaf" d="M50 41 C52 30 61 25 68 23 C66 34 59 40 50 41Z"/>
-          <path class="b-leaf2" d="M45 52 C34 48 30 39 30 32 C39 34 45 43 45 52Z"/>
-          <path class="b-shoot" d="M96 47 C97 41 99 37 102 34"/>
-          <path class="b-leaf2" d="M102 34 C103 27 107 23 111 21 C111 28 107 33 102 34Z"/>
-        </svg>
         <div>
           <p class="chapter-num">05</p>
           <h2 id="regrowth-title">Who is paid to bring forests back?</h2>
-          <p class="chapter-intro">If forest can be lost through clearing and fire, can it also be brought back? Australia has a carbon credit scheme that pays landholders to let forest grow back, or to keep forest they could have cleared. Each credit stands for one tonne of carbon dioxide that is taken out of the air or kept from being released. This chapter looks at where these credits go, and what kinds of projects earn them.</p>
+          <p class="chapter-intro">
+          A carbon credit scheme pays landholders to regrow or keep<br class="br-wide">
+          forest. Each credit is one tonne of carbon dioxide.
+        </p>
         </div>
       </header>
 
@@ -385,30 +341,24 @@
          ===================================================== -->
     <section class="chapter c-protect flip" id="protection" aria-labelledby="protection-title">
       <header class="chapter-head">
-        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A leafy branch holding a bird's nest">
-          <path class="b-wood" d="M10 80 C44 70 82 58 132 40"/>
-          <path class="b-wood thin" d="M104 50 C110 38 118 30 128 24"/>
-          <path class="b-leaf" d="M128 24 C136 14 148 12 154 9 C150 22 140 28 128 24Z"/>
-          <path class="b-leaf2" d="M132 40 C142 34 152 34 158 36 C152 46 140 46 132 40Z"/>
-          <path class="b-leaf2" d="M30 74 C30 86 36 94 44 98 C47 86 40 78 30 74Z"/>
-          <path class="b-nest" d="M50 62 C52 76 82 76 86 60 Z"/>
-          <path class="b-nest-line" d="M53 66 C62 70 76 70 84 64 M56 71 C64 74 74 74 80 70"/>
-          <ellipse class="b-egg" cx="62" cy="59" rx="5" ry="6"/>
-          <ellipse class="b-egg" cx="73" cy="58" rx="5" ry="6"/>
-        </svg>
         <div>
           <p class="chapter-num">06</p>
           <h2 id="protection-title">Who looks after the forests?</h2>
-          <p class="chapter-intro">Paying landholders is one way to look after forest. Another is to set land aside so that it is protected. This last chapter looks at how much forest is protected, and who looks after the rest.</p>
+          <p class="chapter-intro">
+          Beyond payments, some forest is set aside in reserves. How<br class="br-wide">
+          much is protected, and who holds the rest?
+        </p>
         </div>
       </header>
 
       <!-- Full-width row: headline + text above, chart below -->
       <div class="row-wide">
         <div class="insight insight-wide">
-          <h3>Most forest sits outside the reserve system.</h3>
           <div>
+            <h3>Most forest sits outside the reserve system.</h3>
             <p>This diagram follows Australia's forest from who holds the land, on the left, to whether it is part of the <span class="key key-nrs">National Reserve System</span>, on the right. The National Reserve System is Australia's network of national parks and other protected areas.</p>
+          </div>
+          <div>
             <p>Most forest, <strong>68%</strong>, is on leasehold or private land. Leasehold land is public land that is rented out, often for grazing. Only <strong>26%</strong> of forest is in the reserve system, which includes almost all conservation reserves and some private land.</p>
           </div>
         </div>
@@ -454,15 +404,6 @@
          ===================================================== -->
     <section class="conclusion" aria-labelledby="conclusion-title">
       <div>
-        <svg class="branch tree" viewBox="0 0 160 120" role="img" aria-label="A young tree">
-          <path class="b-wood" d="M20 112 L140 112"/>
-          <path class="b-wood" d="M80 112 C80 90 78 70 80 44"/>
-          <path class="b-wood thin" d="M79 78 C68 70 60 62 54 52 M80 64 C92 56 100 48 106 38"/>
-          <path class="b-leaf" d="M54 52 C42 46 36 34 36 24 C48 28 56 40 54 52Z"/>
-          <path class="b-leaf2" d="M106 38 C118 30 130 30 138 32 C130 44 116 46 106 38Z"/>
-          <path class="b-leaf" d="M80 44 C72 30 74 16 82 6 C90 18 88 32 80 44Z"/>
-          <path class="b-leaf2" d="M80 44 C92 38 104 36 112 38 C104 48 90 50 80 44Z"/>
-        </svg>
         <p class="eyebrow">Conclusion</p>
         <h2 id="conclusion-title">Cleared, burnt and paid to regrow.</h2>
       </div>
@@ -487,17 +428,6 @@
          ===================================================== -->
     <section class="sources" aria-labelledby="sources-title">
       <div>
-        <svg class="branch roots" viewBox="0 0 160 100" role="img" aria-label="Tree roots">
-          <path class="b-bark" d="M74 0 L86 0 L88 18 L72 18 Z"/>
-          <path class="b-wood" d="M14 18 L146 18"/>
-          <path class="b-wood" d="M80 18 C80 40 78 62 82 92"/>
-          <path class="b-wood" d="M78 22 C64 36 48 46 26 54"/>
-          <path class="b-wood" d="M82 22 C96 36 112 44 136 50"/>
-          <path class="b-wood thin" d="M79 40 C66 56 54 70 46 88"/>
-          <path class="b-wood thin" d="M81 44 C94 60 108 72 120 86"/>
-          <path class="b-wood thin" d="M48 46 C42 58 40 66 40 74"/>
-          <path class="b-wood thin" d="M112 44 C120 56 126 62 134 68"/>
-        </svg>
         <h2 id="sources-title">Data sources</h2>
         <p class="insight-note">The roots of this story: every chart
           grows from these public datasets. Cleaned files are in
@@ -567,6 +497,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20261026h"></script>
+  <script src="script.js?v=20261027h"></script>
 </body>
 </html>
