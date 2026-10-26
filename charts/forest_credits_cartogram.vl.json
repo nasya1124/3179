@@ -48,6 +48,10 @@
       "transform": [
         {
           "filter": "datum.properties.kind == 'outline'"
+        },
+        {
+          "calculate": "(year - 1) + '–' + substring(toString(year), 2, 4)",
+          "as": "FY"
         }
       ],
       "mark": {
@@ -58,6 +62,18 @@
         "strokeDash": [
           3,
           2
+        ]
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.State",
+            "title": "State or territory"
+          },
+          {
+            "field": "FY",
+            "title": "Up to the end of"
+          }
         ]
       }
     },
@@ -214,7 +230,17 @@
         },
         "text": {
           "field": "Label"
-        }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "title": "State or territory"
+          },
+          {
+            "field": "Financial_year",
+            "title": "Up to the end of"
+          }
+        ]
       }
     },
     {
@@ -273,7 +299,17 @@
         },
         "text": {
           "field": "Label"
-        }
+        },
+        "tooltip": [
+          {
+            "field": "State",
+            "title": "State or territory"
+          },
+          {
+            "field": "Financial_year",
+            "title": "Up to the end of"
+          }
+        ]
       }
     }
   ],

@@ -276,7 +276,7 @@
             "value": 0.7
           },
           "tooltip": {
-            "signal": "datum.Tenure + ' → ' + datum.Status + ': ' + format(datum.Forest_area_kha, ',.0f') + ' thousand hectares'"
+            "signal": "{'Tenure': datum.Tenure, 'Status': datum.Status, 'Area_kha': datum.Forest_area_kha}"
           }
         }
       }
@@ -314,7 +314,7 @@
             "value": 1
           },
           "tooltip": {
-            "signal": "datum.Tenure + ': ' + format(datum.area, ',.0f') + ' thousand hectares'"
+            "signal": "{'Tenure': datum.Tenure, 'Area_kha': datum.area}"
           }
         }
       }
@@ -352,7 +352,7 @@
             "value": 1
           },
           "tooltip": {
-            "signal": "datum.Status + ': ' + format(datum.area, ',.0f') + ' thousand hectares'"
+            "signal": "{'Status': datum.Status, 'Area_kha': datum.area}"
           }
         }
       }

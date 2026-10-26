@@ -191,9 +191,9 @@
       "mark": {
         "type": "text",
         "text": "77%",
-        "font": "Fraunces, Georgia, serif",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "fontSize": 34,
-        "fontWeight": 600,
+        "fontWeight": 700,
         "color": "#3f6f55",
         "dy": -10,
         "x": {

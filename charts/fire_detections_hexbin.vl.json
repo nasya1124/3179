@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Hexagonal bin map of NASA FIRMS MODIS (Collection 6.1) fire detections, 1 September 2019 to 29 February 2020: vegetation fires with confidence of 30 or more, counted into equal-area hexagons (pre-projected, conic equal-area; drawn with an identity projection).",
+  "description": "Hexagonal bin map of NASA FIRMS MODIS (Collection 6.1) fire detections, 1 September 2019 to 29 February 2020: vegetation fires with confidence of 30 or more, counted into equal-area hexagons (pre-projected, conic equal-area; drawn with an identity projection). The month is set by the controls under the chart (script.js).",
   "title": {
     "text": "Where fires burned in the Black Summer",
     "subtitle": "Satellite fire detections per hexagon · September 2019 to February 2020",
@@ -23,29 +23,7 @@
   "params": [
     {
       "name": "month",
-      "value": "All",
-      "bind": {
-        "input": "select",
-        "name": "Show: ",
-        "options": [
-          "All",
-          "2019-09",
-          "2019-10",
-          "2019-11",
-          "2019-12",
-          "2020-01",
-          "2020-02"
-        ],
-        "labels": [
-          "Whole season",
-          "September 2019",
-          "October 2019",
-          "November 2019",
-          "December 2019",
-          "January 2020",
-          "February 2020"
-        ]
-      }
+      "value": "All"
     }
   ],
   "layer": [
@@ -68,6 +46,34 @@
         {
           "calculate": "datum.n >= 1000 ? '1,000 or more' : datum.n >= 200 ? '200–999' : datum.n >= 50 ? '50–199' : datum.n >= 10 ? '10–49' : datum.n >= 1 ? '1–9' : 'None'",
           "as": "Class"
+        },
+        {
+          "calculate": "datum.properties['2019-09']",
+          "as": "Sep"
+        },
+        {
+          "calculate": "datum.properties['2019-10']",
+          "as": "Oct"
+        },
+        {
+          "calculate": "datum.properties['2019-11']",
+          "as": "Nov"
+        },
+        {
+          "calculate": "datum.properties['2019-12']",
+          "as": "Dec"
+        },
+        {
+          "calculate": "datum.properties['2020-01']",
+          "as": "Jan"
+        },
+        {
+          "calculate": "datum.properties['2020-02']",
+          "as": "Feb"
+        },
+        {
+          "calculate": "month == 'All' ? 'Whole season' : month",
+          "as": "Shown"
         }
       ],
       "mark": {
@@ -128,6 +134,40 @@
             "type": "quantitative",
             "title": "Whole season",
             "format": ","
+          },
+          {
+            "field": "Shown",
+            "title": "Showing"
+          },
+          {
+            "field": "Sep",
+            "type": "quantitative",
+            "title": "Sep"
+          },
+          {
+            "field": "Oct",
+            "type": "quantitative",
+            "title": "Oct"
+          },
+          {
+            "field": "Nov",
+            "type": "quantitative",
+            "title": "Nov"
+          },
+          {
+            "field": "Dec",
+            "type": "quantitative",
+            "title": "Dec"
+          },
+          {
+            "field": "Jan",
+            "type": "quantitative",
+            "title": "Jan"
+          },
+          {
+            "field": "Feb",
+            "type": "quantitative",
+            "title": "Feb"
           }
         ]
       }
@@ -150,6 +190,31 @@
         "filled": false,
         "stroke": "#8f8a7a",
         "strokeWidth": 0.7
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "x": 8,
+        "y": 6,
+        "fontSize": 18,
+        "fontWeight": 700,
+        "color": "#1f3326",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
+      },
+      "encoding": {
+        "text": {
+          "value": {
+            "expr": "{'All': 'Whole season', '2019-09': 'September 2019', '2019-10': 'October 2019', '2019-11': 'November 2019', '2019-12': 'December 2019', '2020-01': 'January 2020', '2020-02': 'February 2020'}[month]"
+          }
+        }
       }
     }
   ],
