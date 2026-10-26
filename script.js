@@ -9,7 +9,7 @@ var charts = [
   { id: "#plantation-over-time",       spec: "charts/plantation_area_over_time.vl.json" },
   { id: "#plantation_establishment",   spec: "charts/plantation_establishment_by_jurisdiction.vl.json" },
   { id: "#forest-credits-cartogram",   spec: "charts/forest_credits_cartogram.vl.json" },
-  { id: "#forest-credits-streamgraph", spec: "charts/forest_credits_streamgraph.vl.json" },
+  { id: "#forest-credits-slope",       spec: "charts/forest_credits_slope.vl.json" },
   { id: "#forest-fire-area",           spec: "charts/forest_fire_area_over_time.vl.json" },
   { id: "#forest-fire-heatmap",        spec: "charts/forest_fire_by_state_heatmap.vl.json" },
   { id: "#fire-detections-hexbin",     spec: "charts/fire_detections_hexbin.vl.json" },

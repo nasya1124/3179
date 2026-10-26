@@ -1,5 +1,5 @@
 """Summarise the Clean Energy Regulator ACCU Scheme project register for the
-chapter 05 charts (cartogram and stream graph).
+chapter 05 charts (cartogram and slope graph).
 
 Run from this folder. Inputs (download first, not stored in this repo):
   register.csv   ACCU Scheme project register, CSV (as at 30 September 2026)
@@ -66,7 +66,7 @@ for state in STATES:
         })
 pd.DataFrame(rows).to_csv("credits_cumulative.csv", index=False)
 
-# 2. Credits issued each financial year, by kind of project, for the stream
+# 2. Credits issued each financial year, by kind of project, for the slope graph
 #    graph. All active forest projects (multi-state ones included, as the
 #    chart is national); plantings and plantations are combined as both are small.
 by_type = active.copy()

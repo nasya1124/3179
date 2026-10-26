@@ -1,0 +1,299 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope graph of ACCU Scheme carbon credits issued to active forest projects in 2014-15 and 2025-26, by kind of project (Clean Energy Regulator, ACCU Scheme project register, as at 30 September 2026).",
+  "title": {
+    "text": "Forest carbon credits, by kind",
+    "subtitle": [
+      "Million credits issued in the year.",
+      "All kinds: 4.6M in 2014–15, 12.4M in 2025–26"
+    ],
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "subtitleLineHeight": 18,
+    "offset": 30
+  },
+  "background": null,
+  "width": "container",
+  "height": 320,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "padding": {
+    "left": 10,
+    "right": 10,
+    "top": 6,
+    "bottom": 6
+  },
+  "view": {
+    "stroke": null
+  },
+  "config": {
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
+  },
+  "data": {
+    "url": "data/forest_credits_by_type_year.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "number",
+        "Credits_m": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.Year === 2015 || datum.Year === 2026"
+    },
+    {
+      "calculate": "datum.Type === 'Native forest regeneration' ? 'Regeneration' : datum.Type === 'Plantings and plantations' ? 'Plantings' : 'Avoided clearing'",
+      "as": "Short"
+    },
+    {
+      "calculate": "datum.Year === 2015 && datum.Type === 'Native forest regeneration' ? datum.Credits_m + 0.28 : datum.Year === 2015 && datum.Type === 'Plantings and plantations' ? datum.Credits_m - 0.28 : datum.Credits_m",
+      "as": "Label_y"
+    },
+    {
+      "calculate": "format(datum.Credits_m, '.1f') + 'M'",
+      "as": "Value"
+    },
+    {
+      "calculate": "datum.Short + '  ' + format(datum.Credits_m, '.1f') + 'M'",
+      "as": "End_label"
+    },
+    {
+      "calculate": "datum.Year === 2015 ? 0 : 1",
+      "as": "X"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "X",
+      "type": "quantitative",
+      "title": null,
+      "axis": null,
+      "scale": {
+        "domainMin": -0.3,
+        "domainMax": {
+          "expr": "XMAX"
+        },
+        "nice": false,
+        "zero": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "X": 0,
+            "Lab": "2014–15"
+          },
+          {
+            "X": 1,
+            "Lab": "2025–26"
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#d8d4c8",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "y": {
+              "value": 0
+            },
+            "y2": {
+              "value": 320
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "y": -12,
+            "fontSize": 15,
+            "fontWeight": 700,
+            "color": "#1f3326"
+          },
+          "encoding": {
+            "text": {
+              "field": "Lab"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "params": [
+        {
+          "name": "credit_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Type"
+            ],
+            "on": "click"
+          }
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 4,
+        "point": {
+          "filled": true,
+          "size": 110
+        },
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "y": {
+          "field": "Credits_m",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              0,
+              10
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "color": {
+          "field": "Type",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Native forest regeneration",
+              "Avoided clearing",
+              "Plantings and plantations"
+            ],
+            "range": [
+              "#5f5a22",
+              "#a39b48",
+              "#cbc386"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "credit_pick",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.18
+        },
+        "tooltip": [
+          {
+            "field": "Type",
+            "title": "Kind of project"
+          },
+          {
+            "field": "Financial_year",
+            "title": "Year"
+          },
+          {
+            "field": "Credits_m",
+            "title": "Million credits",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year === 2015"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -12,
+        "fontSize": 14,
+        "color": "#1f3326"
+      },
+      "encoding": {
+        "y": {
+          "field": "Label_y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              10
+            ],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "Value"
+        },
+        "opacity": {
+          "condition": {
+            "param": "credit_pick",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.3
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year === 2026"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontSize": 14,
+        "color": "#1f3326",
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "y": {
+          "field": "Label_y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              10
+            ],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "End_label"
+        },
+        "opacity": {
+          "condition": {
+            "param": "credit_pick",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.3
+        }
+      }
+    }
+  ],
+  "params": [
+    {
+      "name": "XMAX",
+      "expr": "width < 520 ? 2.15 : 1.75"
+    }
+  ]
+}
