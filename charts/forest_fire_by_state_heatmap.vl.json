@@ -106,11 +106,16 @@
         "2020-21"
       ],
       "axis": {
-        "title": null,
         "labelAngle": 0,
         "grid": false,
-        "labelExpr": "replace(datum.label, '-', '–')"
-      }
+        "labelExpr": "replace(datum.label, '-', '–')",
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontSize": 13,
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
+      },
+      "title": "Financial year (July to June)"
     },
     "y": {
       "field": "State",
@@ -126,11 +131,15 @@
         "South Australia"
       ],
       "axis": {
-        "title": null,
         "grid": false,
-        "labelLimit": 220
+        "labelLimit": 220,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontSize": 13,
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
       },
-      "title": null
+      "title": "State or territory"
     }
   },
   "layer": [

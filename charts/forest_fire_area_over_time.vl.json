@@ -69,14 +69,19 @@
         "2020-21"
       ],
       "axis": {
-        "title": null,
         "labelAngle": 0,
         "labelLimit": 0,
         "labelOverlap": false,
         "grid": false,
         "labelExpr": "replace(datum.label, '-', '–')",
-        "labelFontSize": 14
-      }
+        "labelFontSize": 14,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontSize": 13,
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
+      },
+      "title": "Financial year (July to June)"
     },
     "y": {
       "field": "Area_thousand_ha",
@@ -89,11 +94,16 @@
         ]
       },
       "axis": {
-        "title": null,
         "format": ",d",
         "tickCount": 6,
-        "grid": true
-      }
+        "grid": true,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontSize": 13,
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
+      },
+      "title": "Forest area burnt (thousand hectares)"
     }
   },
   "layer": [

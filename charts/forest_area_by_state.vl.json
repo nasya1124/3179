@@ -36,14 +36,18 @@
         "format": ",.0f",
         "grid": true,
         "labelFontSize": 14,
-        "titleFontSize": 14,
-        "tickCount": 3
+        "titleFontSize": 13,
+        "tickCount": 3,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
       }
     },
     "y": {
       "field": "State",
       "type": "nominal",
-      "title": null,
+      "title": "State or territory",
       "sort": [
         "Queensland",
         "Northern Territory",
@@ -56,7 +60,12 @@
       ],
       "axis": {
         "labelFontSize": 14,
-        "labelLimit": 220
+        "labelLimit": 220,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontSize": 13,
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
       }
     }
   },

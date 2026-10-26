@@ -43,7 +43,6 @@
             ]
           },
           "axis": {
-            "title": null,
             "values": [
               0,
               20,
@@ -55,13 +54,16 @@
             "grid": true,
             "gridColor": "#e9e5d9",
             "labelColor": "#56655a",
-            "titleColor": "#24392d",
+            "titleColor": "#3d4d42",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
-            "titleFontSize": 14,
-            "labelExpr": "datum.value + '%'"
-          }
+            "titleFontSize": 13,
+            "labelExpr": "datum.value + '%'",
+            "titleFontWeight": 600,
+            "titlePadding": 10
+          },
+          "title": "Share of the state's native forest protected"
         },
         "x2": {
           "field": "Combined_protection_pct"
@@ -74,14 +76,19 @@
             "order": "descending"
           },
           "axis": {
-            "title": null,
             "labelColor": "#24392d",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
             "ticks": false,
             "domain": false,
-            "labelLimit": 220
-          }
+            "labelLimit": 220,
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          },
+          "title": "State or territory"
         },
         "tooltip": [
           {
@@ -139,7 +146,6 @@
             ]
           },
           "axis": {
-            "title": null,
             "values": [
               0,
               20,
@@ -151,13 +157,16 @@
             "grid": true,
             "gridColor": "#e9e5d9",
             "labelColor": "#56655a",
-            "titleColor": "#24392d",
+            "titleColor": "#3d4d42",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
-            "titleFontSize": 14,
-            "labelExpr": "datum.value + '%'"
-          }
+            "titleFontSize": 13,
+            "labelExpr": "datum.value + '%'",
+            "titleFontWeight": 600,
+            "titlePadding": 10
+          },
+          "title": "Share of the state's native forest protected"
         },
         "y": {
           "field": "State",
@@ -167,14 +176,19 @@
             "order": "descending"
           },
           "axis": {
-            "title": null,
             "labelColor": "#24392d",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
             "ticks": false,
             "domain": false,
-            "labelLimit": 220
-          }
+            "labelLimit": 220,
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          },
+          "title": "State or territory"
         },
         "color": {
           "field": "Measure",
@@ -266,7 +280,15 @@
       "encoding": {
         "x": {
           "field": "mid",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "Share of the state's native forest protected",
+          "axis": {
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          }
         },
         "y": {
           "field": "State",
@@ -276,14 +298,19 @@
             "order": "descending"
           },
           "axis": {
-            "title": null,
             "labelColor": "#24392d",
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
             "ticks": false,
             "domain": false,
-            "labelLimit": 220
-          }
+            "labelLimit": 220,
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          },
+          "title": "State or territory"
         },
         "text": {
           "value": "43-point gap"

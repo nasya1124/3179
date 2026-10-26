@@ -66,7 +66,6 @@
         "Tasmania"
       ],
       "axis": {
-        "title": null,
         "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "labelFontSize": 14,
         "labelColor": "#56655a",
@@ -74,9 +73,14 @@
         "ticks": false,
         "labelLimit": 260,
         "labelExpr": "indexof(datum.label, ' and ') > 0 ? [slice(datum.label, 0, indexof(datum.label, ' and ')), slice(datum.label, indexof(datum.label, ' and ') + 1)] : datum.label",
-        "labelLineHeight": 15
+        "labelLineHeight": 15,
+        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "titleFontSize": 13,
+        "titleFontWeight": 600,
+        "titleColor": "#3d4d42",
+        "titlePadding": 10
       },
-      "title": null
+      "title": "State or territory"
     }
   },
   "layer": [
@@ -90,7 +94,7 @@
           "field": "Annual_average_kha",
           "type": "quantitative",
           "stack": "normalize",
-          "title": null,
+          "title": "Share of area planted each year",
           "axis": {
             "format": ".0%",
             "values": [
@@ -106,12 +110,17 @@
             "labelColor": "#3d4d42",
             "domainColor": "#c8c2b6",
             "tickColor": "#c8c2b6",
-            "domain": false
+            "domain": false,
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
           },
           "scale": {
             "domain": [
               0,
-              1.5
+              1
             ],
             "nice": false
           }
@@ -218,43 +227,6 @@
     {
       "transform": [
         {
-          "aggregate": [
-            {
-              "op": "sum",
-              "field": "Annual_average_kha",
-              "as": "Total"
-            }
-          ],
-          "groupby": [
-            "Jurisdiction"
-          ]
-        },
-        {
-          "calculate": "format(datum.Total*1000, ',.0f') + ' hectares a year'",
-          "as": "lbl"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
-        "color": "#5b6a5f",
-        "align": "left",
-        "dx": 8,
-        "baseline": "middle"
-      },
-      "encoding": {
-        "x": {
-          "datum": 1
-        },
-        "text": {
-          "field": "lbl"
-        }
-      }
-    },
-    {
-      "transform": [
-        {
           "calculate": "datum.Plantation_type == 'Softwood' ? 0 : 1",
           "as": "ord"
         },
@@ -313,7 +285,15 @@
       "encoding": {
         "x": {
           "field": "mid",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "Share of area planted each year",
+          "axis": {
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 13,
+            "titleFontWeight": 600,
+            "titleColor": "#3d4d42",
+            "titlePadding": 10
+          }
         },
         "text": {
           "field": "lbl"

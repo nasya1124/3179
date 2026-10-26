@@ -50,7 +50,6 @@
                 "nice": false
               },
               "axis": {
-                "title": null,
                 "format": "d",
                 "tickCount": 8,
                 "grid": false,
@@ -65,18 +64,29 @@
                   2010,
                   2015,
                   2020
-                ]
-              }
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
             },
             "y": {
               "field": "Area_kha",
               "type": "quantitative",
               "stack": "zero",
-              "title": null,
+              "title": "Plantation area (thousand hectares)",
               "axis": {
                 "format": ",d",
                 "tickCount": 5,
-                "gridColor": "#e6e1d5"
+                "gridColor": "#e6e1d5",
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
               }
             },
             "color": {
@@ -181,7 +191,6 @@
                 "nice": false
               },
               "axis": {
-                "title": null,
                 "format": "d",
                 "tickCount": 8,
                 "grid": false,
@@ -196,12 +205,26 @@
                   2010,
                   2015,
                   2020
-                ]
-              }
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
             },
             "y": {
               "field": "y",
-              "type": "quantitative"
+              "type": "quantitative",
+              "title": "Plantation area (thousand hectares)",
+              "axis": {
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              }
             },
             "text": {
               "field": "t"
@@ -212,17 +235,89 @@
           "data": {
             "values": [
               {
-                "Year": 1993.8,
-                "y": 1385,
-                "Year2": 1995.8,
-                "y2": 1245
+                "Year": 1993.9,
+                "y": 1375,
+                "Year2": 1996,
+                "y2": 272
+              }
+            ]
+          },
+          "mark": {
+            "type": "rule",
+            "color": "#f6f3ec",
+            "strokeWidth": 3.5,
+            "clip": true,
+            "opacity": 0.9
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative",
+              "title": "Plantation area (thousand hectares)",
+              "axis": {
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              }
+            },
+            "x2": {
+              "field": "Year2"
+            },
+            "y2": {
+              "field": "y2"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 1993.9,
+                "y": 1375,
+                "Year2": 1996,
+                "y2": 272
               }
             ]
           },
           "mark": {
             "type": "rule",
             "color": "#1f3326",
-            "strokeWidth": 1,
+            "strokeWidth": 1.3,
             "clip": true
           },
           "encoding": {
@@ -236,7 +331,6 @@
                 "nice": false
               },
               "axis": {
-                "title": null,
                 "format": "d",
                 "tickCount": 8,
                 "grid": false,
@@ -251,12 +345,26 @@
                   2010,
                   2015,
                   2020
-                ]
-              }
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
             },
             "y": {
               "field": "y",
-              "type": "quantitative"
+              "type": "quantitative",
+              "title": "Plantation area (thousand hectares)",
+              "axis": {
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              }
             },
             "x2": {
               "field": "Year2"
@@ -298,7 +406,6 @@
                 "nice": false
               },
               "axis": {
-                "title": null,
                 "format": "d",
                 "tickCount": 8,
                 "grid": false,
@@ -313,12 +420,26 @@
                   2010,
                   2015,
                   2020
-                ]
-              }
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
             },
             "y": {
               "field": "y",
-              "type": "quantitative"
+              "type": "quantitative",
+              "title": "Plantation area (thousand hectares)",
+              "axis": {
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              }
             },
             "text": {
               "field": "t"
@@ -334,7 +455,7 @@
               },
               {
                 "Year": 1996,
-                "y": 1217
+                "y": 261
               }
             ]
           },
@@ -342,8 +463,10 @@
             "type": "point",
             "filled": true,
             "color": "#1f3326",
-            "size": 40,
-            "clip": true
+            "size": 55,
+            "clip": true,
+            "stroke": "#f6f3ec",
+            "strokeWidth": 1.5
           },
           "encoding": {
             "x": {
@@ -356,7 +479,6 @@
                 "nice": false
               },
               "axis": {
-                "title": null,
                 "format": "d",
                 "tickCount": 8,
                 "grid": false,
@@ -371,12 +493,26 @@
                   2010,
                   2015,
                   2020
-                ]
-              }
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
             },
             "y": {
               "field": "y",
-              "type": "quantitative"
+              "type": "quantitative",
+              "title": "Plantation area (thousand hectares)",
+              "axis": {
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              }
             }
           }
         },
@@ -414,7 +550,6 @@
                 "nice": false
               },
               "axis": {
-                "title": null,
                 "format": "d",
                 "tickCount": 8,
                 "grid": false,
@@ -429,12 +564,26 @@
                   2010,
                   2015,
                   2020
-                ]
-              }
+                ],
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              },
+              "title": "Year (financial years ending June)"
             },
             "y": {
               "field": "y",
-              "type": "quantitative"
+              "type": "quantitative",
+              "title": "Plantation area (thousand hectares)",
+              "axis": {
+                "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+                "titleFontSize": 13,
+                "titleFontWeight": 600,
+                "titleColor": "#3d4d42",
+                "titlePadding": 10
+              }
             },
             "text": {
               "field": "t"

@@ -585,3 +585,7 @@ strong { font-weight: 700; }
 .timeline-track { flex: 1; }
 .timeline-track input { width: 100%; margin: 0; accent-color: var(--c-unplanned); }
 .timeline-ticks { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); padding: 0 2px; }
+
+/* Year slider under the credits cartogram: carbon olive, page font */
+#forest-credits-cartogram .vega-bindings { margin-top: 6px; font: 15px var(--sans); color: var(--ink); }
+#forest-credits-cartogram input[type="range"] { accent-color: var(--c-carbon); vertical-align: middle; }
