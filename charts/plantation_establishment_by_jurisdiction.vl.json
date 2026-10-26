@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Plantation planted or replanted each year",
-    "subtitle": "Annual average, thousand hectares · 2016–17 to 2020–21",
+    "text": "Mix of plantation planted each year, by state",
+    "subtitle": "Share of area planted or replanted · annual average 2016–17 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19,
@@ -14,7 +14,7 @@
     "offset": 10
   },
   "width": "container",
-  "height": 300,
+  "height": 320,
   "data": {
     "url": "data/plantation_establishment_by_jurisdiction.csv",
     "format": {
@@ -58,12 +58,12 @@
       "field": "Jurisdiction",
       "type": "nominal",
       "sort": [
+        "Queensland",
+        "New South Wales and Australian Capital Territory",
+        "South Australia",
         "Victoria",
         "Western Australia and Northern Territory",
-        "New South Wales and Australian Capital Territory",
-        "Tasmania",
-        "Queensland",
-        "South Australia"
+        "Tasmania"
       ],
       "axis": {
         "title": null,
@@ -81,18 +81,6 @@
   },
   "layer": [
     {
-      "params": [
-        {
-          "name": "plantation_type_highlight",
-          "select": {
-            "type": "point",
-            "fields": [
-              "Plantation_type"
-            ]
-          },
-          "bind": "legend"
-        }
-      ],
       "mark": {
         "type": "bar",
         "tooltip": true
@@ -101,27 +89,31 @@
         "x": {
           "field": "Annual_average_kha",
           "type": "quantitative",
-          "stack": "zero",
+          "stack": "normalize",
           "title": null,
           "axis": {
-            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 14,
-            "titleColor": "#263d2e",
-            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "labelFontSize": 14,
-            "labelColor": "#56655a",
+            "format": ".0%",
+            "values": [
+              0,
+              0.25,
+              0.5,
+              0.75,
+              1
+            ],
             "grid": true,
             "gridColor": "#e6e1d5",
-            "gridOpacity": 1,
-            "tickColor": "#c8c2b6",
+            "labelFontSize": 14,
+            "labelColor": "#3d4d42",
             "domainColor": "#c8c2b6",
-            "tickCount": 6
+            "tickColor": "#c8c2b6",
+            "domain": false
           },
           "scale": {
             "domain": [
               0,
-              16
-            ]
+              1.5
+            ],
+            "nice": false
           }
         },
         "color": {
@@ -129,8 +121,8 @@
           "type": "nominal",
           "title": "Plantation type",
           "sort": [
-            "Hardwood",
-            "Softwood"
+            "Softwood",
+            "Hardwood"
           ],
           "scale": {
             "domain": [
@@ -156,35 +148,72 @@
         },
         "opacity": {
           "condition": {
-            "param": "plantation_type_highlight",
+            "test": "hl == null || datum.Plantation_type == hl",
             "value": 1
           },
-          "value": 0.3
+          "value": 0.25
         },
         "tooltip": [
           {
             "field": "Jurisdiction",
-            "type": "nominal",
-            "title": "Jurisdiction"
+            "title": "State or territory"
           },
           {
             "field": "Plantation_type",
-            "type": "nominal",
             "title": "Plantation type"
+          },
+          {
+            "field": "Share",
+            "type": "quantitative",
+            "title": "Share of area planted",
+            "format": ".0%"
           },
           {
             "field": "Annual_average_kha",
             "type": "quantitative",
-            "title": "Annual average (thousand hectares)",
-            "format": ",.3f"
-          },
-          {
-            "field": "Period",
-            "type": "nominal",
-            "title": "Period"
+            "title": "Area per year (thousand hectares)",
+            "format": ",.1f"
           }
-        ]
-      }
+        ],
+        "order": {
+          "field": "ord",
+          "type": "quantitative"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.Plantation_type == 'Softwood' ? 0 : 1",
+          "as": "ord"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "sum",
+              "field": "Annual_average_kha",
+              "as": "Total"
+            }
+          ],
+          "groupby": [
+            "Jurisdiction"
+          ]
+        },
+        {
+          "calculate": "datum.Annual_average_kha / datum.Total",
+          "as": "Share"
+        }
+      ],
+      "params": [
+        {
+          "name": "legend_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Plantation_type"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
     },
     {
       "transform": [
@@ -199,28 +228,110 @@
           "groupby": [
             "Jurisdiction"
           ]
+        },
+        {
+          "calculate": "format(datum.Total*1000, ',.0f') + ' hectares a year'",
+          "as": "lbl"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "color": "#5b6a5f",
+        "align": "left",
+        "dx": 8,
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "datum": 1
+        },
+        "text": {
+          "field": "lbl"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "datum.Plantation_type == 'Softwood' ? 0 : 1",
+          "as": "ord"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "sum",
+              "field": "Annual_average_kha",
+              "as": "Total"
+            }
+          ],
+          "groupby": [
+            "Jurisdiction"
+          ]
+        },
+        {
+          "calculate": "datum.Annual_average_kha / datum.Total",
+          "as": "Share"
+        },
+        {
+          "stack": "Annual_average_kha",
+          "groupby": [
+            "Jurisdiction"
+          ],
+          "sort": [
+            {
+              "field": "ord"
+            }
+          ],
+          "as": [
+            "s0",
+            "s1"
+          ],
+          "offset": "normalize"
+        },
+        {
+          "calculate": "(datum.s0 + datum.s1) / 2",
+          "as": "mid"
+        },
+        {
+          "filter": "(datum.Jurisdiction == 'Queensland' && datum.Plantation_type == 'Softwood') || (datum.Jurisdiction == 'Tasmania' && datum.Plantation_type == 'Hardwood')"
+        },
+        {
+          "calculate": "datum.Plantation_type + ' ' + format(datum.Share, '.0%')",
+          "as": "lbl"
         }
       ],
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
         "fontSize": 14,
-        "color": "#5b6a5f",
-        "align": "left",
-        "baseline": "middle",
-        "dx": 6
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "baseline": "middle"
       },
       "encoding": {
         "x": {
-          "field": "Total",
+          "field": "mid",
           "type": "quantitative"
         },
         "text": {
-          "field": "Total",
-          "type": "quantitative",
-          "format": ".1f"
+          "field": "lbl"
+        },
+        "opacity": {
+          "condition": {
+            "test": "hl == null || datum.Plantation_type == hl",
+            "value": 1
+          },
+          "value": 0.35
         }
       }
+    }
+  ],
+  "params": [
+    {
+      "name": "hl",
+      "value": null
     }
   ]
 }

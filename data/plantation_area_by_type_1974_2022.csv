@@ -1,0 +1,148 @@
+Year,Financial_year,Plantation_type,Area_kha
+1974,1973-74,Hardwood,33.9
+1974,1973-74,Softwood,526.6
+1974,1973-74,Other or mixed,0.0
+1975,1974-75,Hardwood,33.4
+1975,1974-75,Softwood,565.2
+1975,1974-75,Other or mixed,0.0
+1976,1975-76,Hardwood,34.4
+1976,1975-76,Softwood,595.4
+1976,1975-76,Other or mixed,0.0
+1977,1976-77,Hardwood,42.1
+1977,1976-77,Softwood,617.9
+1977,1976-77,Other or mixed,0.0
+1978,1977-78,Hardwood,44.2
+1978,1977-78,Softwood,655.0
+1978,1977-78,Other or mixed,0.1
+1979,1978-79,Hardwood,45.8
+1979,1978-79,Softwood,681.5
+1979,1978-79,Other or mixed,0.0
+1980,1979-80,Hardwood,47.8
+1980,1979-80,Softwood,718.3
+1980,1979-80,Other or mixed,0.0
+1981,1980-81,Hardwood,50.2
+1981,1980-81,Softwood,741.1
+1981,1980-81,Other or mixed,0.0
+1982,1981-82,Hardwood,42.4
+1982,1981-82,Softwood,777.2
+1982,1981-82,Other or mixed,0.0
+1983,1982-83,Hardwood,43.0
+1983,1982-83,Softwood,774.5
+1983,1982-83,Other or mixed,0.0
+1984,1983-84,Hardwood,45.3
+1984,1983-84,Softwood,792.7
+1984,1983-84,Other or mixed,0.0
+1985,1984-85,Hardwood,41.4
+1985,1984-85,Softwood,802.5
+1985,1984-85,Other or mixed,0.0
+1986,1985-86,Hardwood,40.5
+1986,1985-86,Softwood,832.2
+1986,1985-86,Other or mixed,0.0
+1987,1986-87,Hardwood,47.3
+1987,1986-87,Softwood,857.8
+1987,1986-87,Other or mixed,0.1
+1988,1987-88,Hardwood,52.1
+1988,1987-88,Softwood,889.9
+1988,1987-88,Other or mixed,0.0
+1989,1988-89,Hardwood,60.1
+1989,1988-89,Softwood,913.6
+1989,1988-89,Other or mixed,0.0
+1990,1989-90,Hardwood,96.5
+1990,1989-90,Softwood,926.4
+1990,1989-90,Other or mixed,0.0
+1991,1990-91,Hardwood,106.4
+1991,1990-91,Softwood,939.5
+1991,1990-91,Other or mixed,0.0
+1992,1991-92,Hardwood,116.9
+1992,1991-92,Softwood,956.1
+1992,1991-92,Other or mixed,0.0
+1993,1992-93,Hardwood,127.8
+1993,1992-93,Softwood,954.9
+1993,1992-93,Other or mixed,0.0
+1994,1993-94,Hardwood,145.9
+1994,1993-94,Softwood,959.2
+1994,1993-94,Other or mixed,0.0
+1995,1994-95,Hardwood,158.6
+1995,1994-95,Softwood,883.8
+1995,1994-95,Other or mixed,0.1
+1996,1995-96,Hardwood,260.9
+1996,1995-96,Softwood,907.6
+1996,1995-96,Other or mixed,0.0
+1997,1996-97,Hardwood,295.6
+1997,1996-97,Softwood,921.7
+1997,1996-97,Other or mixed,0.0
+1998,1997-98,Hardwood,335.2
+1998,1997-98,Softwood,936.5
+1998,1997-98,Other or mixed,0.0
+1999,1998-99,Hardwood,389.0
+1999,1998-99,Softwood,948.3
+1999,1998-99,Other or mixed,0.0
+2000,1999-00,Hardwood,502.6
+2000,1999-00,Softwood,972.2
+2000,1999-00,Other or mixed,9.9
+2001,2000-01,Hardwood,587.9
+2001,2000-01,Softwood,979.6
+2001,2000-01,Other or mixed,1.4
+2002,2001-02,Hardwood,638.3
+2002,2001-02,Softwood,987.9
+2002,2001-02,Other or mixed,1.6
+2003,2002-03,Hardwood,676.0
+2003,2002-03,Softwood,988.2
+2003,2002-03,Other or mixed,1.5
+2004,2003-04,Hardwood,715.5
+2004,2003-04,Softwood,1000.6
+2004,2003-04,Other or mixed,0.1
+2005,2004-05,Hardwood,740.2
+2005,2004-05,Softwood,990.0
+2005,2004-05,Other or mixed,9.2
+2006,2005-06,Hardwood,807.4
+2006,2005-06,Softwood,1001.1
+2006,2005-06,Other or mixed,9.3
+2007,2006-07,Hardwood,883.5
+2007,2006-07,Softwood,1010.2
+2007,2006-07,Other or mixed,9.2
+2008,2007-08,Hardwood,949.5
+2008,2007-08,Softwood,1013.8
+2008,2007-08,Other or mixed,9.2
+2009,2008-09,Hardwood,990.9
+2009,2008-09,Softwood,1020.1
+2009,2008-09,Other or mixed,9.2
+2010,2009-10,Hardwood,973.0
+2010,2009-10,Softwood,1023.6
+2010,2009-10,Other or mixed,12.3
+2011,2010-11,Hardwood,979.5
+2011,2010-11,Softwood,1024.8
+2011,2010-11,Other or mixed,12.3
+2012,2011-12,Hardwood,976.7
+2012,2011-12,Softwood,1023.6
+2012,2011-12,Other or mixed,12.3
+2013,2012-13,Hardwood,976.4
+2013,2012-13,Softwood,1023.8
+2013,2012-13,Other or mixed,12.3
+2014,2013-14,Hardwood,963.1
+2014,2013-14,Softwood,1024.2
+2014,2013-14,Other or mixed,12.4
+2015,2014-15,Hardwood,928.3
+2015,2014-15,Softwood,1035.4
+2015,2014-15,Other or mixed,9.7
+2016,2015-16,Hardwood,928.3
+2016,2015-16,Softwood,1036.8
+2016,2015-16,Other or mixed,9.7
+2017,2016-17,Hardwood,908.5
+2017,2016-17,Softwood,1036.9
+2017,2016-17,Other or mixed,9.7
+2018,2017-18,Hardwood,896.0
+2018,2017-18,Softwood,1037.0
+2018,2017-18,Other or mixed,9.7
+2019,2018-19,Hardwood,884.0
+2019,2018-19,Softwood,1039.7
+2019,2018-19,Other or mixed,9.7
+2020,2019-20,Hardwood,723.6
+2020,2019-20,Softwood,1028.1
+2020,2019-20,Other or mixed,23.0
+2021,2020-21,Hardwood,713.0
+2021,2020-21,Softwood,1010.2
+2021,2020-21,Other or mixed,22.9
+2022,2021-22,Hardwood,687.6
+2022,2021-22,Softwood,1005.5
+2022,2021-22,Other or mixed,22.9

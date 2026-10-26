@@ -221,8 +221,27 @@
             "format": ".0f",
             "formatType": "number"
           }
-        ]
-      }
+        ],
+        "opacity": {
+          "condition": {
+            "param": "measure_pick",
+            "value": 1
+          },
+          "value": 0.15
+        }
+      },
+      "params": [
+        {
+          "name": "measure_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Measure"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
     },
     {
       "transform": [

@@ -193,7 +193,6 @@
       },
       "mark": {
         "type": "circle",
-        "opacity": 0.8,
         "stroke": "#f4f0e7",
         "strokeWidth": 0.7
       },
@@ -271,8 +270,27 @@
             "title": "Herbarium records in cell",
             "format": ",.0f"
           }
-        ]
-      }
+        ],
+        "opacity": {
+          "condition": {
+            "param": "species_pick",
+            "value": 0.85
+          },
+          "value": 0.08
+        }
+      },
+      "params": [
+        {
+          "name": "species_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Species"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
     }
   ],
   "config": {

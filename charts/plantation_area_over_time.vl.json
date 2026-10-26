@@ -1,0 +1,547 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Commercial plantation area by type, 1973-74 to 2021-22, with an overview strip to zoom the detail view (ABARES Indicator 1.1a.iv, Figure 1.1a.iv-4).",
+  "title": {
+    "text": "Commercial plantation area over time",
+    "subtitle": "Thousand hectares · drag across the lower strip to zoom",
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
+  },
+  "data": {
+    "url": "data/plantation_area_by_type_1974_2022.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "number",
+        "Area_kha": "number"
+      }
+    }
+  },
+  "background": null,
+  "vconcat": [
+    {
+      "width": 580,
+      "height": 260,
+      "layer": [
+        {
+          "mark": {
+            "type": "area",
+            "clip": true,
+            "line": {
+              "strokeWidth": 1,
+              "color": "#f6f3ec"
+            }
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              }
+            },
+            "y": {
+              "field": "Area_kha",
+              "type": "quantitative",
+              "stack": "zero",
+              "title": null,
+              "axis": {
+                "format": ",d",
+                "tickCount": 5,
+                "gridColor": "#e6e1d5"
+              }
+            },
+            "color": {
+              "field": "Plantation_type",
+              "type": "nominal",
+              "title": null,
+              "scale": {
+                "domain": [
+                  "Hardwood",
+                  "Softwood",
+                  "Other or mixed"
+                ],
+                "range": [
+                  "#8a6a4f",
+                  "#6b7f95",
+                  "#c9c2b4"
+                ]
+              },
+              "legend": {
+                "orient": "top",
+                "direction": "horizontal",
+                "labelFontSize": 14,
+                "symbolType": "square"
+              }
+            },
+            "order": {
+              "field": "order",
+              "type": "quantitative"
+            },
+            "opacity": {
+              "condition": {
+                "test": "hl == null || datum.Plantation_type == hl",
+                "value": 1
+              },
+              "value": 0.25
+            },
+            "tooltip": [
+              {
+                "field": "Financial_year",
+                "title": "Financial year"
+              },
+              {
+                "field": "Plantation_type",
+                "title": "Plantation type"
+              },
+              {
+                "field": "Area_kha",
+                "type": "quantitative",
+                "title": "Area (thousand hectares)",
+                "format": ",.0f"
+              }
+            ]
+          },
+          "transform": [
+            {
+              "calculate": "datum.Plantation_type == 'Hardwood' ? 0 : datum.Plantation_type == 'Softwood' ? 1 : 2",
+              "as": "order"
+            }
+          ],
+          "params": [
+            {
+              "name": "legend_pick",
+              "select": {
+                "type": "point",
+                "fields": [
+                  "Plantation_type"
+                ]
+              },
+              "bind": "legend"
+            }
+          ]
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 2009,
+                "y": 2020,
+                "t": "Peak: 2.02 million hectares (2008–09)"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#1f3326",
+            "dy": -10,
+            "clip": true,
+            "align": "right",
+            "dx": -6
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              }
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 1993.8,
+                "y": 1385,
+                "Year2": 1995.8,
+                "y2": 1245
+              }
+            ]
+          },
+          "mark": {
+            "type": "rule",
+            "color": "#1f3326",
+            "strokeWidth": 1,
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              }
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "x2": {
+              "field": "Year2"
+            },
+            "y2": {
+              "field": "y2"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 1993.6,
+                "y": 1420,
+                "t": "Hardwood boom begins"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "color": "#1f3326",
+            "dy": 0,
+            "clip": true,
+            "align": "right",
+            "dx": 0
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              }
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 2009,
+                "y": 2020
+              },
+              {
+                "Year": 1996,
+                "y": 1217
+              }
+            ]
+          },
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "color": "#1f3326",
+            "size": 40,
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              }
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "Year": 1986,
+                "y": 450,
+                "t": "Softwood"
+              },
+              {
+                "Year": 2013,
+                "y": 480,
+                "t": "Hardwood"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "color": "#ffffff",
+            "clip": true
+          },
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {
+                "domain": {
+                  "param": "brush"
+                },
+                "nice": false
+              },
+              "axis": {
+                "title": null,
+                "format": "d",
+                "tickCount": 8,
+                "grid": false,
+                "values": [
+                  1975,
+                  1980,
+                  1985,
+                  1990,
+                  1995,
+                  2000,
+                  2005,
+                  2010,
+                  2015,
+                  2020
+                ]
+              }
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            },
+            "opacity": {
+              "condition": {
+                "test": "hl == null || datum.t == hl",
+                "value": 1
+              },
+              "value": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 580,
+      "height": 56,
+      "mark": {
+        "type": "area",
+        "color": "#b9b2a3"
+      },
+      "params": [
+        {
+          "name": "brush",
+          "select": {
+            "type": "interval",
+            "encodings": [
+              "x"
+            ]
+          }
+        }
+      ],
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "Area_kha",
+              "as": "Total"
+            }
+          ],
+          "groupby": [
+            "Year"
+          ]
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "title": null,
+            "format": "d",
+            "tickCount": 8,
+            "values": [
+              1975,
+              1980,
+              1985,
+              1990,
+              1995,
+              2000,
+              2005,
+              2010,
+              2015,
+              2020
+            ]
+          },
+          "scale": {
+            "domain": [
+              1974,
+              2022
+            ],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "Total",
+          "type": "quantitative",
+          "axis": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelFontSize": 14,
+      "labelColor": "#3d4d42",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "domainColor": "#b9b8ad",
+      "tickColor": "#b9b8ad"
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelFontSize": 14,
+      "labelColor": "#3d4d42"
+    }
+  },
+  "params": [
+    {
+      "name": "hl",
+      "value": null
+    }
+  ]
+}

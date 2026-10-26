@@ -30,6 +30,8 @@
         Follow where it grows, what it is made of,
         and how planting, fire and protection are shaping it.
       </p>
+      <p class="hint">Tip: click a legend entry to highlight it.
+        Click empty space in the chart to reset.</p>
     </div>
     <svg class="hero-tree" viewBox="0 0 200 220" role="img" aria-label="A eucalypt tree">
       <path class="b-wood" d="M18 212 L182 212"/>
@@ -172,7 +174,8 @@
             south-east Queensland. <span class="key key-boab">Boab</span>
             grows in the Kimberley, in the far north-west.</p>
           <p class="insight-note">Circles count herbarium specimens
-            per 1° grid cell, not living trees.</p>
+            per 1° grid cell, not living trees. Click a species in the
+            legend to show only its records.</p>
         </div>
       </div>
 
@@ -202,26 +205,43 @@
 
       <div class="row">
         <figure class="fig">
-          <div id="plantation_establishment" class="chart" role="img"
-               aria-label="Stacked bar chart of commercial plantation area established each year by jurisdiction and plantation type"></div>
+          <div id="plantation-over-time" class="chart chart-fixed" role="img"
+               aria-label="Stacked area chart of commercial plantation area by type from 1973-74 to 2021-22, with an overview strip for zooming"></div>
         </figure>
         <div class="insight">
-          <h3>Victoria plants the most new plantation.</h3>
-          <p>About <strong>55,000 hectares</strong> of timber plantation
-            are planted or replanted each year. Victoria plants
-            about <strong>15,000</strong> of them.</p>
-          <p><span class="key key-softwood">Softwood</span>, mostly pine,
-            makes up <strong>59%</strong>.
-            <span class="key key-hardwood">Hardwood</span> leads in
-            Tasmania and the west.</p>
-          <p class="insight-note">Plantations are counted separately
-            from native forest.</p>
+          <h3>A hardwood boom, then a decline.</h3>
+          <p><span class="key key-hardwood">Hardwood</span> plantations grew
+            tenfold in the 1990s and 2000s, peaking near
+            <strong>1 million hectares</strong> in 2008–09.</p>
+          <p>Since then they have shrunk by <strong>31%</strong>.
+            <span class="key key-softwood">Softwood</span>, mostly pine,
+            has held steady at about 1 million hectares.</p>
+          <p class="insight-note">Drag across the lower strip to zoom.
+            Click a legend entry or a band to highlight that type in both charts.
+            Starts in 1973–74, when hardwood reporting became consistent.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <figure class="fig">
+          <div id="plantation_establishment" class="chart" role="img"
+               aria-label="100% stacked bar chart of the softwood and hardwood share of plantation planted each year, by state"></div>
+        </figure>
+        <div class="insight">
+          <h3>Most states plant pine; Tasmania and the west plant gums.</h3>
+          <p>About <strong>55,000 hectares</strong> are planted or
+            replanted each year. In Queensland and New South Wales,
+            almost all of it is <span class="key key-softwood">softwood</span>.</p>
+          <p>Tasmania and the west plant about <strong>three-quarters</strong>
+            <span class="key key-hardwood">hardwood</span>, mostly eucalypts.</p>
+          <p class="insight-note">Totals at the right keep each state's
+            size visible. Hover a bar for exact shares.</p>
         </div>
       </div>
 
       <p class="source">
-        Source: ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">Indicator 2.1e</a>,
-        annual averages 2016–17 to 2020–21.
+        Sources: ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.iv">Indicator 1.1a.iv</a> (2023), Figure 1.1a.iv-4;
+        ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">Indicator 2.1e</a>, annual averages 2016–17 to 2020–21.
       </p>
     </section>
 
@@ -257,7 +277,7 @@
             then <strong>9 million</strong> the next year.</p>
           <p><span class="key key-planned">Planned burns</span> reduce fuel.
             They cover <strong>4–8 million hectares</strong> each year.</p>
-          <p class="insight-note">Click a legend item to highlight one fire type.</p>
+          <p class="insight-note">Click a legend entry to highlight one fire type.</p>
         </div>
       </div>
 
@@ -347,7 +367,8 @@
             <strong>95%</strong> of its forest; <strong>Queensland</strong> only <strong>24%</strong>.</p>
           <p><strong>Victoria</strong> has the biggest gap: <strong>43%</strong>
             in reserves, <strong>86%</strong> with all measures.</p>
-          <p class="insight-note">The measures overlap, so do not add them.</p>
+          <p class="insight-note">The measures overlap, so do not add them.
+            Click a legend entry to highlight one measure.</p>
         </div>
       </div>
 
@@ -416,8 +437,8 @@
             grouped into 1° grid cells. <a href="https://www.ala.org.au/">Link</a></p>
         </div>
         <div>
-          <h3>Plantation establishment</h3>
-          <p>ABARES, Indicator 2.1e, annual averages 2016–17 to 2020–21.
+          <h3>Plantation area and establishment</h3>
+          <p>ABARES, Indicator 1.1a.iv (2023) for area over time, and Indicator 2.1e for annual planting, 2016–17 to 2020–21.
             CC BY 4.0. <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">Link</a></p>
         </div>
         <div>

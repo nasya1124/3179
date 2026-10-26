@@ -122,7 +122,14 @@
         "type": "quantitative",
         "title": "Square number"
       }
-    ]
+    ],
+    "opacity": {
+      "condition": {
+        "param": "coverage_pick",
+        "value": 1
+      },
+      "value": 0.2
+    }
   },
   "config": {
     "view": {
@@ -145,5 +152,17 @@
       "labelColor": "#3d4d42"
     }
   },
-  "background": null
+  "background": null,
+  "params": [
+    {
+      "name": "coverage_pick",
+      "select": {
+        "type": "point",
+        "fields": [
+          "Coverage"
+        ]
+      },
+      "bind": "legend"
+    }
+  ]
 }
