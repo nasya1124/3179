@@ -1,0 +1,113 @@
+State,Year,Financial_year,Credits_m,x,y,Main_type
+New South Wales,2013,2012–13,0.0,470,300,
+New South Wales,2014,2013–14,1.13,470,300,Avoided clearing
+New South Wales,2015,2014–15,5.209,470,300,Avoided clearing
+New South Wales,2016,2015–16,10.912,470,300,Avoided clearing
+New South Wales,2017,2016–17,16.161,470,300,Avoided clearing
+New South Wales,2018,2017–18,20.647,470,300,Avoided clearing
+New South Wales,2019,2018–19,25.137,470,300,Avoided clearing
+New South Wales,2020,2019–20,31.09,470,300,Avoided clearing
+New South Wales,2021,2020–21,36.291,470,300,Avoided clearing
+New South Wales,2022,2021–22,41.064,470,300,Avoided clearing
+New South Wales,2023,2022–23,45.677,470,300,Avoided clearing
+New South Wales,2024,2023–24,50.658,470,300,Avoided clearing
+New South Wales,2025,2024–25,55.991,470,300,Avoided clearing
+New South Wales,2026,2025–26,59.594,470,300,Avoided clearing
+Queensland,2013,2012–13,0.0,440.1,172.7,
+Queensland,2014,2013–14,0.0,440.1,172.7,
+Queensland,2015,2014–15,0.296,440.1,172.7,Native forest regeneration
+Queensland,2016,2015–16,0.594,440.1,172.7,Native forest regeneration
+Queensland,2017,2016–17,3.227,440.1,172.7,Native forest regeneration
+Queensland,2018,2017–18,5.899,440.1,172.7,Native forest regeneration
+Queensland,2019,2018–19,8.324,440.1,172.7,Native forest regeneration
+Queensland,2020,2019–20,11.187,440.1,172.7,Native forest regeneration
+Queensland,2021,2020–21,13.956,440.1,172.7,Native forest regeneration
+Queensland,2022,2021–22,17.006,440.1,172.7,Native forest regeneration
+Queensland,2023,2022–23,19.163,440.1,172.7,Native forest regeneration
+Queensland,2024,2023–24,21.811,440.1,172.7,Native forest regeneration
+Queensland,2025,2024–25,25.29,440.1,172.7,Native forest regeneration
+Queensland,2026,2025–26,28.456,440.1,172.7,Native forest regeneration
+Western Australia,2013,2012–13,0.0,168.4,208.4,
+Western Australia,2014,2013–14,0.023,168.4,208.4,Native tree plantings
+Western Australia,2015,2014–15,0.183,168.4,208.4,Commercial plantations
+Western Australia,2016,2015–16,0.252,168.4,208.4,Native tree plantings
+Western Australia,2017,2016–17,0.332,168.4,208.4,Native tree plantings
+Western Australia,2018,2017–18,0.435,168.4,208.4,Native tree plantings
+Western Australia,2019,2018–19,0.539,168.4,208.4,Native tree plantings
+Western Australia,2020,2019–20,0.59,168.4,208.4,Native tree plantings
+Western Australia,2021,2020–21,1.591,168.4,208.4,Native tree plantings
+Western Australia,2022,2021–22,3.036,168.4,208.4,Native forest regeneration
+Western Australia,2023,2022–23,4.012,168.4,208.4,Native forest regeneration
+Western Australia,2024,2023–24,5.308,168.4,208.4,Native forest regeneration
+Western Australia,2025,2024–25,7.171,168.4,208.4,Native forest regeneration
+Western Australia,2026,2025–26,11.056,168.4,208.4,Native forest regeneration
+Victoria,2013,2012–13,0.0,398,380,
+Victoria,2014,2013–14,0.0,398,380,Native tree plantings
+Victoria,2015,2014–15,0.006,398,380,Native tree plantings
+Victoria,2016,2015–16,0.009,398,380,Native tree plantings
+Victoria,2017,2016–17,0.016,398,380,Native tree plantings
+Victoria,2018,2017–18,0.016,398,380,Native tree plantings
+Victoria,2019,2018–19,0.024,398,380,Native tree plantings
+Victoria,2020,2019–20,0.044,398,380,Native tree plantings
+Victoria,2021,2020–21,0.072,398,380,Commercial plantations
+Victoria,2022,2021–22,0.113,398,380,Commercial plantations
+Victoria,2023,2022–23,0.169,398,380,Commercial plantations
+Victoria,2024,2023–24,0.262,398,380,Commercial plantations
+Victoria,2025,2024–25,0.362,398,380,Commercial plantations
+Victoria,2026,2025–26,0.454,398,380,Commercial plantations
+South Australia,2013,2012–13,0.0,329.5,269.4,
+South Australia,2014,2013–14,0.0,329.5,269.4,
+South Australia,2015,2014–15,0.0,329.5,269.4,
+South Australia,2016,2015–16,0.06,329.5,269.4,Native forest regeneration
+South Australia,2017,2016–17,0.06,329.5,269.4,Native forest regeneration
+South Australia,2018,2017–18,0.097,329.5,269.4,Native forest regeneration
+South Australia,2019,2018–19,0.162,329.5,269.4,Native forest regeneration
+South Australia,2020,2019–20,0.168,329.5,269.4,Native forest regeneration
+South Australia,2021,2020–21,0.204,329.5,269.4,Native forest regeneration
+South Australia,2022,2021–22,0.233,329.5,269.4,Native forest regeneration
+South Australia,2023,2022–23,0.424,329.5,269.4,Native forest regeneration
+South Australia,2024,2023–24,0.599,329.5,269.4,Native forest regeneration
+South Australia,2025,2024–25,0.704,329.5,269.4,Native forest regeneration
+South Australia,2026,2025–26,1.201,329.5,269.4,Native forest regeneration
+Tasmania,2013,2012–13,0.0,436,452,
+Tasmania,2014,2013–14,0.0,436,452,
+Tasmania,2015,2014–15,0.0,436,452,
+Tasmania,2016,2015–16,0.0,436,452,
+Tasmania,2017,2016–17,0.0,436,452,
+Tasmania,2018,2017–18,0.0,436,452,
+Tasmania,2019,2018–19,0.0,436,452,
+Tasmania,2020,2019–20,0.009,436,452,Commercial plantations
+Tasmania,2021,2020–21,0.02,436,452,Commercial plantations
+Tasmania,2022,2021–22,0.043,436,452,Commercial plantations
+Tasmania,2023,2022–23,0.075,436,452,Commercial plantations
+Tasmania,2024,2023–24,0.085,436,452,Commercial plantations
+Tasmania,2025,2024–25,0.155,436,452,Commercial plantations
+Tasmania,2026,2025–26,0.347,436,452,Commercial plantations
+Northern Territory,2013,2012–13,0.0,303,122.4,
+Northern Territory,2014,2013–14,0.0,303,122.4,
+Northern Territory,2015,2014–15,0.0,303,122.4,
+Northern Territory,2016,2015–16,0.0,303,122.4,
+Northern Territory,2017,2016–17,0.0,303,122.4,
+Northern Territory,2018,2017–18,0.0,303,122.4,
+Northern Territory,2019,2018–19,0.0,303,122.4,
+Northern Territory,2020,2019–20,0.0,303,122.4,
+Northern Territory,2021,2020–21,0.0,303,122.4,
+Northern Territory,2022,2021–22,0.0,303,122.4,
+Northern Territory,2023,2022–23,0.0,303,122.4,
+Northern Territory,2024,2023–24,0.0,303,122.4,
+Northern Territory,2025,2024–25,0.178,303,122.4,Native forest regeneration
+Northern Territory,2026,2025–26,0.229,303,122.4,Native forest regeneration
+Australian Capital Territory,2013,2012–13,0.0,575,392,
+Australian Capital Territory,2014,2013–14,0.0,575,392,
+Australian Capital Territory,2015,2014–15,0.0,575,392,
+Australian Capital Territory,2016,2015–16,0.0,575,392,
+Australian Capital Territory,2017,2016–17,0.0,575,392,
+Australian Capital Territory,2018,2017–18,0.0,575,392,
+Australian Capital Territory,2019,2018–19,0.0,575,392,
+Australian Capital Territory,2020,2019–20,0.0,575,392,
+Australian Capital Territory,2021,2020–21,0.0,575,392,
+Australian Capital Territory,2022,2021–22,0.0,575,392,
+Australian Capital Territory,2023,2022–23,0.0,575,392,
+Australian Capital Territory,2024,2023–24,0.0,575,392,
+Australian Capital Territory,2025,2024–25,0.003,575,392,Commercial plantations
+Australian Capital Territory,2026,2025–26,0.003,575,392,Commercial plantations

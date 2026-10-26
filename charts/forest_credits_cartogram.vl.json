@@ -1,0 +1,292 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Non-contiguous cartogram: each state is scaled about its centroid so its area is proportional to cumulative carbon credits (ACCUs) issued to active, forest-related projects. Geometry pre-projected (conic equal-area) and scaled in a preprocessing script; drawn with an identity projection.",
+  "title": {
+    "text": "Carbon credits from forest projects, by state",
+    "subtitle": [
+      "Each state is resized so its area matches credits issued so far.",
+      "The faint outline shows the state's real size."
+    ],
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
+  },
+  "width": 600,
+  "height": 470,
+  "background": null,
+  "projection": {
+    "type": "identity"
+  },
+  "params": [
+    {
+      "name": "year",
+      "value": 2026,
+      "bind": {
+        "input": "range",
+        "min": 2014,
+        "max": 2026,
+        "step": 1,
+        "name": "Credits issued up to June "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/forest_credits_cartogram.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.kind == 'outline'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ece8de",
+        "stroke": "#b9b2a3",
+        "strokeWidth": 1,
+        "strokeDash": [
+          3,
+          2
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/forest_credits_cartogram.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.kind == 'scaled' && datum.properties.Year == year"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1,
+        "fill": "#a8a15c"
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.State",
+            "title": "State or territory"
+          },
+          {
+            "field": "properties.Financial_year",
+            "title": "Up to the end of"
+          },
+          {
+            "field": "properties.Credits_m",
+            "type": "quantitative",
+            "title": "Credits issued (millions)",
+            "format": ",.2f"
+          },
+          {
+            "field": "properties.Regeneration_m",
+            "type": "quantitative",
+            "title": "  from native forest regeneration",
+            "format": ",.2f"
+          },
+          {
+            "field": "properties.Avoided_m",
+            "type": "quantitative",
+            "title": "  from avoided clearing",
+            "format": ",.2f"
+          },
+          {
+            "field": "properties.Plantings_m",
+            "type": "quantitative",
+            "title": "  from native tree plantings",
+            "format": ",.2f"
+          },
+          {
+            "field": "properties.Plantations_m",
+            "type": "quantitative",
+            "title": "  from commercial plantations",
+            "format": ",.2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 479,
+            "y": 354.5,
+            "x2": 538,
+            "y2": 384
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#5b6a5f",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null
+        },
+        "x2": {
+          "field": "x2"
+        },
+        "y2": {
+          "field": "y2"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/forest_credits_labels.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Credits_m": "number",
+            "x": "number",
+            "y": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.Year == year"
+        },
+        {
+          "filter": "datum.State != 'Australian Capital Territory'"
+        },
+        {
+          "calculate": "datum.State == 'Australian Capital Territory' ? 'ACT' : datum.State",
+          "as": "Name"
+        },
+        {
+          "calculate": "datum.Credits_m >= 1 ? format(datum.Credits_m, '.1f') + ' million' : datum.Credits_m >= 0.05 ? format(datum.Credits_m * 1000, ',.0f') + ' thousand' : datum.Credits_m > 0 ? 'under 50 thousand' : 'none'",
+          "as": "Amount"
+        },
+        {
+          "calculate": "[datum.Name, datum.Amount]",
+          "as": "Label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#1f3326",
+        "lineHeight": 16,
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null
+        },
+        "text": {
+          "field": "Label"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/forest_credits_labels.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Credits_m": "number",
+            "x": "number",
+            "y": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.Year == year"
+        },
+        {
+          "filter": "datum.State == 'Australian Capital Territory'"
+        },
+        {
+          "calculate": "datum.State == 'Australian Capital Territory' ? 'ACT' : datum.State",
+          "as": "Name"
+        },
+        {
+          "calculate": "datum.Credits_m >= 1 ? format(datum.Credits_m, '.1f') + ' million' : datum.Credits_m >= 0.05 ? format(datum.Credits_m * 1000, ',.0f') + ' thousand' : datum.Credits_m > 0 ? 'under 50 thousand' : 'none'",
+          "as": "Amount"
+        },
+        {
+          "calculate": "[datum.Name, datum.Amount]",
+          "as": "Label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#1f3326",
+        "lineHeight": 16,
+        "align": "left",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "datum": 543,
+          "type": "quantitative",
+          "scale": null
+        },
+        "y": {
+          "datum": 392,
+          "type": "quantitative",
+          "scale": null
+        },
+        "text": {
+          "field": "Label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326"
+    }
+  }
+}

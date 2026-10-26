@@ -295,7 +295,7 @@ strong { font-weight: 700; }
 .chart .vega-embed summary { display: none; }
 
 /* Waffle is square and fixed-size: keep it on the chart edge */
-.row-waffle .chart { width: auto; }
+.row-waffle .chart { width: auto; max-width: 100%; overflow-x: auto; }
 
 /* Full-width chart: headline left, text right, chart below */
 .insight-wide {

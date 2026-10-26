@@ -7,6 +7,7 @@ var charts = [
   { id: "#chart-13",                   spec: "charts/tree_species_distribution.vl.json" },
   { id: "#plantation-over-time",       spec: "charts/plantation_area_over_time.vl.json" },
   { id: "#plantation_establishment",   spec: "charts/plantation_establishment_by_jurisdiction.vl.json" },
+  { id: "#forest-credits-cartogram",   spec: "charts/forest_credits_cartogram.vl.json" },
   { id: "#forest-fire-area",           spec: "charts/forest_fire_area_over_time.vl.json" },
   { id: "#forest-fire-heatmap",        spec: "charts/forest_fire_by_state_heatmap.vl.json" },
   { id: "#forest-protection-alluvial", spec: "charts/forest_protection_alluvial.vg.json" },
