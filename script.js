@@ -1,6 +1,6 @@
 // Bump this whenever a chart or data file changes, so browsers fetch
 // the new version instead of an old cached copy.
-var VERSION = "20261027h";
+var VERSION = "20261027i";
 
 // Each entry links a container on the page (by its id) to a chart specification.
 // Files ending in .vl.json are Vega-Lite; files ending in .vg.json are Vega.
@@ -181,8 +181,9 @@ function miniLine(values, highlight, firstLabel, lastLabel) {
     '<text x="' + (w - 4) + '" y="' + h + '" text-anchor="end">' + lastLabel + "</text></svg>";
 }
 
-function card(colour, parts) {
-  return '<div class="tt" style="--tt:' + colour + '">' + parts.join("") + "</div>";
+function card(colour, parts, extraClass) {
+  return '<div class="tt' + (extraClass ? " " + extraClass : "") + '" style="--tt:' + colour + '">' +
+    parts.join("") + "</div>";
 }
 
 var tooltipCards = {
@@ -387,7 +388,7 @@ var tooltipCards = {
       "Clearing of previously uncleared forest": ["var(--c-clear)", "cleared for the first time", clear],
       "Re-clearing of regrowth": ["#857f72", "of regrowth cleared again", reclear]
     };
-    var look = looks[type] || ["var(--ink)", net >= 0 ? "net gain" : "net loss", net];
+    var look = looks[type] || ["#dcc592", net >= 0 ? "net gain" : "net loss", net];
     var line = function (label, n, bold) {
       return "<tr" + (bold ? ' class="tt-total"' : "") + "><th>" + label + "</th><td>" +
         (n > 0 ? "+" : n < 0 ? "−" : "") + fmt(Math.abs(n)) + "</td></tr>";
@@ -401,7 +402,7 @@ var tooltipCards = {
         line("Regrowth", regrowth) + line("Clearing", clear) + line("Re-clearing", reclear) +
         line("Net change", net, true) + "</table>",
       '<p class="tt-note">Thousand hectares. ' + (net >= 0 ? "A net gain of forest that year." : "A net loss of forest that year.") + "</p>"
-    ]);
+    ], type ? "" : "tt-light"); 
   },
 
   // Plantation area: the type's area and share that year, its peak,

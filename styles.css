@@ -124,7 +124,7 @@ strong { font-weight: 700; }
   text-wrap: balance;       /* even line lengths */
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.0rem, 1.8vw, 1.2rem);
   line-height: 1.4;
 }
 
@@ -509,6 +509,7 @@ strong { font-weight: 700; }
 .tt-title  { font: 700 16px/1.2 var(--sans); margin: 2px 0 8px !important; }
 .tt-big    { font-size: 13px; }
 .tt-big b  { font: 700 26px/1 var(--sans); color: var(--tt); margin-right: 4px; }
+.tt.tt-light .tt-big b { color: #a8873f; }
 .tt-sub    { color: var(--muted); margin-top: 3px !important; }
 .tt-note   { margin-top: 8px !important; padding-top: 8px; border-top: 1px solid var(--rule); }
 
