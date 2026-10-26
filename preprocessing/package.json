@@ -1,0 +1,11 @@
+{
+  "name": "forest-maps-preprocessing",
+  "private": true,
+  "description": "Builds the cartogram and hexagonal bin map files. Run: npm install, then the commands in accu_register.py.",
+  "type": "module",
+  "dependencies": {
+    "d3-geo": "^3.1.1",
+    "d3-geo-projection": "^4.0.0",
+    "topojson-client": "^3.1.0"
+  }
+}

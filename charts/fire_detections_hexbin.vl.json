@@ -1,0 +1,168 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Hexagonal bin map of NASA FIRMS MODIS (Collection 6.1) fire detections, 1 September 2019 to 29 February 2020: vegetation fires with confidence of 30 or more, counted into equal-area hexagons (pre-projected, conic equal-area; drawn with an identity projection).",
+  "title": {
+    "text": "Where fires burned in the Black Summer",
+    "subtitle": "Satellite fire detections per hexagon · September 2019 to February 2020",
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
+  },
+  "width": 600,
+  "height": 470,
+  "background": null,
+  "projection": {
+    "type": "identity"
+  },
+  "params": [
+    {
+      "name": "month",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "name": "Show: ",
+        "options": [
+          "All",
+          "2019-09",
+          "2019-10",
+          "2019-11",
+          "2019-12",
+          "2020-01",
+          "2020-02"
+        ],
+        "labels": [
+          "Whole season",
+          "September 2019",
+          "October 2019",
+          "November 2019",
+          "December 2019",
+          "January 2020",
+          "February 2020"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/fire_detections_hexbin.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "!datum.properties.outline"
+        },
+        {
+          "calculate": "datum.properties[month]",
+          "as": "n"
+        },
+        {
+          "calculate": "datum.n >= 1000 ? '1,000 or more' : datum.n >= 200 ? '200–999' : datum.n >= 50 ? '50–199' : datum.n >= 10 ? '10–49' : datum.n >= 1 ? '1–9' : 'None'",
+          "as": "Class"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#f6f3ec",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "Class",
+          "type": "ordinal",
+          "title": "Fire detections per hexagon (each about 6,300 km²)",
+          "scale": {
+            "domain": [
+              "None",
+              "1–9",
+              "10–49",
+              "50–199",
+              "200–999",
+              "1,000 or more"
+            ],
+            "range": [
+              "#e6e2d6",
+              "#f1dcb4",
+              "#e8b878",
+              "#d9855a",
+              "#b5523b",
+              "#7a2e22"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 6,
+            "symbolType": "square",
+            "symbolSize": 200,
+            "symbolStrokeColor": "#c9c2b4",
+            "symbolStrokeWidth": 0.5,
+            "labelFontSize": 14,
+            "titleFontSize": 14,
+            "titleLimit": 420,
+            "columnPadding": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.State",
+            "title": "State or territory"
+          },
+          {
+            "field": "n",
+            "type": "quantitative",
+            "title": "Fire detections shown",
+            "format": ","
+          },
+          {
+            "field": "properties.All",
+            "type": "quantitative",
+            "title": "Whole season",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/fire_detections_hexbin.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.outline"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "filled": false,
+        "stroke": "#8f8a7a",
+        "strokeWidth": 0.7
+      }
+    }
+  ],
+  "config": {
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42",
+      "titleColor": "#1f3326"
+    }
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Native forest by type, 2023",
+    "subtitle": "Share of 131.5 million hectares",
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
+  },
+  "background": null,
+  "width": "container",
+  "height": 300,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "view": {
+    "stroke": null
+  },
+  "data": {
+    "url": "data/forest_type_area.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Area_kha": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Area_kha",
+          "as": "Area_kha"
+        }
+      ],
+      "groupby": [
+        "Group"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "Area_kha",
+          "as": "Total"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.Area_kha / datum.Total",
+      "as": "Share"
+    },
+    {
+      "calculate": "indexof(['Acacia','Melaleuca','Other types','Eucalypt'], datum.Group)",
+      "as": "Order"
+    },
+    {
+      "calculate": "datum.Group === 'Eucalypt' ? '' : datum.Group + '  ' + format(datum.Share, '.0%')",
+      "as": "Label"
+    },
+    {
+      "calculate": "datum.Group === 'Other types' ? 'Other native forest 3.6%, rainforest 2.6%, Callitris 1.5%, mangrove 0.8%, Casuarina 0.8%' : ''",
+      "as": "Includes"
+    },
+    {
+      "calculate": "format(datum.Area_kha / 1000, ',.1f') + ' million ha'",
+      "as": "Area"
+    }
+  ],
+  "params": [
+    {
+      "name": "R",
+      "expr": "max(70, min(130, width / 2 - 110))"
+    },
+    {
+      "name": "CX",
+      "expr": "width < 480 ? width / 2 - 40 : width / 2"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": {
+          "expr": "R * 0.62"
+        },
+        "outerRadius": {
+          "expr": "R"
+        },
+        "stroke": "#fbfaf6",
+        "strokeWidth": 2,
+        "cursor": "default",
+        "x": {
+          "expr": "CX"
+        },
+        "y": {
+          "expr": "height / 2"
+        }
+      },
+      "encoding": {
+        "theta": {
+          "field": "Area_kha",
+          "type": "quantitative",
+          "stack": true
+        },
+        "order": {
+          "field": "Order",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Eucalypt",
+              "Acacia",
+              "Melaleuca",
+              "Other types"
+            ],
+            "range": [
+              "#3f6f55",
+              "#86ad8f",
+              "#bcd3b9",
+              "#d9d5cb"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Group",
+            "title": "Forest type"
+          },
+          {
+            "field": "Area",
+            "title": "Area"
+          },
+          {
+            "field": "Share",
+            "title": "Share",
+            "format": ".1%"
+          },
+          {
+            "field": "Includes",
+            "title": "Includes"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": {
+          "expr": "R + 14"
+        },
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "color": "#1f3326",
+        "align": "left",
+        "x": {
+          "expr": "CX"
+        },
+        "y": {
+          "expr": "height / 2"
+        }
+      },
+      "encoding": {
+        "theta": {
+          "field": "Area_kha",
+          "type": "quantitative",
+          "stack": true
+        },
+        "order": {
+          "field": "Order",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Label"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "77%",
+        "font": "Fraunces, Georgia, serif",
+        "fontSize": 34,
+        "fontWeight": 600,
+        "color": "#3f6f55",
+        "dy": -10,
+        "x": {
+          "expr": "CX"
+        },
+        "y": {
+          "expr": "height / 2"
+        }
+      },
+      "data": {
+        "values": [
+          {}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "text": "eucalypt",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "color": "#5b6a5f",
+        "dy": 16,
+        "x": {
+          "expr": "CX"
+        },
+        "y": {
+          "expr": "height / 2"
+        }
+      },
+      "data": {
+        "values": [
+          {}
+        ]
+      }
+    }
+  ]
+}

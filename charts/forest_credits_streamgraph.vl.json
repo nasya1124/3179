@@ -1,0 +1,239 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stream graph of ACCU Scheme carbon credits issued each financial year to active forest projects, by kind of project (Clean Energy Regulator, ACCU Scheme project register, as at 30 September 2026).",
+  "title": {
+    "text": "Carbon credits issued each year to forest projects",
+    "subtitle": "Stream width shows credits issued that year · financial years ending June",
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
+  },
+  "width": "container",
+  "height": 300,
+  "background": null,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/forest_credits_by_type_year.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Credits_m": "number"
+          }
+        }
+      },
+      "params": [
+        {
+          "name": "credit_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Type"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "transform": [
+        {
+          "calculate": "datum.Type == 'Avoided clearing' ? 0 : datum.Type == 'Native forest regeneration' ? 1 : 2",
+          "as": "ord"
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "stroke": "#f6f3ec",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              2013,
+              2026
+            ],
+            "nice": false
+          },
+          "axis": {
+            "format": "d",
+            "values": [
+              2014,
+              2016,
+              2018,
+              2020,
+              2022,
+              2024,
+              2026
+            ],
+            "labelExpr": "(datum.value - 1) + '–' + slice(format(datum.value, 'd'), 2)",
+            "grid": false,
+            "labelFontSize": 14,
+            "domainColor": "#b9b8ad",
+            "tickColor": "#b9b8ad"
+          }
+        },
+        "y": {
+          "field": "Credits_m",
+          "type": "quantitative",
+          "stack": "center",
+          "axis": null
+        },
+        "color": {
+          "field": "Type",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Native forest regeneration",
+              "Avoided clearing",
+              "Plantings and plantations"
+            ],
+            "range": [
+              "#6d6629",
+              "#b1aa62",
+              "#ddd7a8"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 14,
+            "symbolType": "square",
+            "labelLimit": 260
+          }
+        },
+        "order": {
+          "field": "ord"
+        },
+        "opacity": {
+          "condition": {
+            "param": "credit_pick",
+            "value": 1
+          },
+          "value": 0.2
+        },
+        "tooltip": [
+          {
+            "field": "Financial_year",
+            "title": "Financial year"
+          },
+          {
+            "field": "Type",
+            "title": "Kind of project"
+          },
+          {
+            "field": "Credits_m",
+            "type": "quantitative",
+            "title": "Credits issued (millions)",
+            "format": ",.2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2019.5,
+            "y": 3.54,
+            "t": "Avoided clearing",
+            "c": "#1f3326"
+          },
+          {
+            "Year": 2021.5,
+            "y": 7.15,
+            "t": "Native forest regeneration",
+            "c": "#ffffff"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        },
+        "color": {
+          "field": "c",
+          "type": "nominal",
+          "scale": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2026,
+            "y": -0.3,
+            "t": "12.5 million in 2025–26"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "color": "#3d4d42",
+        "baseline": "top",
+        "align": "right"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42"
+    },
+    "axis": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42"
+    }
+  }
+}

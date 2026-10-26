@@ -1,0 +1,334 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Annual forest clearing, re-clearing and regrowth in Australia, 1989-90 to 2020-21, with net change (ABARES Indicator 1.1a.iv, Figure 1.1a.iv-3, from the National Inventory Report 2021).",
+  "title": {
+    "text": "Forest cleared and regrown each year",
+    "subtitle": [
+      "Thousand hectares, years ending June",
+      "Regrowth above zero, clearing below; the black line is the net change"
+    ],
+    "anchor": "start",
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "fontSize": 19,
+    "fontWeight": 700,
+    "color": "#1f3326",
+    "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#5b6a5f",
+    "offset": 10
+  },
+  "width": "container",
+  "height": 360,
+  "background": null,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "start": 2009,
+            "end": 2015
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#3f6f55",
+        "opacity": 0.08
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "values": [
+              1990,
+              1995,
+              2000,
+              2005,
+              2010,
+              2015,
+              2020
+            ],
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "x2": {
+          "field": "end"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/forest_clearing_regrowth.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Area_kha": "number"
+          }
+        }
+      },
+      "params": [
+        {
+          "name": "clearing_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Type"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "transform": [
+        {
+          "calculate": "datum.Type == 'Clearing of previously uncleared forest' ? 0 : datum.Type == 'Re-clearing of regrowth' ? 1 : 2",
+          "as": "ord"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "width": {
+          "band": 0.75
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "values": [
+              1990,
+              1995,
+              2000,
+              2005,
+              2010,
+              2015,
+              2020
+            ],
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "Area_kha",
+          "type": "quantitative",
+          "stack": "zero",
+          "title": null,
+          "axis": {
+            "labelExpr": "datum.value > 0 ? '+' + format(datum.value, ',') : format(datum.value, ',')",
+            "gridColor": "#e6e1d5",
+            "labelFontSize": 14,
+            "tickCount": 6
+          }
+        },
+        "color": {
+          "field": "Type",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Regrowth",
+              "Clearing of previously uncleared forest",
+              "Re-clearing of regrowth"
+            ],
+            "range": [
+              "#5f8f6f",
+              "#3f3d39",
+              "#a9a59c"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "labelFontSize": 14,
+            "symbolType": "square",
+            "labelLimit": 260
+          }
+        },
+        "order": {
+          "field": "ord"
+        },
+        "opacity": {
+          "condition": {
+            "param": "clearing_pick",
+            "value": 1
+          },
+          "value": 0.2
+        },
+        "tooltip": [
+          {
+            "field": "Financial_year",
+            "title": "Financial year"
+          },
+          {
+            "field": "Type",
+            "title": "Type"
+          },
+          {
+            "field": "Area_kha",
+            "type": "quantitative",
+            "title": "Area (thousand hectares)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/forest_net_change.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "Year": "number",
+            "Net_kha": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "line",
+        "color": "#1f3326",
+        "strokeWidth": 2,
+        "point": {
+          "filled": true,
+          "size": 30,
+          "color": "#1f3326"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "values": [
+              1990,
+              1995,
+              2000,
+              2005,
+              2010,
+              2015,
+              2020
+            ],
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "Net_kha",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "Financial_year",
+            "title": "Financial year"
+          },
+          {
+            "field": "Net_kha",
+            "type": "quantitative",
+            "title": "Net change (thousand hectares)",
+            "format": "+,.1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 1990,
+            "y": 0
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1f3326",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Year": 2012,
+            "y": 640,
+            "t": "Net gain, 2008–09 to 2014–15"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#1f3326",
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "values": [
+              1990,
+              1995,
+              2000,
+              2005,
+              2010,
+              2015,
+              2020
+            ],
+            "labelFontSize": 14,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42",
+      "domainColor": "#b9b8ad",
+      "tickColor": "#b9b8ad"
+    },
+    "legend": {
+      "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+      "labelColor": "#3d4d42"
+    }
+  }
+}

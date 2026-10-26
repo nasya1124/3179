@@ -3,13 +3,16 @@
 var charts = [
   { id: "#forest-area-map",            spec: "charts/forest_area_choropleth.vl.json" },
   { id: "#forest-area-by-state",       spec: "charts/forest_area_by_state.vl.json" },
-  { id: "#chart-04",                   spec: "charts/forest_type_treemap.vg.json" },
+  { id: "#chart-04",                   spec: "charts/forest_type_donut.vl.json" },
   { id: "#chart-13",                   spec: "charts/tree_species_distribution.vl.json" },
+  { id: "#forest-clearing-regrowth",   spec: "charts/forest_clearing_regrowth.vl.json" },
   { id: "#plantation-over-time",       spec: "charts/plantation_area_over_time.vl.json" },
   { id: "#plantation_establishment",   spec: "charts/plantation_establishment_by_jurisdiction.vl.json" },
   { id: "#forest-credits-cartogram",   spec: "charts/forest_credits_cartogram.vl.json" },
+  { id: "#forest-credits-streamgraph", spec: "charts/forest_credits_streamgraph.vl.json" },
   { id: "#forest-fire-area",           spec: "charts/forest_fire_area_over_time.vl.json" },
   { id: "#forest-fire-heatmap",        spec: "charts/forest_fire_by_state_heatmap.vl.json" },
+  { id: "#fire-detections-hexbin",     spec: "charts/fire_detections_hexbin.vl.json" },
   { id: "#forest-protection-alluvial", spec: "charts/forest_protection_alluvial.vg.json" },
   { id: "#forest-protection-waffle",   spec: "charts/forest_protection_waffle.vl.json" },
   { id: "#forest-protection-by-state", spec: "charts/forest_protection_by_state.vl.json" }
@@ -74,7 +77,7 @@ function linkView(view) {
 
 // Every chart with a clickable legend: clicking empty space resets its
 // highlight, so all legends on the page behave the same way.
-var legendSelections = ["species_pick", "coverage_pick", "measure_pick", "fire_type_highlight"];
+var legendSelections = ["species_pick", "coverage_pick", "measure_pick", "fire_type_highlight", "clearing_pick", "credit_pick"];
 
 function addLegendReset(view) {
   view.addEventListener("click", function (event, item) {

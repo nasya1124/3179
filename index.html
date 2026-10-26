@@ -61,9 +61,10 @@
     <span class="trunk-fill" aria-hidden="true"></span>
     <a href="#where"      class="c-forest"><span class="node"></span><span class="lbl">01 Where</span></a>
     <a href="#what"       class="c-forest"><span class="node"></span><span class="lbl">02 What</span></a>
-    <a href="#change"     class="c-plant"><span class="node"></span><span class="lbl">03 Change</span></a>
+    <a href="#change"     class="c-plant"><span class="node"></span><span class="lbl">03 Lost and regained</span></a>
     <a href="#fire"       class="c-fire"><span class="node"></span><span class="lbl">04 Fire</span></a>
-    <a href="#protection" class="c-protect"><span class="node"></span><span class="lbl">05 Protection</span></a>
+    <a href="#regrowth"   class="c-carbon"><span class="node"></span><span class="lbl">05 Paid regrowth</span></a>
+    <a href="#protection" class="c-protect"><span class="node"></span><span class="lbl">06 Protection</span></a>
   </nav>
 
   <main class="wrap">
@@ -149,15 +150,17 @@
       <div class="row">
         <figure class="fig">
           <div id="chart-04" class="chart" role="img"
-               aria-label="Treemap showing the share of native forest area by forest type"></div>
+               aria-label="Donut chart of native forest area by forest type: eucalypt 77%, acacia 8%, melaleuca 5%, other types 10%"></div>
         </figure>
         <div class="insight">
-          <h3>Eucalypts dominate Australia's forests.</h3>
-          <p>Eucalypts cover <strong>77%</strong> of native forest,
-            about 101 million hectares.</p>
-          <p>Acacia (wattle) is a distant second, at <strong>8%</strong>.
-            Rainforest, often pictured as typical forest,
-            covers under <strong>3%</strong>.</p>
+          <h3>Three in four hectares are eucalypt.</h3>
+          <p>Eucalypts cover <strong>77%</strong> of native forest:
+            101&nbsp;million hectares.</p>
+          <p>Next come acacia, known locally as wattle, at <strong>8%</strong>,
+            and melaleuca, or paperbark, at <strong>5%</strong>.
+            Rainforest is under <strong>3%</strong>.</p>
+          <p class="insight-note">Five smaller types are grouped as
+            &ldquo;Other types&rdquo;. Hover that slice to see them.</p>
         </div>
       </div>
 
@@ -186,7 +189,7 @@
     </section>
 
     <!-- =====================================================
-         03 · CHANGE   (charts left, text right)
+         03 · LOST AND REGAINED   (charts left, text right)
          ===================================================== -->
     <section class="chapter c-plant" id="change" aria-labelledby="change-title">
       <header class="chapter-head">
@@ -199,9 +202,29 @@
         </svg>
         <div>
           <p class="chapter-num">03</p>
-          <h2 id="change-title">How are the forests changing?</h2>
+          <h2 id="change-title">How much forest is lost and regained?</h2>
         </div>
       </header>
+
+      <div class="row">
+        <figure class="fig">
+          <div id="forest-clearing-regrowth" class="chart" role="img"
+               aria-label="Diverging bar chart of forest cleared, re-cleared and regrown each year from 1989-90 to 2020-21, with a net change line"></div>
+        </figure>
+        <div class="insight">
+          <h3>Uncleared forest is rarely cleared now. Regrowth is cleared instead.</h3>
+          <p><span class="key key-clear">Clearing of previously uncleared forest</span>
+            fell by <strong>96%</strong>, from 605,000 hectares in 1989–90
+            to <strong>22,000</strong> in 2020–21.</p>
+          <p>But <span class="key key-regrowth">regrowth</span> is often cleared again:
+            <span class="key key-reclear">re-clearing</span> still removed
+            <strong>155,000 hectares</strong> in 2020–21.</p>
+          <p>Overall, forest area grew in only seven straight years,
+            from 2008–09 to 2014–15.</p>
+          <p class="insight-note">Regrowth is forest measured growing back
+            on cleared land. Click a legend entry to highlight one type.</p>
+        </div>
+      </div>
 
       <div class="row">
         <figure class="fig">
@@ -239,30 +262,10 @@
         </div>
       </div>
 
-      <div class="row">
-        <figure class="fig">
-          <div id="forest-credits-cartogram" class="chart chart-fixed" role="img"
-               aria-label="Non-contiguous cartogram of Australian states resized by carbon credits issued to forest projects, with a year slider"></div>
-        </figure>
-        <div class="insight">
-          <h3>Forest carbon credits come from two states, not the most forested ones.</h3>
-          <p><strong>New South Wales</strong> and <strong>Queensland</strong>
-            have earned <strong>87%</strong> of carbon credits from forest projects.</p>
-          <p><strong>Victoria</strong> and <strong>Tasmania</strong>, among the most
-            densely forested states, have no native regeneration projects at all.</p>
-          <p>In New South Wales, most credits come from
-            <strong>avoided clearing</strong>: paying
-            landholders not to clear regrowth.</p>
-          <p class="insight-note">Credits are tonnes of carbon dioxide the register
-            reports as stored or avoided, not hectares of forest. Drag the slider
-            to watch credits build up since 2013–14.</p>
-        </div>
-      </div>
-
       <p class="source">
-        Sources: ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.iv">Indicator 1.1a.iv</a> (2023), Figure 1.1a.iv-4;
-        ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">Indicator 2.1e</a>, annual averages 2016–17 to 2020–21;
-        Clean Energy Regulator <a href="https://cer.gov.au/markets/reports-and-data/accu-project-and-contract-register">ACCU Scheme project register</a> (as at 30 September 2026), active single-state forest projects, credits to June 2026.
+        Sources: ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.iv">Indicator 1.1a.iv</a> (2023), Figures 1.1a.iv-3 and 1.1a.iv-4,
+        from Australia's National Inventory Report 2021;
+        ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-2/indicator-2.1e">Indicator 2.1e</a>, annual averages 2016–17 to 2020–21.
       </p>
     </section>
 
@@ -319,16 +322,35 @@
         </div>
       </div>
 
+      <div class="row">
+        <figure class="fig">
+          <div id="fire-detections-hexbin" class="chart chart-fixed" role="img"
+               aria-label="Hexagonal bin map of satellite fire detections across Australia from September 2019 to February 2020, with a month menu"></div>
+        </figure>
+        <div class="insight">
+          <h3>The Black Summer fires spread down the south-east coast.</h3>
+          <p>Satellites detected fires more than <strong>205,000</strong> times
+            over the season. <strong>New South Wales</strong> alone had
+            <strong>39%</strong> of them.</p>
+          <p><strong>December 2019</strong> was the worst month, with
+            <strong>37%</strong> of the season's detections.</p>
+          <p class="insight-note">Step through the months to watch the fires move south.
+            Detections count fires in all vegetation, including grassland. Each hexagon
+            covers about 6,300 km², so a count is also a density.</p>
+        </div>
+      </div>
+
       <p class="source">
-        Source: ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-3/indicator-3.1b">Indicator 3.1b</a> (2024).
+        Sources: ABARES <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-3/indicator-3.1b">Indicator 3.1b</a> (2024).
         Financial years run July to June.
+        NASA <a href="https://firms.modaps.eosdis.nasa.gov/download/">FIRMS</a> MODIS Collection 6.1 fire detections (MCD14ML), vegetation fires with confidence of 30 or more.
       </p>
     </section>
 
     <!-- =====================================================
-         05 · PROTECTION   (wide chart, then charts left)
+         05 · PAID REGROWTH   (charts left, text right)
          ===================================================== -->
-    <section class="chapter c-protect" id="protection" aria-labelledby="protection-title">
+    <section class="chapter c-carbon" id="regrowth" aria-labelledby="regrowth-title">
       <header class="chapter-head">
         <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A charred branch with fresh green shoots">
           <path class="b-char" d="M10 78 C40 68 72 56 124 34"/>
@@ -340,6 +362,71 @@
         </svg>
         <div>
           <p class="chapter-num">05</p>
+          <h2 id="regrowth-title">Who is paid to bring forests back?</h2>
+        </div>
+      </header>
+
+      <div class="row">
+        <figure class="fig">
+          <div id="forest-credits-cartogram" class="chart chart-fixed" role="img"
+               aria-label="Non-contiguous cartogram of Australian states resized by carbon credits issued to forest projects, with a year slider"></div>
+        </figure>
+        <div class="insight">
+          <h3>Forest carbon credits come from two states, not the most forested ones.</h3>
+          <p>Landholders earn carbon credits for regrowing or keeping forest.
+            <strong>New South Wales</strong> and <strong>Queensland</strong>
+            have earned <strong>87%</strong> of them.</p>
+          <p><strong>Victoria</strong> and <strong>Tasmania</strong>, among the most
+            densely forested states, have no native regeneration projects at all.</p>
+          <p>In New South Wales, most credits come from
+            <strong>avoided clearing</strong>: paying
+            landholders not to clear regrowth.</p>
+          <p class="insight-note">Credits are tonnes of carbon dioxide the register
+            reports as stored or avoided, not hectares of forest. Drag the slider
+            to watch credits build up since 2013–14.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <figure class="fig">
+          <div id="forest-credits-streamgraph" class="chart" role="img"
+               aria-label="Stream graph of carbon credits issued each year to forest projects, by kind of project, 2012-13 to 2025-26"></div>
+        </figure>
+        <div class="insight">
+          <h3>Paying for regrowth has taken over.</h3>
+          <p>Credits issued each year grew from <strong>1.4 million</strong>
+            in 2013–14 to <strong>12.5 million</strong> in 2025–26.</p>
+          <p><span class="key key-avoidedc">Avoided clearing</span> led for the first
+            three years. <span class="key key-regen">Native forest regeneration</span>
+            overtook it in 2016–17 and earned <strong>77%</strong> of credits in 2025–26.</p>
+          <p class="insight-note">Credits for native tree plantings and commercial
+            plantations are combined, as they are small. Click a legend entry to highlight one kind.</p>
+        </div>
+      </div>
+
+      <p class="source">
+        Source: Clean Energy Regulator <a href="https://cer.gov.au/markets/reports-and-data/accu-project-and-contract-register">ACCU Scheme project register</a> (as at 30 September 2026), active forest projects, credits to June 2026.
+      </p>
+    </section>
+
+    <!-- =====================================================
+         06 · PROTECTION   (wide chart, then text left, charts right)
+         ===================================================== -->
+    <section class="chapter c-protect flip" id="protection" aria-labelledby="protection-title">
+      <header class="chapter-head">
+        <svg class="branch" viewBox="0 0 160 100" role="img" aria-label="A leafy branch holding a bird's nest">
+          <path class="b-wood" d="M10 80 C44 70 82 58 132 40"/>
+          <path class="b-wood thin" d="M104 50 C110 38 118 30 128 24"/>
+          <path class="b-leaf" d="M128 24 C136 14 148 12 154 9 C150 22 140 28 128 24Z"/>
+          <path class="b-leaf2" d="M132 40 C142 34 152 34 158 36 C152 46 140 46 132 40Z"/>
+          <path class="b-leaf2" d="M30 74 C30 86 36 94 44 98 C47 86 40 78 30 74Z"/>
+          <path class="b-nest" d="M50 62 C52 76 82 76 86 60 Z"/>
+          <path class="b-nest-line" d="M53 66 C62 70 76 70 84 64 M56 71 C64 74 74 74 80 70"/>
+          <ellipse class="b-egg" cx="62" cy="59" rx="5" ry="6"/>
+          <ellipse class="b-egg" cx="73" cy="58" rx="5" ry="6"/>
+        </svg>
+        <div>
+          <p class="chapter-num">06</p>
           <h2 id="protection-title">Who looks after the forests?</h2>
         </div>
       </header>
@@ -418,6 +505,8 @@
       <div class="conclusion-text">
         <p>Australia's forests are concentrated in the north and east,
           and <strong>eucalypts</strong> cover most of them.</p>
+        <p>Uncleared forest is now rarely cleared, but regrowth still is.
+          Paid regrowth is growing fast, mostly in New South Wales and Queensland.</p>
         <p>Fire reshapes them every year, and big seasons like
           <strong>2019–20</strong> reach far beyond the tropics.</p>
         <p>Only <strong>26%</strong> sits in formal reserves.
@@ -453,6 +542,12 @@
             CC BY 4.0. <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.i-forest-area-by-type">Link</a></p>
         </div>
         <div>
+          <h3>Clearing and regrowth</h3>
+          <p>ABARES, Indicator 1.1a.iv (2023), Figure 1.1a.iv-3, from Australia's
+            National Inventory Report 2021. CC BY 4.0.
+            <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1a.iv">Link</a></p>
+        </div>
+        <div>
           <h3>Tree species records</h3>
           <p>Atlas of Living Australia, herbarium occurrence records,
             grouped into 1° grid cells. <a href="https://www.ala.org.au/">Link</a></p>
@@ -476,6 +571,16 @@
           <h3>Forest protection</h3>
           <p>ABARES, Indicator 1.1c (2024), tables for 2020–21.
             CC BY 4.0. <a href="https://www.agriculture.gov.au/abares/forestsaustralia/sofr/criterion-1/indicator-1.1c">Link</a></p>
+        </div>
+        <div>
+          <h3>Satellite fire detections</h3>
+          <p>MODIS Collection 6.1 Hotspot / Active Fire Detections MCD14ML, distributed
+            from NASA FIRMS (doi:10.5067/FIRMS/MODIS/MCD14ML), 1 September 2019 to
+            29 February 2020. Vegetation fires with confidence of 30 or more.
+            We acknowledge the use of data from NASA's Fire Information for Resource
+            Management System (FIRMS), part of NASA's Earth Science Data and
+            Information System (ESDIS).
+            <a href="https://firms.modaps.eosdis.nasa.gov/download/">Link</a></p>
         </div>
         <div>
           <h3>State boundaries</h3>

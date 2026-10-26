@@ -36,6 +36,12 @@
   --c-unplanned: #b5523b;
   --c-nrs: #1f6f78;
   --c-allmeasures: #8cc5c3;
+  --c-regrowth: #5f8f6f;
+  --c-clear: #3f3d39;
+  --c-reclear: #a9a59c;
+  --c-carbon: #7a7330;
+  --c-regen: #6d6629;
+  --c-avoidedc: #b1aa62;
 
   --serif: "Fraunces", Georgia, serif;
   --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
@@ -50,6 +56,7 @@
 .c-plant   { --ch: #56677a; }
 .c-fire    { --ch: var(--c-unplanned); }
 .c-protect { --ch: var(--c-nrs); }
+.c-carbon  { --ch: var(--c-carbon); }
 
 
 /* =========================================================
@@ -261,6 +268,9 @@ strong { font-weight: 700; }
 .b-leaf2 { fill: #62917a; }
 .b-plant { fill: #56677a; }
 .b-nut   { fill: #4b3d2f; }
+.b-nest  { fill: #9b8566; }
+.b-nest-line { fill: none; stroke: #6f5d45; stroke-width: 1.2; stroke-linecap: round; }
+.b-egg   { fill: var(--paper); stroke: #6f5d45; stroke-width: 1.2; }
 .b-nut-rim { stroke: #a8957c; stroke-width: 1.5; stroke-linecap: round; }
 .b-ember { fill: var(--c-planned); }
 .b-ember2 { fill: var(--c-unplanned); }
@@ -366,6 +376,13 @@ strong { font-weight: 700; }
 .key-unplanned::before   { background: var(--c-unplanned); }
 .key-nrs::before         { background: var(--c-nrs); }
 .key-allmeasures::before { background: var(--c-allmeasures); border-radius: 2px; }
+.key-regrowth::before    { background: var(--c-regrowth); border-radius: 2px; }
+.key-clear::before       { background: var(--c-clear); border-radius: 2px; }
+.key-reclear::before     { background: var(--c-reclear); border-radius: 2px; }
+.key-regen::before       { background: var(--c-regen); border-radius: 2px; }
+.key-woodland::before    { background: #c8dcc0; border-radius: 2px; }
+.key-closed::before      { background: #2f5f45; border-radius: 2px; }
+.key-avoidedc::before    { background: var(--c-avoidedc); border-radius: 2px; }
 
 .source {
   margin: 44px 0 0;
