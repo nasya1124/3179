@@ -1,6 +1,6 @@
 // Bump this whenever a chart or data file changes, so browsers fetch
 // the new version instead of an old cached copy.
-var VERSION = "20261027y";
+var VERSION = "20261028c";
 
 // Each entry links a container on the page (by its id) to a chart specification.
 // Files ending in .vl.json are Vega-Lite; files ending in .vg.json are Vega.
@@ -35,7 +35,7 @@ var charts = [
       });
     },
     passThrough: ["layer_1_marks", "layer_2_marks", "layer_3_marks", "layer_4_marks", "layer_5_marks", "layer_6_marks"] },   // outlines and labels drawn over the hexagons
-  { id: "#forest-protection-alluvial", spec: "charts/forest_protection_alluvial.vg.json" },
+  { id: "#forest-protection-sankey",   spec: "charts/forest_protection_sankey.vg.json" },
   { id: "#forest-protection-waffle",   spec: "charts/forest_protection_waffle.vl.json",
     narrow: { below: 600, apply: function (s) { eachLegend(s, function (l) { l.orient = "bottom"; }); } } },
   { id: "#forest-protection-by-state", spec: "charts/forest_protection_by_state.vl.json",
@@ -148,7 +148,7 @@ function loadTipData() {
     plantEst: "data/plantation_establishment_by_jurisdiction.csv",
     fireYear: "data/forest_fire_by_year.csv",
     creditsType: "data/forest_credits_by_type_year.csv",
-    alluvial: "data/forest_protection_alluvial.csv",
+    sankey: "data/forest_protection_sankey.csv",
     waffle: "data/forest_protection_waffle.csv"
   };
   var cartogram = fetch("data/forest_credits_cartogram.geojson?v=" + VERSION)
@@ -200,9 +200,23 @@ function miniLine(values, highlight, firstLabel, lastLabel) {
     '<text x="' + (w - 4) + '" y="' + h + '" text-anchor="end">' + lastLabel + "</text></svg>";
 }
 
+// The hero number sits at the top; the subject, eyebrow and details
+// follow in descending prominence, whatever order a card lists them in.
 function card(colour, parts, extraClass) {
+  var rank = function (h) {
+    if (/class="tt-(big|pair)/.test(h)) return 0;   // hero stat
+    if (/class="tt-title/.test(h)) return 1;        // subject
+    if (/class="tt-sub/.test(h)) return 2;          // line under the stat
+    if (/class="tt-kicker/.test(h)) return 3;       // eyebrow (category · year)
+    if (/class="tt-(note|why)/.test(h)) return 5;   // closing detail
+    return 4;                                       // sparkline, mix bar, table
+  };
+  var ordered = parts
+    .map(function (h, i) { return [h, i]; })
+    .sort(function (a, b) { return (rank(a[0]) - rank(b[0])) || (a[1] - b[1]); })
+    .map(function (x) { return x[0]; });
   return '<div class="tt' + (extraClass ? " " + extraClass : "") + '" style="--tt:' + colour + '">' +
-    parts.join("") + "</div>";
+    ordered.join("") + "</div>";
 }
 
 var tooltipCards = {
@@ -595,10 +609,10 @@ var tooltipCards = {
 
   // ---- 06 Protection -----------------------------------------------
 
-  // Alluvial: a flow, a tenure or a reserve status, with its area and
+  // Sankey: a flow, a tenure or a reserve status, with its area and
   // what share of the whole it is.
-  "#forest-protection-alluvial": function (v, esc) {
-    var rows = tipData.alluvial || [];
+  "#forest-protection-sankey": function (v, esc) {
+    var rows = tipData.sankey || [];
     var total = sum(rows, "Forest_area_kha");
     var area = Number(v.Area_kha);
     var inside = "Within the National Reserve System";
@@ -631,7 +645,8 @@ var tooltipCards = {
           pct(Number(biggest.Forest_area_kha) / area) + ").</p>"
       ];
     }
-    return card("var(--c-nrs)", ['<p class="tt-kicker">Native forest by land tenure · 2020–21</p>',
+    var colour = v.Status === inside ? "var(--c-nrs)" : v.Status ? "#8a857a" : "#7b867d";
+    return card(colour, ['<p class="tt-kicker">Native forest by land tenure · 2020–21</p>',
       '<p class="tt-title">' + title + "</p>"].concat(parts));
   },
 

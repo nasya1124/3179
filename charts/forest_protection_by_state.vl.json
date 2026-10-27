@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Protected share of forest by state",
-    "subtitle": "Percent of native forest area · 2020–21",
+    "subtitle": "2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,

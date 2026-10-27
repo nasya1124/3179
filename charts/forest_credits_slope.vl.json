@@ -3,10 +3,7 @@
   "description": "Slope graph of ACCU Scheme carbon credits issued to active forest projects in 2014-15 and 2025-26, by kind of project (Clean Energy Regulator, ACCU Scheme project register, as at 30 September 2026).",
   "title": {
     "text": "Forest carbon credits, by kind",
-    "subtitle": [
-      "Million credits issued in the year.",
-      "All kinds: 4.6M in 2014–15, 12.4M in 2025–26"
-    ],
+    "subtitle": "2014–15 and 2025–26",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,

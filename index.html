@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261027y">
+  <link rel="stylesheet" href="styles.css?v=20261028c">
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5.33.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.23.0"></script>
@@ -335,10 +335,14 @@
           <h3>Most forest sits outside the reserve system.</h3>
           <p>This diagram follows Australia's forest from who holds the land, on the left, to whether it is part of the <span class="key key-nrs">National Reserve System</span>, on the right. The National Reserve System is Australia's network of national parks and other protected areas.</p>
           <p>Most forest, <strong>68%</strong>, is on leasehold or private land. Leasehold land is public land that is rented out, often for grazing. Only <strong>26%</strong> of forest is in the reserve system, which includes almost all conservation reserves and some private land.</p>
+          <details class="explainer">
+            <summary>What is land tenure?</summary>
+            <p>Tenure is the legal basis on which land is held: who owns or controls it, and on what terms. Here it sorts native forest into private land, leasehold, public reserves and other Crown land.</p>
+          </details>
         </div>
         <figure class="fig">
-          <div id="forest-protection-alluvial" class="chart" role="img"
-               aria-label="Alluvial diagram of forest area flowing from land tenure to National Reserve System status"></div>
+          <div id="forest-protection-sankey" class="chart" role="img"
+               aria-label="Sankey diagram of forest area flowing from land tenure to National Reserve System status"></div>
         </figure>
       </div>
 
@@ -460,7 +464,8 @@
         <div>
           <h3>State boundaries</h3>
           <p>ABS, ASGS Edition 4 digital boundary files (2026),
-            simplified for web use. CC BY 4.0.</p>
+            CC BY 4.0. Simplified and converted to GeoJSON with
+            <a href="https://mapshaper.org/">mapshaper</a>.</p>
         </div>
       </div>
     </section>
@@ -474,6 +479,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20261027y"></script>
+  <script src="script.js?v=20261028c"></script>
 </body>
 </html>

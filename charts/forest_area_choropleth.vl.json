@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Native forest cover by state, 2023",
-    "subtitle": "Share of land area covered by native forest",
+    "text": "Native forest cover by state",
+    "subtitle": "2023",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,

@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Share of each state's forest burnt",
-    "subtitle": "Area burnt ÷ state's native forest area · 2016–17 to 2020–21",
+    "subtitle": "2016–17 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,

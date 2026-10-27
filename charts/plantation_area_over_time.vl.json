@@ -3,7 +3,7 @@
   "description": "Commercial plantation area by type, 1973-74 to 2021-22, with an overview strip to zoom the detail view (ABARES Indicator 1.1a.iv, Figure 1.1a.iv-4).",
   "title": {
     "text": "Commercial plantation area over time",
-    "subtitle": "Thousand hectares · drag across the lower strip to zoom",
+    "subtitle": "1973–74 to 2021–22",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,

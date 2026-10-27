@@ -3,7 +3,7 @@
   "description": "Hexagonal bin map of NASA FIRMS MODIS (Collection 6.1) fire detections, 1 September 2019 to 29 February 2020: vegetation fires with confidence of 30 or more, counted into equal-area hexagons (pre-projected, conic equal-area; drawn with an identity projection). The month is set by the controls under the chart (script.js).",
   "title": {
     "text": "Where fires burned in the Black Summer",
-    "subtitle": "Satellite fire detections per hexagon · September 2019 to February 2020",
+    "subtitle": "September 2019 to February 2020",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,
@@ -358,10 +358,10 @@
       "data": {
         "values": [
           {
-            "x": 486,
-            "y": 388,
-            "x2": 522,
-            "y2": 410
+            "x": 512,
+            "y": 400,
+            "x2": 470,
+            "y2": 379
           }
         ]
       },

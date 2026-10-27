@@ -3,10 +3,7 @@
   "description": "Non-contiguous cartogram: each state is scaled about its centroid so its area is proportional to cumulative carbon credits (ACCUs) issued to active, forest-related projects. Geometry pre-projected (conic equal-area) and scaled in a preprocessing script; drawn with an identity projection.",
   "title": {
     "text": "Carbon credits from forest projects, by state",
-    "subtitle": [
-      "Each state is resized so its area matches credits issued so far.",
-      "The faint outline shows the state's real size."
-    ],
+    "subtitle": "2013–14 to 2025–26",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,

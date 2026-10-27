@@ -3,10 +3,7 @@
   "description": "Annual forest clearing, re-clearing and regrowth in Australia, 1989-90 to 2020-21, with net change (ABARES Indicator 1.1a.iv, Figure 1.1a.iv-3, from the National Inventory Report 2021).",
   "title": {
     "text": "Forest cleared and regrown each year",
-    "subtitle": [
-      "Thousand hectares, years ending June",
-      "Regrowth above zero, clearing below; the cream line is the net change"
-    ],
+    "subtitle": "1989–90 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
     "fontSize": 19.2,
