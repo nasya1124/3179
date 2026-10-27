@@ -421,7 +421,6 @@ strong { font-weight: 700; }
 /* =========================================================
    7. CONCLUSION, SOURCES, FOOTER
    ========================================================= */
-.conclusion > :last-child,
 .sources > :last-child { grid-column: span 2; }
 
 .conclusion {
@@ -433,18 +432,18 @@ strong { font-weight: 700; }
 /* Same size as the chapter questions, so all section titles match */
 .conclusion h2,
 .sources h2 { font-size: var(--fs-2); line-height: 1.1; }
-/* Conclusion: findings in one column, the takeaway beside them */
-.conclusion-text {
+/* Conclusion: a short lead-in, then one key-takeaway card per chapter */
+.conclusion-lead {
+  grid-column: 2 / -1;      /* aligns with the chart column, beside the heading */
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter);
   font-size: var(--fs-5); line-height: 1.6;
 }
-.conclusion-text > p { grid-column: 1; max-width: 22em; }
-.conclusion-text > .takeaway { grid-column: 2; grid-row: 1 / span 4; align-self: start; }
-.conclusion-text p { margin: 0 0 16px; }
-.conclusion-text .takeaway {
-  margin: 0; padding: 4px 0 0 18px; border-left: 3px solid var(--ink);
-  font: 700 var(--fs-4)/1.4 var(--sans);
+.conclusion-lead p { margin: 0; max-width: 26em; }
+.conclusion-lead p:last-child {
+  padding-left: 18px; border-left: 3px solid var(--ink);
+  font-weight: 600;
 }
+
 /* Each figure is coloured by the chapter it comes from */
 .hl { color: var(--ch); font-weight: 700; }
 
@@ -493,8 +492,7 @@ strong { font-weight: 700; }
   .conclusion,
   .sources { grid-template-columns: minmax(0, 1fr); }
   .row .fig, .conclusion > *, .sources > * { grid-column: auto; }
-  .conclusion-text { grid-template-columns: minmax(0, 1fr); }
-  .conclusion-text > .takeaway { grid-column: 1; grid-row: auto; margin-top: 10px; }
+  .conclusion-lead { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .flip .row .insight { order: 0; justify-self: start; }
   .row { gap: 20px; }
   .insight { max-width: 21em; }
