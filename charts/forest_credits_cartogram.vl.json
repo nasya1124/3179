@@ -142,8 +142,8 @@
           {
             "x": 479,
             "y": 354.5,
-            "x2": 538,
-            "y2": 384
+            "x2": 524,
+            "y2": 404
           }
         ]
       },
@@ -192,7 +192,7 @@
           "filter": "datum.State != 'Australian Capital Territory'"
         },
         {
-          "calculate": "datum.State == 'Australian Capital Territory' ? 'ACT' : datum.State",
+          "calculate": "datum.State",
           "as": "Name"
         },
         {
@@ -261,7 +261,7 @@
           "filter": "datum.State == 'Australian Capital Territory'"
         },
         {
-          "calculate": "datum.State == 'Australian Capital Territory' ? 'ACT' : datum.State",
+          "calculate": "datum.State",
           "as": "Name"
         },
         {
@@ -269,7 +269,7 @@
           "as": "Amount"
         },
         {
-          "calculate": "[datum.Name, datum.Amount]",
+          "calculate": "['Australian Capital', 'Territory']",
           "as": "Label"
         }
       ],
@@ -280,17 +280,17 @@
         "fontWeight": "bold",
         "color": "#1f3326",
         "lineHeight": 16,
-        "align": "left",
+        "align": "right",
         "baseline": "middle"
       },
       "encoding": {
         "x": {
-          "datum": 543,
+          "datum": 598,
           "type": "quantitative",
           "scale": null
         },
         "y": {
-          "datum": 392,
+          "datum": 416,
           "type": "quantitative",
           "scale": null
         },

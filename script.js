@@ -1,6 +1,6 @@
 // Bump this whenever a chart or data file changes, so browsers fetch
 // the new version instead of an old cached copy.
-var VERSION = "20261028c";
+var VERSION = "20261028d";
 
 // Each entry links a container on the page (by its id) to a chart specification.
 // Files ending in .vl.json are Vega-Lite; files ending in .vg.json are Vega.

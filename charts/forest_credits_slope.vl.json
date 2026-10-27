@@ -57,11 +57,11 @@
       "as": "Label_y"
     },
     {
-      "calculate": "format(datum.Credits_m, '.1f') + 'M'",
+      "calculate": "format(datum.Credits_m, '.1f') + ' million'",
       "as": "Value"
     },
     {
-      "calculate": "datum.Short + '  ' + format(datum.Credits_m, '.1f') + 'M'",
+      "calculate": "datum.Short + '  ' + format(datum.Credits_m, '.1f') + ' million'",
       "as": "End_label"
     },
     {
