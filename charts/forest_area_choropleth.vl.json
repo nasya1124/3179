@@ -5,7 +5,7 @@
     "subtitle": "Share of land area covered by native forest",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -111,7 +111,8 @@
           {
             "Name": "Northern Territory",
             "lon": 133.4,
-            "lat": -19.5
+            "lat": -19.5,
+            "Display": "Northern\nTerritory"
           },
           {
             "Name": "South Australia",
@@ -130,8 +131,9 @@
           },
           {
             "Name": "Victoria",
-            "lon": 144.6,
-            "lat": -36.5
+            "lon": 139.0,
+            "lat": -40.6,
+            "outside": true
           },
           {
             "Name": "Tasmania",
@@ -158,14 +160,14 @@
           }
         },
         {
-          "calculate": "datum.Name + '\\n' + format(datum.Forest_cover_pct, '.0f') + '%'",
+          "calculate": "(datum.Display ? datum.Display : datum.Name) + '\\n' + format(datum.Forest_cover_pct, '.0f') + '%'",
           "as": "Label"
         }
       ],
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "bold",
         "lineBreak": "\n",
         "align": "center"
@@ -200,6 +202,12 @@
             "lat": -35.45,
             "lon2": 154.8,
             "lat2": -37.3
+          },
+          {
+            "lon": 143.6,
+            "lat": -37.4,
+            "lon2": 140.6,
+            "lat2": -39.4
           }
         ]
       },
@@ -238,7 +246,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "bold",
         "lineBreak": "\n",
         "align": "right",
@@ -267,7 +275,7 @@
     },
     "title": {
       "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-      "fontSize": 18,
+      "fontSize": 19.2,
       "fontWeight": "bold",
       "color": "#24392d"
     },

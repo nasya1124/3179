@@ -6,7 +6,7 @@
     "subtitle": "Satellite fire detections per hexagon · September 2019 to February 2020",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -204,7 +204,7 @@
         "baseline": "top",
         "x": 8,
         "y": 6,
-        "fontSize": 18,
+        "fontSize": 19.2,
         "fontWeight": 700,
         "color": "#1f3326",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
@@ -214,6 +214,143 @@
           "value": {
             "expr": "{'All': 'Whole season', '2019-09': 'September 2019', '2019-10': 'October 2019', '2019-11': 'November 2019', '2019-12': 'December 2019', '2020-01': 'January 2020', '2020-02': 'February 2020'}[month]"
           }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Name": "Western Australia",
+            "x": 168.4,
+            "y": 208.4
+          },
+          {
+            "Name": "Northern Territory",
+            "x": 303.1,
+            "y": 123.1
+          },
+          {
+            "Name": "South Australia",
+            "x": 329.5,
+            "y": 269.0
+          },
+          {
+            "Name": "Queensland",
+            "x": 440.0,
+            "y": 172.7
+          },
+          {
+            "Name": "New South Wales",
+            "x": 452.0,
+            "y": 300.0
+          },
+          {
+            "Name": "Victoria",
+            "x": 420,
+            "y": 372
+          },
+          {
+            "Name": "Tasmania",
+            "x": 436.2,
+            "y": 452.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "fontWeight": 700,
+        "align": "center",
+        "baseline": "middle",
+        "stroke": "#f6f3ec",
+        "strokeWidth": 3.5,
+        "strokeJoin": "round",
+        "color": "#f6f3ec"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null,
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null,
+          "axis": null
+        },
+        "text": {
+          "field": "Name"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Name": "Western Australia",
+            "x": 168.4,
+            "y": 208.4
+          },
+          {
+            "Name": "Northern Territory",
+            "x": 303.1,
+            "y": 123.1
+          },
+          {
+            "Name": "South Australia",
+            "x": 329.5,
+            "y": 269.0
+          },
+          {
+            "Name": "Queensland",
+            "x": 440.0,
+            "y": 172.7
+          },
+          {
+            "Name": "New South Wales",
+            "x": 452.0,
+            "y": 300.0
+          },
+          {
+            "Name": "Victoria",
+            "x": 420,
+            "y": 372
+          },
+          {
+            "Name": "Tasmania",
+            "x": 436.2,
+            "y": 452.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "fontWeight": 700,
+        "align": "center",
+        "baseline": "middle",
+        "color": "#1f3326"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null,
+          "axis": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null,
+          "axis": null
+        },
+        "text": {
+          "field": "Name"
         }
       }
     }

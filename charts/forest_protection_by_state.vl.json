@@ -5,7 +5,7 @@
     "subtitle": "Percent of native forest area · 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -58,9 +58,9 @@
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
-            "titleFontSize": 13,
+            "titleFontSize": 14,
             "labelExpr": "datum.value + '%'",
-            "titleFontWeight": 600,
+            "titleFontWeight": 700,
             "titlePadding": 10
           },
           "title": "Share of the state's native forest protected"
@@ -83,8 +83,8 @@
             "domain": false,
             "labelLimit": 220,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           },
@@ -161,9 +161,9 @@
             "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
             "labelFontSize": 14,
-            "titleFontSize": 13,
+            "titleFontSize": 14,
             "labelExpr": "datum.value + '%'",
-            "titleFontWeight": 600,
+            "titleFontWeight": 700,
             "titlePadding": 10
           },
           "title": "Share of the state's native forest protected"
@@ -183,8 +183,8 @@
             "domain": false,
             "labelLimit": 220,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           },
@@ -270,7 +270,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "color": "#1f3326",
         "align": "center",
         "baseline": "middle",
@@ -284,8 +284,8 @@
           "title": "Share of the state's native forest protected",
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -305,8 +305,8 @@
             "domain": false,
             "labelLimit": 220,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           },

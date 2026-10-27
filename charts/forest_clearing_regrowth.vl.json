@@ -9,7 +9,7 @@
     ],
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -59,8 +59,8 @@
             "ticks": false,
             "domain": false,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -125,8 +125,8 @@
             "ticks": false,
             "domain": false,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -142,8 +142,8 @@
             "labelFontSize": 14,
             "tickCount": 6,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -237,8 +237,8 @@
             "ticks": false,
             "domain": false,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -249,8 +249,8 @@
           "title": "Change in forest area (thousand hectares)",
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -300,8 +300,8 @@
             "ticks": false,
             "domain": false,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -312,8 +312,8 @@
           "title": "Change in forest area (thousand hectares)",
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -353,8 +353,8 @@
           "title": "Change in forest area (thousand hectares)",
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -374,7 +374,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "bold",
         "color": "#1f3326",
         "align": "center"
@@ -399,8 +399,8 @@
             "ticks": false,
             "domain": false,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }
@@ -411,8 +411,8 @@
           "title": "Change in forest area (thousand hectares)",
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }

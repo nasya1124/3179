@@ -5,7 +5,7 @@
     "subtitle": "Thousand hectares · 2011–12 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -76,8 +76,8 @@
         "labelExpr": "replace(datum.label, '-', '–')",
         "labelFontSize": 14,
         "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "titleFontSize": 13,
-        "titleFontWeight": 600,
+        "titleFontSize": 14,
+        "titleFontWeight": 700,
         "titleColor": "#3d4d42",
         "titlePadding": 10
       },
@@ -98,8 +98,8 @@
         "tickCount": 6,
         "grid": true,
         "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "titleFontSize": 13,
-        "titleFontWeight": 600,
+        "titleFontSize": 14,
+        "titleFontWeight": 700,
         "titleColor": "#3d4d42",
         "titlePadding": 10
       },
@@ -183,11 +183,6 @@
             "Financial_year": "2012-13",
             "Area_thousand_ha": 21154,
             "t": "Largest year: 21.2 million hectares"
-          },
-          {
-            "Financial_year": "2019-20",
-            "Area_thousand_ha": 16743,
-            "t": "Black Summer, 2019–20"
           }
         ]
       },
@@ -200,6 +195,33 @@
         "baseline": "middle",
         "dy": -16,
         "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Financial_year": "2019-20",
+            "Area_thousand_ha": 16743,
+            "t": "Black Summer, 2019–20"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "color": "#b5523b",
+        "align": "right",
+        "baseline": "middle",
+        "dy": -12,
+        "fontWeight": "bold",
+        "dx": -10
       },
       "encoding": {
         "text": {

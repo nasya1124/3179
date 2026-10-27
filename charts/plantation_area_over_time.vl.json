@@ -6,7 +6,7 @@
     "subtitle": "Thousand hectares · drag across the lower strip to zoom",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -66,8 +66,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -83,8 +83,8 @@
                 "tickCount": 5,
                 "gridColor": "#e6e1d5",
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }
@@ -207,8 +207,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -220,8 +220,8 @@
               "title": "Plantation area (thousand hectares)",
               "axis": {
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }
@@ -276,8 +276,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -289,8 +289,8 @@
               "title": "Plantation area (thousand hectares)",
               "axis": {
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }
@@ -347,8 +347,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -360,8 +360,8 @@
               "title": "Plantation area (thousand hectares)",
               "axis": {
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }
@@ -422,8 +422,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -435,8 +435,8 @@
               "title": "Plantation area (thousand hectares)",
               "axis": {
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }
@@ -495,8 +495,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -508,8 +508,8 @@
               "title": "Plantation area (thousand hectares)",
               "axis": {
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }
@@ -534,7 +534,7 @@
           "mark": {
             "type": "text",
             "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "fontSize": 16,
+            "fontSize": 14,
             "fontWeight": "bold",
             "color": "#ffffff",
             "clip": true
@@ -566,8 +566,8 @@
                   2020
                 ],
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               },
@@ -579,8 +579,8 @@
               "title": "Plantation area (thousand hectares)",
               "axis": {
                 "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-                "titleFontSize": 13,
-                "titleFontWeight": 600,
+                "titleFontSize": 14,
+                "titleFontWeight": 700,
                 "titleColor": "#3d4d42",
                 "titlePadding": 10
               }

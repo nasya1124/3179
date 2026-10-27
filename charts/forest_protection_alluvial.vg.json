@@ -12,7 +12,7 @@
     "text": "Native forest by land tenure and reserve status",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "offset": 10,
@@ -384,7 +384,7 @@
             "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
           },
           "fontSize": {
-            "value": 15
+            "value": 14
           },
           "fill": {
             "value": "#24392d"
@@ -422,7 +422,7 @@
             "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
           },
           "fontSize": {
-            "value": 16
+            "value": 14
           },
           "fontWeight": {
             "value": "bold"

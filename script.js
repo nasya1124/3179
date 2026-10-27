@@ -1,6 +1,6 @@
 // Bump this whenever a chart or data file changes, so browsers fetch
 // the new version instead of an old cached copy.
-var VERSION = "20261027i";
+var VERSION = "20261027w";
 
 // Each entry links a container on the page (by its id) to a chart specification.
 // Files ending in .vl.json are Vega-Lite; files ending in .vg.json are Vega.
@@ -9,18 +9,22 @@ var charts = [
   { id: "#forest-area-by-state",       spec: "charts/forest_area_by_state.vl.json" },
   { id: "#chart-04",                   spec: "charts/forest_type_donut.vl.json" },
   { id: "#chart-13",                   spec: "charts/tree_species_distribution.vl.json" },
-  { id: "#forest-clearing-regrowth",   spec: "charts/forest_clearing_regrowth.vl.json" },
+  { id: "#forest-clearing-regrowth",   spec: "charts/forest_clearing_regrowth.vl.json",
+    narrow: { below: 640, apply: function (s) { eachLegend(s, function (l) { l.columns = 2; }); } } },
   { id: "#plantation-over-time",       spec: "charts/plantation_area_over_time.vl.json" },
   { id: "#plantation_establishment",   spec: "charts/plantation_establishment_by_jurisdiction.vl.json" },
   { id: "#forest-credits-cartogram",   spec: "charts/forest_credits_cartogram.vl.json" },
   { id: "#forest-credits-slope",       spec: "charts/forest_credits_slope.vl.json" },
-  { id: "#forest-fire-area",           spec: "charts/forest_fire_area_over_time.vl.json" },
+  { id: "#forest-fire-area",           spec: "charts/forest_fire_area_over_time.vl.json",
+    narrow: { below: 640, apply: function (s) { s.encoding.x.axis.labelExpr = "replace(slice(datum.label, 2), '-', '–')"; } } },
   { id: "#forest-fire-heatmap",        spec: "charts/forest_fire_by_state_heatmap.vl.json" },
   { id: "#fire-detections-hexbin",     spec: "charts/fire_detections_hexbin.vl.json",
-    passThrough: ["layer_1_marks"] },   // state outlines drawn over the hexagons
+    passThrough: ["layer_1_marks", "layer_2_marks", "layer_3_marks", "layer_4_marks"] },   // outlines and labels drawn over the hexagons
   { id: "#forest-protection-alluvial", spec: "charts/forest_protection_alluvial.vg.json" },
-  { id: "#forest-protection-waffle",   spec: "charts/forest_protection_waffle.vl.json" },
-  { id: "#forest-protection-by-state", spec: "charts/forest_protection_by_state.vl.json" }
+  { id: "#forest-protection-waffle",   spec: "charts/forest_protection_waffle.vl.json",
+    narrow: { below: 600, apply: function (s) { eachLegend(s, function (l) { l.orient = "bottom"; }); } } },
+  { id: "#forest-protection-by-state", spec: "charts/forest_protection_by_state.vl.json",
+    narrow: { below: 700, apply: function (s) { eachLegend(s, function (l) { l.direction = "vertical"; l.columns = 1; }); } } }
 ];
 
 // ---------------------------------------------------------------
@@ -368,7 +372,8 @@ var tooltipCards = {
       '<p class="tt-big"><b>' + fmt(count) + "</b> record" + (count === 1 ? "" : "s") + " here</p>",
       '<p class="tt-sub">Around ' + fmt(Math.abs(lat), 1) + "°S, " + fmt(lon, 1) + "°E</p>",
       '<p class="tt-note">' + pct(count / total) + " of all " + fmt(total) + " " + esc(info.name.toLowerCase()) +
-        " records" + (count === most ? ", the most of any square." : ".") + "</p>"
+        " records" + (count === most ? ", the most of any square." : ".") + "</p>",
+      info.why ? '<p class="tt-why"><b>Why here?</b> ' + info.why + "</p>" : ""
     ]);
   },
 
@@ -378,31 +383,68 @@ var tooltipCards = {
   // balance sheet and whether it was a net gain or loss.
   "#forest-clearing-regrowth": function (v, esc) {
     var year = v["Financial year"], type = v.Type;
-    var rows = (tipData.clearing || []).filter(function (r) { return r.Financial_year === year; });
-    var get = function (t) { var r = rows.find(function (x) { return x.Type === t; }); return r ? Number(r.Area_kha) : 0; };
-    var regrowth = get("Regrowth"), clear = get("Clearing of previously uncleared forest"), reclear = get("Re-clearing of regrowth");
-    var netRow = (tipData.net || []).find(function (r) { return r.Financial_year === year; });
-    var net = netRow ? Number(netRow.Net_kha) : regrowth + clear + reclear;
-    var looks = {
-      "Regrowth": ["var(--c-regrowth)", "grew back", regrowth],
-      "Clearing of previously uncleared forest": ["var(--c-clear)", "cleared for the first time", clear],
-      "Re-clearing of regrowth": ["#857f72", "of regrowth cleared again", reclear]
+    var all = tipData.clearing || [];
+    var series = function (t) {
+      return all.filter(function (r) { return r.Type === t; })
+        .sort(function (a, b) { return a.Year - b.Year; })
+        .map(function (r) { return { fy: r.Financial_year, v: Math.abs(Number(r.Area_kha)) }; });
     };
-    var look = looks[type] || ["#dcc592", net >= 0 ? "net gain" : "net loss", net];
+    var at = function (list) { var r = list.find(function (x) { return x.fy === year; }); return r ? r.v : 0; };
+    var REG = "Regrowth", CLR = "Clearing of previously uncleared forest", REC = "Re-clearing of regrowth";
+    var reg = series(REG), clr = series(CLR), rec = series(REC);
+    var nets = (tipData.net || []).slice().sort(function (a, b) { return a.Year - b.Year; })
+      .map(function (r) { return { fy: r.Financial_year, v: Number(r.Net_kha) }; });
+    var avg = function (list) { return list.reduce(function (a, r) { return a + r.v; }, 0) / list.length; };
+    var trend = function (list) {
+      var i = list.findIndex(function (r) { return r.fy === year; });
+      return i < 0 ? "" : miniLine(list.map(function (r) { return Math.max(0, r.v); }), i, list[0].fy, list[list.length - 1].fy);
+    };
+    var parts = ['<p class="tt-kicker">Forest change · ' + esc(year) + "</p>"];
+
+    if (type === REG) {
+      var r = at(reg), mean = avg(reg);
+      var peak = reg.reduce(function (p, x) { return x.v > p.v ? x : p; }, reg[0]);
+      parts.push('<p class="tt-title">Regrowth</p>',
+        '<p class="tt-big">' + bigKha(r) + "</p>",
+        '<p class="tt-sub">grew back on land cleared in the past</p>', trend(reg),
+        '<p class="tt-note">' + (peak.fy === year ? "The most regrowth of any year." :
+          (r >= mean ? pct(r / mean - 1) + " above" : pct(1 - r / mean) + " below") + " the average year (" + fmt(mean) + " thousand hectares).") + "</p>");
+      return card("var(--c-regrowth)", parts);
+    }
+    if (type === CLR) {
+      var c = at(clr), first = clr[0];
+      parts.push('<p class="tt-title">Clearing of previously uncleared forest</p>',
+        '<p class="tt-big">' + bigKha(c) + "</p>",
+        '<p class="tt-sub">cleared for the first time</p>', trend(clr),
+        '<p class="tt-note">' + (year === first.fy ? "The first year on record, and the highest." :
+          pct(1 - c / first.v) + " less than in " + first.fy + " (" + fmt(first.v) + " thousand hectares).") + "</p>");
+      return card("var(--c-clear)", parts);
+    }
+    if (type === REC) {
+      var rc = at(rec), cl = at(clr), rg = at(reg);
+      var ratio = cl ? rc / cl : 0;
+      parts.push('<p class="tt-title">Re-clearing of regrowth</p>',
+        '<p class="tt-big">' + bigKha(rc) + "</p>",
+        '<p class="tt-sub">of regrowth cleared again</p>', trend(rec),
+        '<p class="tt-note">' + (ratio >= 1.15 ? "About " + fmt(ratio, ratio < 10 ? 1 : 0) + "× the first-time clearing that year."
+          : ratio >= 0.85 ? "About the same as first-time clearing that year."
+          : "Less than first-time clearing that year.") +
+          (rg ? " Equal to " + pct(rc / rg) + " of that year's regrowth." : "") + "</p>");
+      return card("#857f72", parts);
+    }
+    // Net change: the year's balance sheet
+    var net = at(nets);
     var line = function (label, n, bold) {
       return "<tr" + (bold ? ' class="tt-total"' : "") + "><th>" + label + "</th><td>" +
         (n > 0 ? "+" : n < 0 ? "−" : "") + fmt(Math.abs(n)) + "</td></tr>";
     };
-    return card(look[0], [
-      '<p class="tt-kicker">Forest change · ' + esc(year) + "</p>",
-      '<p class="tt-title">' + esc(type || "Net change") + "</p>",
-      '<p class="tt-big">' + bigKha(Math.abs(look[2])) + "</p>",
-      '<p class="tt-sub">' + look[1] + "</p>",
-      '<table class="tt-table tt-ledger">' +
-        line("Regrowth", regrowth) + line("Clearing", clear) + line("Re-clearing", reclear) +
-        line("Net change", net, true) + "</table>",
-      '<p class="tt-note">Thousand hectares. ' + (net >= 0 ? "A net gain of forest that year." : "A net loss of forest that year.") + "</p>"
-    ], type ? "" : "tt-light"); 
+    parts.push('<p class="tt-title">Net change</p>',
+      '<p class="tt-big">' + bigKha(Math.abs(net)) + "</p>",
+      '<p class="tt-sub">' + (net >= 0 ? "net gain of forest" : "net loss of forest") + "</p>",
+      '<table class="tt-table tt-ledger">' + line("Regrowth", at(reg)) + line("Clearing", -at(clr)) +
+        line("Re-clearing", -at(rec)) + line("Net change", net, true) + "</table>",
+      '<p class="tt-note">Thousand hectares. Regrowth minus both kinds of clearing.</p>');
+    return card("#dcc592", parts, "tt-light");
   },
 
   // Plantation area: the type's area and share that year, its peak,
@@ -597,10 +639,15 @@ var NATIONAL_COVER = 17;          // % of Australia's land that is forest
 var NATIVE_FOREST_KHA = 131500;   // native forest, thousand hectares
 var HEX_KM2 = 6290;               // area of one bin-map hexagon
 
+// "why" explains each species' range (sources: The Conversation, 2018,
+// on mountain ash; Wikipedia articles on bunya pine and boab).
 var SPECIES = {
-  "Eucalyptus regnans": { name: "Mountain ash", colour: "var(--c-regnans)" },
-  "Araucaria bidwillii": { name: "Bunya pine", colour: "var(--c-bunya)" },
-  "Adansonia gregorii": { name: "Boab", colour: "var(--c-boab)" }
+  "Eucalyptus regnans": { name: "Mountain ash", colour: "var(--c-regnans)",
+    why: "It needs cool, wet forest with a reliable water supply. After a bushfire, seeds fall from the canopy and a new forest grows." },
+  "Araucaria bidwillii": { name: "Bunya pine", colour: "var(--c-bunya)",
+    why: "A survivor of ancient rainforests. As Australia dried out, it was left in a few wet pockets, and its seeds spread poorly." },
+  "Adansonia gregorii": { name: "Boab", colour: "var(--c-boab)",
+    why: "It grows in the tropics, where winters are dry. It drops its leaves and stores water in its swollen trunk." }
 };
 
 // Small helpers for the cards.
@@ -739,12 +786,39 @@ function passThroughPatch(names) {
   };
 }
 
+// Narrow screens: some charts swap to a layout that fits (legends in
+// two rows or under the chart, shorter year labels), so no label is cut off.
+function eachLegend(spec, fn) {
+  (function walk(o) {
+    if (!o || typeof o !== "object") return;
+    if (o.legend && typeof o.legend === "object") fn(o.legend);
+    Object.keys(o).forEach(function (k) { walk(o[k]); });
+  })(spec);
+}
+
+function loadSpec(chart) {
+  var el = document.querySelector(chart.id);
+  var url = chart.spec + "?v=" + VERSION;
+  return fetch(url).then(function (r) { return r.json(); }).then(function (spec) {
+    // No left padding: chart titles start on the same sight-line as the text
+    var pad = spec.padding;
+    if (pad === undefined || typeof pad === "number") {
+      var p = pad === undefined ? 5 : pad;
+      spec.padding = { left: 0, right: p, top: p, bottom: p };
+    } else if (typeof pad === "object" && !pad.signal) {
+      pad.left = 0;
+    }
+    if (chart.narrow && el && el.clientWidth < chart.narrow.below) chart.narrow.apply(spec);
+    return spec;
+  });
+}
+
 function renderCharts() {
   charts.forEach(function (chart) {
-    vegaEmbed(chart.id, chart.spec + "?v=" + VERSION, {
+    loadSpec(chart).then(function (spec) { return vegaEmbed(chart.id, spec, {
       actions: false, loader: loader, tooltip: tooltipOptions(chart.id),
       patch: chart.passThrough ? passThroughPatch(chart.passThrough) : undefined
-    })
+    }); })
       .then(function (result) {
         if (linkedIds.indexOf(chart.id) >= 0) linkView(result.view);
         else addLegendReset(result.view);

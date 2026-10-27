@@ -9,7 +9,7 @@
     ],
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -210,7 +210,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "bold",
         "color": "#1f3326",
         "lineHeight": 16,
@@ -279,7 +279,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "bold",
         "color": "#1f3326",
         "lineHeight": 16,

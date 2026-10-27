@@ -5,7 +5,7 @@
     "subtitle": "Share of area planted or replanted · annual average 2016–17 to 2020–21",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -75,8 +75,8 @@
         "labelExpr": "indexof(datum.label, ' and ') > 0 ? [slice(datum.label, 0, indexof(datum.label, ' and ')), slice(datum.label, indexof(datum.label, ' and ') + 1)] : datum.label",
         "labelLineHeight": 15,
         "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "titleFontSize": 13,
-        "titleFontWeight": 600,
+        "titleFontSize": 14,
+        "titleFontWeight": 700,
         "titleColor": "#3d4d42",
         "titlePadding": 10
       },
@@ -112,8 +112,8 @@
             "tickColor": "#c8c2b6",
             "domain": false,
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           },
@@ -289,8 +289,8 @@
           "title": "Share of area planted each year",
           "axis": {
             "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-            "titleFontSize": 13,
-            "titleFontWeight": 600,
+            "titleFontSize": 14,
+            "titleFontWeight": 700,
             "titleColor": "#3d4d42",
             "titlePadding": 10
           }

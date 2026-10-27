@@ -55,20 +55,20 @@ Victoria,2023,2022–23,0.169,398,380,Commercial plantations
 Victoria,2024,2023–24,0.262,398,380,Commercial plantations
 Victoria,2025,2024–25,0.362,398,380,Commercial plantations
 Victoria,2026,2025–26,0.454,398,380,Commercial plantations
-South Australia,2013,2012–13,0.0,329.5,269.4,
-South Australia,2014,2013–14,0.0,329.5,269.4,
-South Australia,2015,2014–15,0.0,329.5,269.4,
-South Australia,2016,2015–16,0.06,329.5,269.4,Native forest regeneration
-South Australia,2017,2016–17,0.06,329.5,269.4,Native forest regeneration
-South Australia,2018,2017–18,0.097,329.5,269.4,Native forest regeneration
-South Australia,2019,2018–19,0.162,329.5,269.4,Native forest regeneration
-South Australia,2020,2019–20,0.168,329.5,269.4,Native forest regeneration
-South Australia,2021,2020–21,0.204,329.5,269.4,Native forest regeneration
-South Australia,2022,2021–22,0.233,329.5,269.4,Native forest regeneration
-South Australia,2023,2022–23,0.424,329.5,269.4,Native forest regeneration
-South Australia,2024,2023–24,0.599,329.5,269.4,Native forest regeneration
-South Australia,2025,2024–25,0.704,329.5,269.4,Native forest regeneration
-South Australia,2026,2025–26,1.201,329.5,269.4,Native forest regeneration
+South Australia,2013,2012–13,0.0,329.5,296,
+South Australia,2014,2013–14,0.0,329.5,296,
+South Australia,2015,2014–15,0.0,329.5,296,
+South Australia,2016,2015–16,0.06,329.5,296,Native forest regeneration
+South Australia,2017,2016–17,0.06,329.5,296,Native forest regeneration
+South Australia,2018,2017–18,0.097,329.5,296,Native forest regeneration
+South Australia,2019,2018–19,0.162,329.5,296,Native forest regeneration
+South Australia,2020,2019–20,0.168,329.5,296,Native forest regeneration
+South Australia,2021,2020–21,0.204,329.5,296,Native forest regeneration
+South Australia,2022,2021–22,0.233,329.5,296,Native forest regeneration
+South Australia,2023,2022–23,0.424,329.5,296,Native forest regeneration
+South Australia,2024,2023–24,0.599,329.5,296,Native forest regeneration
+South Australia,2025,2024–25,0.704,329.5,296,Native forest regeneration
+South Australia,2026,2025–26,1.201,329.5,296,Native forest regeneration
 Tasmania,2013,2012–13,0.0,436,452,
 Tasmania,2014,2013–14,0.0,436,452,
 Tasmania,2015,2014–15,0.0,436,452,
@@ -83,20 +83,20 @@ Tasmania,2023,2022–23,0.075,436,452,Commercial plantations
 Tasmania,2024,2023–24,0.085,436,452,Commercial plantations
 Tasmania,2025,2024–25,0.155,436,452,Commercial plantations
 Tasmania,2026,2025–26,0.347,436,452,Commercial plantations
-Northern Territory,2013,2012–13,0.0,303,122.4,
-Northern Territory,2014,2013–14,0.0,303,122.4,
-Northern Territory,2015,2014–15,0.0,303,122.4,
-Northern Territory,2016,2015–16,0.0,303,122.4,
-Northern Territory,2017,2016–17,0.0,303,122.4,
-Northern Territory,2018,2017–18,0.0,303,122.4,
-Northern Territory,2019,2018–19,0.0,303,122.4,
-Northern Territory,2020,2019–20,0.0,303,122.4,
-Northern Territory,2021,2020–21,0.0,303,122.4,
-Northern Territory,2022,2021–22,0.0,303,122.4,
-Northern Territory,2023,2022–23,0.0,303,122.4,
-Northern Territory,2024,2023–24,0.0,303,122.4,
-Northern Territory,2025,2024–25,0.178,303,122.4,Native forest regeneration
-Northern Territory,2026,2025–26,0.229,303,122.4,Native forest regeneration
+Northern Territory,2013,2012–13,0.0,303,148,
+Northern Territory,2014,2013–14,0.0,303,148,
+Northern Territory,2015,2014–15,0.0,303,148,
+Northern Territory,2016,2015–16,0.0,303,148,
+Northern Territory,2017,2016–17,0.0,303,148,
+Northern Territory,2018,2017–18,0.0,303,148,
+Northern Territory,2019,2018–19,0.0,303,148,
+Northern Territory,2020,2019–20,0.0,303,148,
+Northern Territory,2021,2020–21,0.0,303,148,
+Northern Territory,2022,2021–22,0.0,303,148,
+Northern Territory,2023,2022–23,0.0,303,148,
+Northern Territory,2024,2023–24,0.0,303,148,
+Northern Territory,2025,2024–25,0.178,303,148,Native forest regeneration
+Northern Territory,2026,2025–26,0.229,303,148,Native forest regeneration
 Australian Capital Territory,2013,2012–13,0.0,575,392,
 Australian Capital Territory,2014,2013–14,0.0,575,392,
 Australian Capital Territory,2015,2014–15,0.0,575,392,

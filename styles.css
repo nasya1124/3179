@@ -47,6 +47,15 @@
   --serif: "Fraunces", Georgia, serif;
   --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
 
+  /* Type scale: six sizes only. Hierarchy within a level comes from
+     weight (bold/regular) and colour (ink/muted), not extra sizes. */
+  --fs-1: clamp(2.8rem, 6vw, 4.8rem);   /* page title */
+  --fs-2: clamp(1.8rem, 3.2vw, 2.5rem); /* section titles, key numbers */
+  --fs-3: 1.55rem;                      /* chart headlines */
+  --fs-4: 1.2rem;                       /* intro, chart titles, takeaway */
+  --fs-5: 1.1rem;                       /* body text */
+  --fs-6: 0.875rem;                     /* notes, sources, labels, controls */
+
   --wrap: 1180px;
   --gutter: 48px;
 }
@@ -71,7 +80,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 400 18px/1.6 var(--sans);
+  font: 400 var(--fs-5)/1.6 var(--sans);
 }
 
 .wrap {
@@ -83,7 +92,10 @@ body {
 
 p { text-wrap: pretty; }
 
-h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 600; }
+/* Serif for titles only (page title, chapter questions, conclusion title);
+   everything that supports the charts is sans serif. */
+h1, h2 { margin: 0; font-family: var(--serif); font-weight: 600; }
+h3 { margin: 0; font-family: var(--sans); font-weight: 700; }
 
 a { color: var(--ink); text-underline-offset: 2px; }
 
@@ -92,7 +104,7 @@ strong { font-weight: 700; }
 .eyebrow {
   margin: 0 0 12px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--fs-6);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -101,7 +113,7 @@ strong { font-weight: 700; }
 
 /* =========================================================
    2. HERO AND KEY NUMBERS
-   Centred title and intro, then a ruled row of key numbers
+   Left-aligned title and intro, then a ruled row of key numbers
    (no cards, no illustration).
    ========================================================= */
 .hero {
@@ -110,11 +122,10 @@ strong { font-weight: 700; }
   padding-top: 52px;
   padding-bottom: 8px;
 }
-.hero-text { text-align: center; }
-.hero-text .dek { margin-left: auto; margin-right: auto; text-align: left; }
+.hero-text { text-align: left; }
 
 .hero h1 {
-  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-size: var(--fs-1);
   line-height: 1;
   letter-spacing: -0.015em;
 }
@@ -124,7 +135,7 @@ strong { font-weight: 700; }
   text-wrap: balance;       /* even line lengths */
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: clamp(1.0rem, 1.8vw, 1.2rem);
+  font-size: var(--fs-4);
   line-height: 1.4;
 }
 
@@ -137,10 +148,10 @@ strong { font-weight: 700; }
 /* Wide screens: intros break every 10 words (see the <br>s in the HTML),
    so each block is exactly as wide as its longest line. */
 @media (min-width: 900px) {
-  .hero-text .dek, .chapter-head .chapter-intro { width: max-content; max-width: none; }
+  .hero-text .dek { width: max-content; max-width: none; }
 }
 
-.hint { max-width: none; margin: 14px 0 0; text-align: left; color: var(--muted); font-size: 0.95rem; }
+.hint { max-width: none; margin: 14px 0 0; text-align: left; color: var(--muted); font-size: var(--fs-6); }
 
 
 .stats {
@@ -156,7 +167,7 @@ strong { font-weight: 700; }
 .stat + .stat { border-left: 1px solid var(--rule); }
 .stat:first-child { padding-left: 0; }
 
-.stat dt { font: 600 2.3rem/1.1 var(--serif); }
+.stat dt { font: 700 var(--fs-2)/1.1 var(--sans); }
 .stat dt::before {               /* dot in the chapter colour it links to */
   content: "";
   display: inline-block;
@@ -167,8 +178,8 @@ strong { font-weight: 700; }
   background: var(--ch);
   vertical-align: 0.25em;
 }
-.stat dt span { font: 600 0.95rem var(--sans); color: var(--muted); }
-.stat dd { margin: 6px 0 0; color: var(--muted); font-size: 0.98rem; line-height: 1.35; }
+.stat dt span { font: 600 var(--fs-6) var(--sans); color: var(--muted); }
+.stat dd { margin: 6px 0 0; color: var(--muted); font-size: var(--fs-5); line-height: 1.4; }
 
 
 /* =========================================================
@@ -226,7 +237,7 @@ strong { font-weight: 700; }
   padding: 2px 8px;
   border-radius: 4px;
   background: var(--paper);
-  font-size: 0.95rem;
+  font-size: var(--fs-6);
   font-weight: 600;
   white-space: nowrap;
   opacity: 0;
@@ -244,9 +255,9 @@ strong { font-weight: 700; }
 /* =========================================================
    4. CHAPTER HEADERS
    Chapter number in the chapter colour, question heading,
-   a short lead-in, then a thin rule.
+   then a thin rule.
    ========================================================= */
-.chapter { padding-top: 56px; }
+.chapter { padding-top: 48px; }
 
 .chapter-head {
   margin-bottom: 32px;
@@ -254,45 +265,46 @@ strong { font-weight: 700; }
   border-bottom: 1px solid var(--rule);
 }
 
+/* Chapter number sits on the same line as the question, in the same
+   type and size, coloured by chapter: one heading, not two levels. */
+.chapter-head > div { display: flex; align-items: baseline; gap: 0.45em; }
 .chapter-num {
-  margin: 0 0 6px;
+  margin: 0;
   color: var(--ch);
-  font: 600 1.05rem/1 var(--serif);
+  font: 600 var(--fs-2)/1.1 var(--serif);
 }
 
 .chapter-head h2 {
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-size: var(--fs-2);
   line-height: 1.1;
 }
 
-/* Short lead-in under each chapter question: links it to the last chapter */
-.chapter-intro {
-  max-width: 21em;
-  margin: 14px 0 0;
-  font-size: 1.12rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
 
 
 
 /* =========================================================
    5. CHART ROWS
-   Chart and insight side by side. Chapters alternate:
-   charts left in 01, 03, 05 and right in 02, 04 (.flip),
-   so the page zig-zags instead of stacking all text on one side.
+   One three-column grid of equal columns for the whole page,
+   so every element lines up on the same few sight-lines.
+   A chart spans two columns and its text takes the third.
+   Chapters alternate: charts left in 01, 03, 05 and right in
+   02, 04, 06 (.flip), so the page zig-zags.
    ========================================================= */
-.row {
+.row,
+.insight-wide,
+.conclusion,
+.sources {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gutter);
-  align-items: center;
+  align-items: start;      /* text lines up with the top of its chart */
 }
 
-.row + .row,
-.row-wide + .row { margin-top: 52px; }
+.row .fig { grid-column: span 2; }
 
-.flip .row { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+.row + .row,
+.row-wide + .row { margin-top: 44px; }
+
 .flip .row .insight { order: -1; }
 
 .fig { margin: 0; min-width: 0; }
@@ -308,14 +320,10 @@ strong { font-weight: 700; }
 
 /* Full-width chart: headline left, text right, chart below */
 .insight-wide {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: var(--gutter);
   max-width: none !important;
   margin-bottom: 28px;
 }
-
-.insight-wide > div { max-width: 22em; }
+.insight-wide > div { max-width: 21em; }
 .insight-wide > div:last-child { align-self: end; }   /* second paragraph sits beside the first */
 
 
@@ -326,7 +334,7 @@ strong { font-weight: 700; }
    ========================================================= */
 .insight {
   max-width: 22em;
-  font-size: 1.1rem;
+  font-size: var(--fs-5);
   line-height: 1.6;
 }
 
@@ -334,8 +342,8 @@ strong { font-weight: 700; }
   position: relative;
   margin-bottom: 14px;
   padding-top: 16px;
-  font-size: 1.8rem;
-  line-height: 1.18;
+  font-size: var(--fs-3);
+  line-height: 1.25;
 }
 
 /* short rule in the chapter colour above each headline */
@@ -353,7 +361,23 @@ strong { font-weight: 700; }
 .insight p { margin: 0 0 12px; }
 .insight p:last-child { margin-bottom: 0; }
 
-.insight-note { max-width: 21em; color: var(--muted); font-size: 0.92rem; }
+/* "What is a carbon credit?": extra explanation, open only on request */
+.explainer { margin: 0 0 14px; border-left: 3px solid var(--ch); padding-left: 12px; }
+.explainer summary {
+  cursor: pointer; font-weight: 700; color: var(--ink); list-style: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.explainer summary::-webkit-details-marker { display: none; }
+.explainer summary::after {
+  content: "+"; display: inline-grid; place-items: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ch); color: #fff; font-size: 15px; line-height: 1;
+}
+.explainer[open] summary::after { content: "−"; }
+.explainer summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.explainer p { margin: 8px 0 2px; color: var(--muted); font-size: var(--fs-5); }
+
+.insight-note { max-width: 21em; color: var(--muted); font-size: var(--fs-6); }
 
 /* Colour key: a swatch in the chart's hue, text stays dark.
    Only used where the word names a colour in that chart. */
@@ -390,19 +414,15 @@ strong { font-weight: 700; }
   margin: 32px 0 0;
   padding-bottom: 8px;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: var(--fs-6);
 }
 
 
 /* =========================================================
    7. CONCLUSION, SOURCES, FOOTER
    ========================================================= */
-.conclusion,
-.sources {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: var(--gutter);
-}
+.conclusion > :last-child,
+.sources > :last-child { grid-column: span 2; }
 
 .conclusion {
   margin-top: 64px;
@@ -410,12 +430,14 @@ strong { font-weight: 700; }
   border-top: 1px solid var(--ink);
 }
 
-.conclusion h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.08; }
-.conclusion-text { max-width: 25em; font-size: 1.22rem; line-height: 1.6; align-self: end; }
+/* Same size as the chapter questions, so all section titles match */
+.conclusion h2,
+.sources h2 { font-size: var(--fs-2); line-height: 1.1; }
+.conclusion-text { max-width: 25em; font-size: var(--fs-5); line-height: 1.6; align-self: end; }
 .conclusion-text p { margin: 0 0 16px; }
 .conclusion-text .takeaway {
   margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--rule);
-  font: 600 1.45rem/1.3 var(--serif);
+  font: 700 var(--fs-4)/1.4 var(--sans);
 }
 /* Each figure is coloured by the chapter it comes from */
 .hl { color: var(--ch); font-weight: 700; }
@@ -426,16 +448,18 @@ strong { font-weight: 700; }
   border-top: 1px solid var(--rule);
 }
 
-.sources h2 { font-size: 1.5rem; margin-bottom: 10px; }
+.sources h2 { margin-bottom: 10px; }
 
+/* Two balanced columns, filled top to bottom, so a long entry
+   (satellite fire detections) does not leave a gap beside it */
 .source-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 32px;
+  columns: 2;
+  column-gap: var(--gutter);
 }
+.source-grid > * { break-inside: avoid; margin-bottom: 22px; }
 
-.source-grid h3 { font: 700 1.02rem var(--sans); margin-bottom: 4px; }
-.source-grid p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; overflow-wrap: anywhere; }
+.source-grid h3 { font: 700 var(--fs-5) var(--sans); margin-bottom: 4px; }
+.source-grid p { margin: 0; color: var(--muted); font-size: var(--fs-6); line-height: 1.45; overflow-wrap: anywhere; }
 .source-grid > * { min-width: 0; }
 
 .site-footer {
@@ -443,10 +467,11 @@ strong { font-weight: 700; }
   padding: 24px 0 40px;
   border-top: 1px solid var(--rule);
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: var(--fs-6);
 }
 
-.site-footer p { margin: 0 0 4px; }
+.site-footer p { margin: 0 0 6px; }
+.site-footer p:first-child { font-size: var(--fs-4); color: var(--ink); }   /* title and author */
 
 
 /* =========================================================
@@ -458,10 +483,10 @@ strong { font-weight: 700; }
 
 @media (max-width: 880px) {
   .row,
-  .flip .row,
   .insight-wide,
   .conclusion,
   .sources { grid-template-columns: minmax(0, 1fr); }
+  .row .fig, .conclusion > *, .sources > * { grid-column: auto; }
   .flip .row .insight { order: 0; justify-self: start; }
   .row { gap: 20px; }
   .insight { max-width: 22em; }
@@ -473,7 +498,7 @@ strong { font-weight: 700; }
 
 @media (max-width: 520px) {
   .wrap { padding: 0 18px; }
-  .source-grid { grid-template-columns: minmax(0, 1fr); }
+  .source-grid { columns: 1; }
 }
 
 
@@ -512,6 +537,8 @@ strong { font-weight: 700; }
 .tt.tt-light .tt-big b { color: #a8873f; }
 .tt-sub    { color: var(--muted); margin-top: 3px !important; }
 .tt-note   { margin-top: 8px !important; padding-top: 8px; border-top: 1px solid var(--rule); }
+.tt-why    { margin-top: 8px !important; color: var(--muted); }
+.tt-why b  { color: var(--ink); }
 
 /* Small trend inside a card */
 .tt-spark { display: block; width: 100%; height: auto; margin-top: 10px; overflow: visible; }
@@ -551,12 +578,16 @@ strong { font-weight: 700; }
 
 /* Controls built into the Vega charts (heatmap menu, cartogram slider)
    match the bin map's controls below */
-.vega-bindings { margin-top: 10px; font: 15px var(--sans); color: var(--ink); }
+.vega-bindings { margin-top: 10px; font: var(--fs-6) var(--sans); color: var(--ink); }
 .vega-bind label { display: inline-flex; align-items: center; gap: 8px; }
 .vega-bind-name { font-weight: 600; }
-.vega-bind select {
-  font: inherit; color: var(--ink);
-  padding: 5px 10px; border: 1px solid var(--rule); border-radius: 6px; background: #fffdf8;
+.vega-bind select,
+.map-controls select {
+  font: inherit; font-weight: 400; color: var(--ink);
+  appearance: none; -webkit-appearance: none;
+  field-sizing: content;            /* box only as wide as the chosen option */
+  padding: 5px 30px 5px 10px; border: 1px solid var(--rule); border-radius: 6px; cursor: pointer;
+  background: #fffdf8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231f3326' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 11px center;
 }
 
 /* Bin map controls: season / month-by-month menu, then a timeline */
@@ -566,14 +597,10 @@ strong { font-weight: 700; }
   align-items: center;
   gap: 12px 22px;
   margin-top: 10px;
-  font: 15px var(--sans);
+  font: var(--fs-6) var(--sans);
   color: var(--ink);
 }
 .map-controls label { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
-.map-controls select {
-  font: inherit; font-weight: 400; color: var(--ink);
-  padding: 5px 10px; border: 1px solid var(--rule); border-radius: 6px; background: #fffdf8;
-}
 .timeline { display: flex; align-items: center; gap: 12px; flex: 1 1 300px; max-width: 420px; }
 .timeline[hidden] { display: none; }
 .timeline .play {
@@ -583,8 +610,8 @@ strong { font-weight: 700; }
 .timeline .play:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .timeline-track { flex: 1; }
 .timeline-track input { width: 100%; margin: 0; accent-color: var(--c-unplanned); }
-.timeline-ticks { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); padding: 0 2px; }
+.timeline-ticks { display: flex; justify-content: space-between; font-size: var(--fs-6); color: var(--muted); padding: 0 2px; }
 
 /* Year slider under the credits cartogram: carbon olive, page font */
-#forest-credits-cartogram .vega-bindings { margin-top: 6px; font: 15px var(--sans); color: var(--ink); }
+#forest-credits-cartogram .vega-bindings { margin-top: 6px; font: var(--fs-6) var(--sans); color: var(--ink); }
 #forest-credits-cartogram input[type="range"] { accent-color: var(--c-carbon); vertical-align: middle; }

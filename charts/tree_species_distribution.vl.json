@@ -5,7 +5,7 @@
     "subtitle": "Herbarium records per 1° grid cell",
     "anchor": "start",
     "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-    "fontSize": 19,
+    "fontSize": 19.2,
     "fontWeight": 700,
     "color": "#1f3326",
     "subtitleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
@@ -73,8 +73,8 @@
           },
           {
             "Name": "Victoria",
-            "lon": 142.0,
-            "lat": -35.9
+            "lon": 142.6,
+            "lat": -36.3
           },
           {
             "Name": "Tasmania",
@@ -86,7 +86,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "normal",
         "lineBreak": "\n",
         "align": "center"
@@ -155,7 +155,7 @@
       "mark": {
         "type": "text",
         "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": "normal",
         "lineBreak": "\n",
         "align": "right",
