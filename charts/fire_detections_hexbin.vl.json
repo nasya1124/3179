@@ -353,6 +353,91 @@
           "field": "Name"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 486,
+            "y": 388,
+            "x2": 522,
+            "y2": 410
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1f3326",
+        "strokeWidth": 0.9
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null
+        },
+        "x2": {
+          "field": "x2"
+        },
+        "y2": {
+          "field": "y2"
+        },
+        "opacity": {
+          "value": {
+            "expr": "month === 'All' ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 594,
+            "y": 412,
+            "t": [
+              "Most detections: NSW",
+              "coast and East",
+              "Gippsland"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#1f3326",
+        "align": "right",
+        "baseline": "top",
+        "lineHeight": 17
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative",
+          "scale": null
+        },
+        "text": {
+          "field": "t"
+        },
+        "opacity": {
+          "value": {
+            "expr": "month === 'All' ? 1 : 0"
+          }
+        }
+      }
     }
   ],
   "config": {

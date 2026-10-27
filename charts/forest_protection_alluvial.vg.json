@@ -372,7 +372,7 @@
             "signal": "scale('yscale', (datum.y0 + datum.y1) / 2)"
           },
           "text": {
-            "signal": "datum.Tenure + '  ' + format(datum.area/131502, '.0%')"
+            "signal": "datum.Tenure"
           },
           "align": {
             "value": "right"
@@ -432,6 +432,47 @@
           },
           "lineHeight": {
             "value": 19
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "name": "leaseholdNote",
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "(lx + rx) / 2"
+          },
+          "y": {
+            "signal": "scale('yscale', 20000)"
+          },
+          "text": {
+            "value": [
+              "Only 7% of leasehold forest",
+              "is in the reserve system"
+            ]
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "lineHeight": {
+            "value": 18
+          },
+          "font": {
+            "value": "'Source Sans 3', 'Segoe UI', Arial, sans-serif"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#1f3326"
           }
         }
       }

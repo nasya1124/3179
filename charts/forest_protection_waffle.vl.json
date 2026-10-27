@@ -29,109 +29,6 @@
       }
     }
   },
-  "mark": {
-    "type": "rect",
-    "stroke": "#f6f3ec",
-    "strokeWidth": 2,
-    "cornerRadius": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "Column",
-      "type": "ordinal",
-      "sort": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "axis": null,
-      "scale": {
-        "paddingInner": 0.045,
-        "paddingOuter": 0.015
-      }
-    },
-    "y": {
-      "field": "Row",
-      "type": "ordinal",
-      "sort": [
-        10,
-        9,
-        8,
-        7,
-        6,
-        5,
-        4,
-        3,
-        2,
-        1
-      ],
-      "axis": null,
-      "scale": {
-        "paddingInner": 0.045,
-        "paddingOuter": 0.015
-      }
-    },
-    "color": {
-      "field": "Coverage",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Included in reported managed total",
-          "Not included in reported managed total"
-        ],
-        "range": [
-          "#8cc5c3",
-          "#e3dfd3"
-        ]
-      },
-      "legend": {
-        "orient": "right",
-        "title": null,
-        "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "titleFontSize": 14,
-        "titleColor": "#24392d",
-        "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
-        "labelFontSize": 14,
-        "labelColor": "#24392d",
-        "labelLimit": 260,
-        "symbolType": "square",
-        "symbolSize": 260,
-        "symbolStrokeColor": null,
-        "symbolStrokeWidth": 1,
-        "offset": 20,
-        "direction": "vertical",
-        "columns": 1,
-        "labelExpr": "datum.label == 'Included in reported managed total' ? ['Managed for protection'] : ['Not in that total']",
-        "rowPadding": 12
-      }
-    },
-    "tooltip": [
-      {
-        "field": "Coverage",
-        "type": "nominal",
-        "title": "Category"
-      },
-      {
-        "field": "Tile",
-        "type": "quantitative",
-        "title": "Square number"
-      }
-    ],
-    "opacity": {
-      "condition": {
-        "param": "coverage_pick",
-        "value": 1
-      },
-      "value": 0.2
-    }
-  },
   "config": {
     "view": {
       "stroke": null
@@ -154,16 +51,123 @@
     }
   },
   "background": null,
-  "params": [
+  "layer": [
     {
-      "name": "coverage_pick",
-      "select": {
-        "type": "point",
-        "fields": [
-          "Coverage"
-        ]
+      "mark": {
+        "type": "rect",
+        "stroke": "#f6f3ec",
+        "strokeWidth": 2,
+        "cornerRadius": 3
       },
-      "bind": "legend"
+      "encoding": {
+        "x": {
+          "field": "Column",
+          "type": "ordinal",
+          "sort": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "axis": null,
+          "scale": {
+            "paddingInner": 0.045,
+            "paddingOuter": 0.015
+          }
+        },
+        "y": {
+          "field": "Row",
+          "type": "ordinal",
+          "sort": [
+            10,
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1
+          ],
+          "axis": null,
+          "scale": {
+            "paddingInner": 0.045,
+            "paddingOuter": 0.015
+          }
+        },
+        "color": {
+          "field": "Coverage",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Included in reported managed total",
+              "Not included in reported managed total"
+            ],
+            "range": [
+              "#8cc5c3",
+              "#e3dfd3"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "title": null,
+            "titleFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "titleFontSize": 14,
+            "titleColor": "#24392d",
+            "labelFont": "'Source Sans 3', 'Segoe UI', Arial, sans-serif",
+            "labelFontSize": 14,
+            "labelColor": "#24392d",
+            "labelLimit": 260,
+            "symbolType": "square",
+            "symbolSize": 260,
+            "symbolStrokeColor": null,
+            "symbolStrokeWidth": 1,
+            "offset": 20,
+            "direction": "vertical",
+            "columns": 1,
+            "labelExpr": "datum.label == 'Included in reported managed total' ? ['Managed for protection'] : ['Not in that total']",
+            "rowPadding": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Coverage",
+            "type": "nominal",
+            "title": "Category"
+          },
+          {
+            "field": "Tile",
+            "type": "quantitative",
+            "title": "Square number"
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "param": "coverage_pick",
+            "value": 1
+          },
+          "value": 0.2
+        }
+      },
+      "params": [
+        {
+          "name": "coverage_pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Coverage"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
     }
   ]
 }

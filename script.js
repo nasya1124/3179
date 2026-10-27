@@ -1,6 +1,6 @@
 // Bump this whenever a chart or data file changes, so browsers fetch
 // the new version instead of an old cached copy.
-var VERSION = "20261027w";
+var VERSION = "20261027y";
 
 // Each entry links a container on the page (by its id) to a chart specification.
 // Files ending in .vl.json are Vega-Lite; files ending in .vg.json are Vega.
@@ -11,7 +11,11 @@ var charts = [
   { id: "#chart-13",                   spec: "charts/tree_species_distribution.vl.json" },
   { id: "#forest-clearing-regrowth",   spec: "charts/forest_clearing_regrowth.vl.json",
     narrow: { below: 640, apply: function (s) { eachLegend(s, function (l) { l.columns = 2; }); } } },
-  { id: "#plantation-over-time",       spec: "charts/plantation_area_over_time.vl.json" },
+  { id: "#plantation-over-time",       spec: "charts/plantation_area_over_time.vl.json",
+    fit: function (spec, w) {               // both views fill the column (minus the y-axis)
+      var plot = Math.max(320, w - 90);
+      spec.vconcat.forEach(function (v) { v.width = plot; });
+    } },
   { id: "#plantation_establishment",   spec: "charts/plantation_establishment_by_jurisdiction.vl.json" },
   { id: "#forest-credits-cartogram",   spec: "charts/forest_credits_cartogram.vl.json" },
   { id: "#forest-credits-slope",       spec: "charts/forest_credits_slope.vl.json" },
@@ -19,7 +23,18 @@ var charts = [
     narrow: { below: 640, apply: function (s) { s.encoding.x.axis.labelExpr = "replace(slice(datum.label, 2), '-', '–')"; } } },
   { id: "#forest-fire-heatmap",        spec: "charts/forest_fire_by_state_heatmap.vl.json" },
   { id: "#fire-detections-hexbin",     spec: "charts/fire_detections_hexbin.vl.json",
-    passThrough: ["layer_1_marks", "layer_2_marks", "layer_3_marks", "layer_4_marks"] },   // outlines and labels drawn over the hexagons
+    fit: function (spec, w) {               // scale the pre-projected map to fill the column
+      var k = Math.max(0.6, Math.min(1.25, w / 600));
+      spec.width = Math.round(590 * k); spec.height = Math.round(470 * k);
+      spec.projection = { type: "identity", scale: k, translate: [0, 0] };
+      spec.layer.forEach(function (L) {     // labels and leader line are in pixels too
+        if (!L.data || !L.data.values) return;
+        L.data.values.forEach(function (d) {
+          ["x", "y", "x2", "y2"].forEach(function (f) { if (typeof d[f] === "number") d[f] *= k; });
+        });
+      });
+    },
+    passThrough: ["layer_1_marks", "layer_2_marks", "layer_3_marks", "layer_4_marks", "layer_5_marks", "layer_6_marks"] },   // outlines and labels drawn over the hexagons
   { id: "#forest-protection-alluvial", spec: "charts/forest_protection_alluvial.vg.json" },
   { id: "#forest-protection-waffle",   spec: "charts/forest_protection_waffle.vl.json",
     narrow: { below: 600, apply: function (s) { eachLegend(s, function (l) { l.orient = "bottom"; }); } } },
@@ -809,6 +824,7 @@ function loadSpec(chart) {
       pad.left = 0;
     }
     if (chart.narrow && el && el.clientWidth < chart.narrow.below) chart.narrow.apply(spec);
+    if (chart.fit && el && el.clientWidth) chart.fit(spec, el.clientWidth);
     return spec;
   });
 }

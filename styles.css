@@ -433,10 +433,16 @@ strong { font-weight: 700; }
 /* Same size as the chapter questions, so all section titles match */
 .conclusion h2,
 .sources h2 { font-size: var(--fs-2); line-height: 1.1; }
-.conclusion-text { max-width: 25em; font-size: var(--fs-5); line-height: 1.6; align-self: end; }
+/* Conclusion: findings in one column, the takeaway beside them */
+.conclusion-text {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter);
+  font-size: var(--fs-5); line-height: 1.6;
+}
+.conclusion-text > p { grid-column: 1; max-width: 22em; }
+.conclusion-text > .takeaway { grid-column: 2; grid-row: 1 / span 4; align-self: start; }
 .conclusion-text p { margin: 0 0 16px; }
 .conclusion-text .takeaway {
-  margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--rule);
+  margin: 0; padding: 4px 0 0 18px; border-left: 3px solid var(--ink);
   font: 700 var(--fs-4)/1.4 var(--sans);
 }
 /* Each figure is coloured by the chapter it comes from */
@@ -487,9 +493,11 @@ strong { font-weight: 700; }
   .conclusion,
   .sources { grid-template-columns: minmax(0, 1fr); }
   .row .fig, .conclusion > *, .sources > * { grid-column: auto; }
+  .conclusion-text { grid-template-columns: minmax(0, 1fr); }
+  .conclusion-text > .takeaway { grid-column: 1; grid-row: auto; margin-top: 10px; }
   .flip .row .insight { order: 0; justify-self: start; }
   .row { gap: 20px; }
-  .insight { max-width: 22em; }
+  .insight { max-width: 21em; }
   .hero { grid-template-columns: minmax(0, 1fr); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat:nth-child(3) { border-left: 0; padding-left: 0; }
